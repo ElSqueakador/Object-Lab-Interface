@@ -256,37 +256,7 @@ public class AdminSettingsView extends javax.swing.JFrame
     
     
     /////// Nav Bar ~Alex /////
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -297,8 +267,7 @@ public class AdminSettingsView extends javax.swing.JFrame
     }//GEN-LAST:event_jButton4ActionPerformed
 
         private void addPrinterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPrinterButtonActionPerformed
-		AddDeviceView ap = new AddDeviceView();
-		ap.AddPrinterStart();
+
                 dispose();
         }//GEN-LAST:event_addPrinterButtonActionPerformed
 
@@ -313,8 +282,7 @@ public class AdminSettingsView extends javax.swing.JFrame
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        RemoveClassPrinterView remove = new RemoveClassPrinterView();
-        remove.removeClassPrinterStart();
+        //Deleted remove class printer view ~Russell
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

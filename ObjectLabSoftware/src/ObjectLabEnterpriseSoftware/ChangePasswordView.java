@@ -32,7 +32,7 @@ public class ChangePasswordView extends javax.swing.JFrame {
                 public void windowClosing(WindowEvent we) 
                 {
                     /* If they close the program then close out the window properly */
-                    settings.AdminSettingsViewStart();
+                    settings.AdminSettingsViewStart(); 
                     dispose();
                 }
             }
@@ -134,14 +134,14 @@ public class ChangePasswordView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Administrator password changed!");
             //Store hashed password in database
             dispose();
-            settings.AdminSettingsViewStart();
+            settings.AdminSettingsViewStart(); 
         }else
             passwordError.setVisible(true);
     }//GEN-LAST:event_submitButtonActionPerformed
 
     
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        settings.AdminSettingsViewStart();
+        settings.AdminSettingsViewStart(); 
         dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 

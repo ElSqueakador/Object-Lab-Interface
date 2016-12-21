@@ -349,68 +349,7 @@ public class newJobsMgr extends JFrame {
 		getContentPane().add(reviewButton);
 		//****
 		reviewButton.setVisible(false);
-		
-		
-		//****NOT NEEDED -cesar
-		/*
-		selectallButton = new JButton("Select All");
-		selectallButton.setBounds(424, 265, 89, 23);//459 //250 //265
-		selectallButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		
-		//
-		selectallButton.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-            if(selectallButton.isSelected()){
-
-                for(int i=0;i<jobsModel.getRowCount();i++)
-                	jobsModel.setValueAt(true, i, 0);
-
-            }else{
-
-                for(int i=0;i<jobsModel.getRowCount();i++)
-                	jobsModel.setValueAt(true, i, 0);
-		            //jobsModel.getValueAt(1,1)).setValueAt(false, i, 5); 
-            }       
-
-        }
-		});*/
-		//
-	
-		//getContentPane().add(selectallButton);
-		
-		//****
-		
-		
-		//
-		/*
-		deselectallButton = new JButton("Deselect All");
-		deselectallButton.setBounds(519, 265, 89, 23);//459 //250 //265
-		deselectallButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		
-		//$$$$
-		deselectallButton.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-            if(deselectallButton.isSelected()){
-
-                for(int i=0;i<jobsModel.getRowCount();i++)
-                	jobsModel.setValueAt(false, i, 0);
-
-            }else{
-
-                for(int i=0;i<jobsModel.getRowCount();i++)
-                	jobsModel.setValueAt(false, i, 0);
-		            //jobsModel.getValueAt(1,1)).setValueAt(false, i, 5); 
-            }       
-
-        }
-		});*/
-		//
-		
-	
-		//getContentPane().add(deselectallButton);	
-		
-		
-		
+                
 
 		lblFillInData = new JLabel("Please enter device statistic tracking data if approving:");
 		lblFillInData.setBounds(10, 271, 375, 23);
@@ -931,12 +870,7 @@ public class newJobsMgr extends JFrame {
 	private JButton approveButton;
 	private JButton rejectButton;
 	private JButton reviewButton;
-	//****
 	private JComboBox classCombo;
 	private JComboBox sectionCombo;
-	//
-	//****NOT NEEDED  -cesar
-		//private JButton selectallButton;
-		//private JButton deselectallButton;
-	//
+
 }

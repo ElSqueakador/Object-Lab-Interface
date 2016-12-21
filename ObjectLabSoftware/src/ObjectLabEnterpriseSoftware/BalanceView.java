@@ -62,24 +62,6 @@ protected void updateBalanceWindow(String enteredValue) {
         SQLMethods dbconn = new SQLMethods();
         ResultSet queryResult;                  
         
-        /*if (!id.isEmpty())
-        {
-            System.out.println(id);
-            queryResult = dbconn.searchStudentBalanceId(id);
-        }
-        else if (!lastName.isEmpty())
-        {
-            queryResult = dbconn.searchStudentBalanceLName(lastName);
-        }
-        else if (!firstName.isEmpty())
-        {
-            queryResult = dbconn.searchStudentBalanceFName(firstName);
-        }
-        else
-        {
-            queryResult = dbconn.searchStudentBalance(); 
-        }
-        */
         if (!enteredValue.isEmpty()) 
         {
             queryResult = dbconn.searchStudentBalanceAll(enteredValue);
@@ -265,14 +247,7 @@ protected void updateBalanceWindow(String enteredValue) {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         enteredValue = "";
-        //firstName = "";
-        //lastName = "";
-        //id = "";
         enteredValue = jTextField1.getText(); 
-        //firstName = jTextField1.getText();
-        //lastName = jTextField2.getText();
-        //id = jTextField3.getText();
-        //updateBalanceWindow(firstName, lastName, id);
         updateBalanceWindow(enteredValue);
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -309,8 +284,6 @@ protected void updateBalanceWindow(String enteredValue) {
         {
                 System.out.println("ERROR");
         }
-        
-        
         dbconn.closeDBConnection();
         updateBalanceWindow(enteredValue);
     }//GEN-LAST:event_jButton3MouseClicked

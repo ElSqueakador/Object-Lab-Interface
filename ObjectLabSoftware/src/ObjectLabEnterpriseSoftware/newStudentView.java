@@ -143,84 +143,7 @@ public class newStudentView extends javax.swing.JFrame {
             }
         });
     }
-    
-    // private void initDragDrop()
-    //{
-        /*JScrollPane scrollPane_3 = new JScrollPane((Component) null);
-        contentPane = new JPanel();
-		scrollPane_3.setBounds(65, 220, 320, 150);
-		contentPane.add(scrollPane_3);
-		table = new JTable();
-                // # rows from start
-		table.setModel(new DefaultTableModel(new Object[][] {},
-                        // Column Name
-                        new String[] {"File Name", "File Path"}));
-                table.setAutoCreateRowSorter(true);
-		scrollPane_3.setViewportView(table);
-		table.setShowGrid(true);
-                table.setShowHorizontalLines(true);
-                table.setShowVerticalLines(true);
-                table.setGridColor(Color.GRAY);
-
-                table.setFillsViewportHeight(true);
-                table.setPreferredSize(new Dimension(320, 150));*/
-
-                /*
-                jTable3.setDropTarget(new DropTarget() {
-                @Override
-                public synchronized void dragOver(DropTargetDragEvent dtde) {
-                    Point point = dtde.getLocation();
-                    int row = jTable3.rowAtPoint(point);
-                    if (row < 0) {
-                        jTable3.clearSelection();
-                    } else {
-                        jTable3.setRowSelectionInterval(row, row);
-                    }
-                    dtde.acceptDrag(DnDConstants.ACTION_COPY_OR_MOVE);
-                }
-
-            @Override
-            public synchronized void drop(DropTargetDropEvent dtde) {
-                if (dtde.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) {
-                    dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
-                    Transferable t = dtde.getTransferable();
-                    List fileList = null;
-                    try {
-                        fileList = (List) t.getTransferData(DataFlavor.javaFileListFlavor);
-                        if (fileList.size() > 0) {
-                            jTable3.clearSelection();
-                            Point point = dtde.getLocation();
-                            int row = jTable3.rowAtPoint(point);
-                            DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
-                            for (Object value : fileList) {
-                                if (value instanceof File) {
-                                    File f = (File) value;
-                                   
-                                    if (row < 0) {
-                                        model.addRow(new Object[]{f.getName(), f.getAbsolutePath()});
-                                    } else {
-                                        model.insertRow(row, new Object[]{f.getName(), f.getAbsolutePath()});
-                                        row++;
-                                    }
-                                }
-                            }
-                        }
-                    } catch (UnsupportedFlavorException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    dtde.rejectDrop();
-                }
-            }
-
-        });
-
-        getContentPane().add(scrollPane_3, BorderLayout.CENTER);
-    }
-    */
-    
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -565,7 +488,7 @@ public class newStudentView extends javax.swing.JFrame {
         //projName.setText(null);
         //classBox.setSelectedItem(null);
         //printerBox.setSelectedItem(null);
-        setVisible(true);        // TODO add your handling code here:
+        setVisible(true);      
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -584,7 +507,7 @@ public class newStudentView extends javax.swing.JFrame {
            materialTransView = new MaterialTransactionHistoryView();
            materialTransView.showHistory(userName, UtilController.getStudentLname(), userID);
            //dispose();
-       }        // TODO add your handling code here:
+       }        
     }//GEN-LAST:event_jTable2MouseClicked
 
     

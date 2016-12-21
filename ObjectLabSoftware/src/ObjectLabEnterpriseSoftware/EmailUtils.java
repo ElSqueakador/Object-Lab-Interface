@@ -29,23 +29,6 @@ public class EmailUtils
     private static String emailAdrTo = null;
     private static String emailMessageContent = null;
     
-    /*private Message setEmailContents()
-    {
-        Message message = new MimeMessage(smtpSession);
-        try 
-        {
-            message.setFrom(new InternetAddress(username));
-            //Students Email Should go here
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAdrTo));
-            message.setSubject("Towson University Object Lab: No_Reply");
-            message.setText(emailMessageContent);
-        } 
-        catch (MessagingException ex) 
-        {
-            Logger.getLogger(EmailUtils.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return message;
-    }*/
     
     public static void send(String emailAdrSend, String accountName, String pw, String emailTextMsg)
     {
@@ -110,23 +93,4 @@ public class EmailUtils
 		*/
         //emailContent = setEmailContents();
     }
-    
-   /* public boolean send() 
-    {
-        try
-        {
-            Transport.send(emailContent);
-        }
-        catch (SendFailedException send_fail_to_recipient)
-        {
-            Logger.getLogger(EmailUtils.class.getName()).log(Level.SEVERE, null, send_fail_to_recipient);
-            return false;
-        }
-        catch (MessagingException ex) 
-        {
-            Logger.getLogger(EmailUtils.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-        return true;
-    } */
 }

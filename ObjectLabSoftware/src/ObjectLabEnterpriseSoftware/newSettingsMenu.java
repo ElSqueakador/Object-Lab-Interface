@@ -123,24 +123,6 @@ public class newSettingsMenu extends JFrame {
 			}); 
 
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		JButton btnManageClasses = new JButton("Manage Classes");
 		btnManageClasses.addMouseListener(new MouseAdapter() {
 			@Override

@@ -21,7 +21,6 @@ public class BuildView extends javax.swing.JFrame
 {
     private static final String NAME_OF_PAGE = "Build File Creator";
     private static MainView home = new MainView();
-    private static RemoveBuildView removeWindow = new RemoveBuildView();
     private static int countNumOfModels;
     // --nav bar views ~Alex
     private BuildView buildView;
@@ -47,30 +46,7 @@ public class BuildView extends javax.swing.JFrame
     private Device deviceModel = null;
 
     FileManager inst;
-
     
-    //this function is never called
-    //Rajewski
-    /*private static void updateViewData(DefaultTableModel model, ArrayList<ArrayList<Object>> view)
-    {
-        /* Clears up the rows in the view's model. 
-        for (int rows = model.getRowCount() - 1; rows >= 0; rows--)
-        {
-            model.removeRow(rows);
-        }
-
-        /* Inserts data found in (ArrayList -> listOfRows) by row into the UI model to display 
-        for (ArrayList<Object> row : view)
-        {
-            /* We need to account for the check box by adding in a boolean value = false as the first value. 
-            if(UtilController.findAndVerifyFile((String)(row.get(1)))){
-                row.add(0, (Boolean) false);
-                model.addRow(row.toArray());
-            }
-            //System.out.println(row.get(1));
-        }
-    }
-    */
     private void clearEntries(DefaultTableModel fileTableModel)
     {
         while (fileTableModel.getRowCount() > 0)
@@ -118,55 +94,9 @@ public class BuildView extends javax.swing.JFrame
                     return false;
                 }
             }
-        }
-
-        //Rajewski
-        //Removed becuase no more device input table
-        /* Now that a printer has been selected, build file location, and files that are part of the build we can validate 
-         the input for the build data 
-               
-        for (int column = 0; column < deviceInputTable.getColumnCount(); column++)
-        {
-            // Test the column input to see type /
-            int testColumnInput = InputValidation.getDataType((String) deviceInputTable.getValueAt(0, column));
-            // Ask Device model which type the column SHOULD be /
-            int expectedColumnInput = deviceModel.getFieldType(trackableFields.get(column));
-
-            if (testColumnInput == -1)
-            {
-                ErrorText.setText("Unknown data entry for build data!");
-                ErrorText.setVisible(true);
-                return false;
-            } else if (testColumnInput != expectedColumnInput)
-            {
-                ErrorText.setText("Invalid data entry for build data! Data in field " + column + " does not match expected type.");
-                ErrorText.setVisible(true);
-                return false;
-            }
-        }
-        */
-        
+        }       
         return true;
     }
-
-    //Rajewski
-    //Does not need to be called
-    /*
-    /based entirely on nonexistent deviceInputTable
-    /private boolean preprocessDataForSubmit()
-    {
-        for (int column = 0; column < deviceInputTable.getColumnCount(); column++)
-        {
-            if (!deviceModel.addField(trackableFields.get(column), deviceInputTable.getValueAt(0, column)))
-                {
-                    ErrorText.setText("Invalid data entry for build data!");
-                    ErrorText.setVisible(true);
-                    return false;
-                }
-        }
-        return true;
-    }
-    */
     
     private boolean submit()
     {
@@ -696,36 +626,10 @@ public class BuildView extends javax.swing.JFrame
                 buildFileLocationErrorStatusText.setText("Select a unique build file location");
                 buildFileLocationErrorStatusText.setVisible(true);
 
-                //Rajewski
-                //deviceInputTable was removed and replaced with table of previous builds
-                
-                //invalidBuildLocationSelectedColumnModel.setColumnIdentifiers(errorTextColumnHeader);
-                //deviceInputTable.setModel(invalidBuildLocationSelectedColumnModel);
-                //deviceInputTable.setVisible(false);
             }
         }
     }//GEN-LAST:event_browseBtnActionPerformed
-
-    //Rajewski
-    //Removed because no longer used/needed for input table
-    /*
-    private void setupUserInputBuildData()
-    {
-        buildFileLocationErrorStatusText.setVisible(false);
-        deviceModel.addField("Run time", 0); /* Should later remove this and make it a seperate parameter in the function submitBuild call (so the backend knows less about how the UI stores its data) 
-        
-        deviceModel.addField("Hours", 0);
-        deviceModel.addField("Minutes", 0);
-        deviceModel.addField("Seconds", 0);
-        
-        trackableFields = deviceModel.getFieldNames();
-        deviceDataModel = new DefaultTableModel(trackableFields.toArray(), 1);
-        
-        deviceInputTable.setModel(deviceDataModel);
-        deviceInputTable.setVisible(true);
-    }
-    */ 
-    
+   
     private void deviceNameComboBoxActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deviceNameComboBoxActionPerformed
     {//GEN-HEADEREND:event_deviceNameComboBoxActionPerformed
         /* When a device is selected we put the info into the Device class and then detrmine how we update our view from here 
