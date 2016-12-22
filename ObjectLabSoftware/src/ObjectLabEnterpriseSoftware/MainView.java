@@ -18,9 +18,6 @@ public class MainView extends javax.swing.JFrame
     private static final String NAME_OF_PAGE = "Home";
     private static final char SHARE_DRIVE_DIR = 'Z';
 
-   // AddStudentView newStudentSys;
-	//UpdateStudentView updateStudentSys;
-    JobsView pendingSys;
     newStudentView studentSys;
     newJobsMgr njm;
     PasswordDialogView ad;
@@ -36,8 +33,7 @@ public class MainView extends javax.swing.JFrame
         njm = new newJobsMgr();
         studentSys = new newStudentView();
         ad = new PasswordDialogView();
-      //  newStudentSys = new AddStudentView();
-	//updateStudentSys = new UpdateStudentView();
+
 	
 				
         //Allows only integers for student ID

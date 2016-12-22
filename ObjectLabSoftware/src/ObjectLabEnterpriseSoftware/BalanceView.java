@@ -27,7 +27,7 @@ import java.awt.event.MouseEvent;
 public class BalanceView extends javax.swing.JFrame {
     
     private BuildView buildView;
-    private newJobsMgr jobsView;
+    private newJobsMgr jobsMgr;
     private ReportsView reportsView;	
     private BalanceView balanceView;
     private newSettingsMenu adminSettingsView;
@@ -366,31 +366,31 @@ protected void updateBalanceWindow(String enteredValue) {
         setJMenuBar(jMenuBar1);
         
         navBtn_jobsMgr = new JButton("Jobs Manager");
-        navBtn_jobsMgr.setIcon(new ImageIcon(JobsView.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
+        navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
         navBtn_jobsMgr.setPreferredSize(new Dimension(100,24));
         
         jMenuBar1.add(Box.createRigidArea(new Dimension(42,12)));
         jMenuBar1.add(navBtn_jobsMgr);
         
         navBtn_build = new JButton("Enter Build");
-        navBtn_build.setIcon(new ImageIcon(JobsView.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
+        navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
         navBtn_build.setPreferredSize(new Dimension(100,24));
         jMenuBar1.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
-        navBtn_reports.setIcon(new ImageIcon(JobsView.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
+        navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
         navBtn_reports.setPreferredSize(new Dimension(100,24));
         jMenuBar1.add(navBtn_reports);
         
         navBtn_balance = new JButton("Balance");
-        navBtn_balance.setIcon(new ImageIcon(JobsView.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
+        navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
 	navBtn_balance.setPreferredSize(new Dimension(100,24));
 
         jMenuBar1.add(navBtn_balance);
 
         
         navBtn_settings = new JButton("Settings");
-        navBtn_settings.setIcon(new ImageIcon(JobsView.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
+        navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
         navBtn_settings.setPreferredSize(new Dimension(100,24));
         jMenuBar1.add(navBtn_settings);
         
@@ -430,8 +430,8 @@ protected void updateBalanceWindow(String enteredValue) {
     
     private void navBtn_jobsMgrActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	jobsView = new newJobsMgr();
-        jobsView.setVisible(true);
+    	jobsMgr = new newJobsMgr();
+        jobsMgr.setVisible(true);
     	dispose();
     	
     }
