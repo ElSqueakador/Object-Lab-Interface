@@ -389,6 +389,8 @@ public class UtilController
             reportName = printer + " build chart " + time;
         else if (type == 'f')
             reportName = printer + " file tracking " + time;
+        else if (type == 'm')
+            reportName = "Student Balance Chart " + time;
         boolean didSave = fileManager.saveReport(reportName, wb);
 
         if (didSave)

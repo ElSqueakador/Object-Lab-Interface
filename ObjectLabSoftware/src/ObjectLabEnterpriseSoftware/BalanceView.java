@@ -32,6 +32,8 @@ public class BalanceView extends javax.swing.JFrame {
     private BalanceView balanceView;
     private newSettingsMenu adminSettingsView;
     private MaterialTransactionHistoryView materialTransView;
+    private UtilController controller;
+    private String[] headers = {"First Name", "Last Name", "Student ID", "Z Corp Plaster", "Objet Build", "Objet Support"};
     private double amount = 0;
     //private String firstName = "";
     //private String lastName = "";
@@ -44,7 +46,7 @@ public class BalanceView extends javax.swing.JFrame {
     private static DefaultTableModel model;
     private static MainView home = new MainView();
     public BalanceView() {
-        
+        this.controller = new UtilController();
         getContentPane().setBackground(Color.WHITE);
         initComponents();
         initNavBar();
@@ -112,6 +114,7 @@ protected void updateBalanceWindow(String enteredValue) {
         jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jMenuItem1.setText("jMenuItem1");
@@ -129,10 +132,7 @@ protected void updateBalanceWindow(String enteredValue) {
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "First Name", "Last Name", "Towson ID", "Z Corp Plaster", "Objet Build", "Objet Support"
@@ -177,6 +177,13 @@ protected void updateBalanceWindow(String enteredValue) {
         jLabel1.setText("Select Material:");
 
         jLabel2.setText("Enter Amount:");
+
+        jButton4.setText("Student Balance Report");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,7 +194,10 @@ protected void updateBalanceWindow(String enteredValue) {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -204,7 +214,9 @@ protected void updateBalanceWindow(String enteredValue) {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -232,7 +244,9 @@ protected void updateBalanceWindow(String enteredValue) {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton4))
                 .addContainerGap())
         );
 
@@ -307,6 +321,10 @@ protected void updateBalanceWindow(String enteredValue) {
        }
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        controller.exportReportToFile(model, headers, " ", 'm');
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -347,6 +365,7 @@ protected void updateBalanceWindow(String enteredValue) {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
