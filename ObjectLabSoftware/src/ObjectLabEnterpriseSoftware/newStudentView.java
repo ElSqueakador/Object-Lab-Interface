@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -48,6 +50,8 @@ public class newStudentView extends javax.swing.JFrame {
     private static DefaultTableModel model2;
     private static final MainView home = new MainView();
     private MaterialTransactionHistoryView materialTransView;
+    private LaserSubmissionView laserSubmissionView;
+    private newStudentView newStudentView;
     private JPanel contentPane;
     private JTable table;
     private String userID;
@@ -464,11 +468,36 @@ public class newStudentView extends javax.swing.JFrame {
             // parse classBox string and pull out the primary key and store it in an integer 
             classText = (String) jComboBox1.getSelectedItem();
             classFK = (Integer.parseInt(classText.split(" ")[0]));
-
-            UtilController.submitStudentFile(userID, fullFilePath, fileName, printer, classFK);
-
-            JOptionPane.showMessageDialog(new java.awt.Frame(), "Successfully submitted file! Let your professor or lab assistant know you've submitted.");
-            dispose();
+            if (printer.equalsIgnoreCase("Laser Printer"))
+            {
+                
+                laserSubmissionView = new LaserSubmissionView();
+                laserSubmissionView.LaserSubmissionView();
+                while(!laserSubmissionView.isVisible()){}
+                
+                while(laserSubmissionView.isVisible()){}
+                
+                if (laserSubmissionView.isCancelled() == false)
+                {
+                    UtilController.submitStudentFile(userID, fullFilePath, fileName, printer, classFK);
+                    JOptionPane.showMessageDialog(new java.awt.Frame(), "Successfully submitted file! Let your professor or lab assistant know you've submitted.");
+                    dispose();
+                }
+                else
+                {
+                   JOptionPane.showMessageDialog(new java.awt.Frame(), "Laser Printer Submission Cancelled!");
+                   dispose(); 
+                }
+            }
+            else
+            {
+                UtilController.submitStudentFile(userID, fullFilePath, fileName, printer, classFK);
+                JOptionPane.showMessageDialog(new java.awt.Frame(), "Successfully submitted file! Let your professor or lab assistant know you've submitted.");
+                dispose();
+            }
+            
+            
+            
             
 			//Reset view after successful submission to allow for multiple submissions without having to login each time
             Reset_StudentSubmissionFields();
