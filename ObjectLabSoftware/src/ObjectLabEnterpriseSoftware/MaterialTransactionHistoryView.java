@@ -120,7 +120,6 @@ public class MaterialTransactionHistoryView extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     /**
      * @param args the command line arguments
