@@ -72,6 +72,7 @@ public class newJobsMgr extends JFrame {
 		getContentPane().setBackground(Color.WHITE);
 		initWindow();
 		setLocationRelativeTo(null);
+                setResizable(false);
 	}
 	
 	

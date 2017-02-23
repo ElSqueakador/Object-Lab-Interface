@@ -24,6 +24,7 @@ public class ChangePasswordView extends javax.swing.JFrame {
         passwordError.setVisible(false);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
         addWindowListener
         (
             new WindowAdapter() 

@@ -14,6 +14,7 @@ public class PasswordDialogView extends javax.swing.JFrame
     {
         initComponents();
         //passwordError.setVisible(false);
+        setResizable(false);
 		Password.addKeyListener(new KeyAdapter()
         {
             public void keyTyped(KeyEvent capsLockCheck)

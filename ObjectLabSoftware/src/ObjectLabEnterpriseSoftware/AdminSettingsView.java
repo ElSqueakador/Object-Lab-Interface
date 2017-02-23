@@ -48,6 +48,7 @@ public class AdminSettingsView extends javax.swing.JFrame
             }
         });
         setVisible(true);
+        setResizable(false);
     }
 
     /**

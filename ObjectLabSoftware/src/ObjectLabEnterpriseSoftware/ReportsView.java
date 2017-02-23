@@ -77,6 +77,7 @@ public class ReportsView extends javax.swing.JFrame
         }
 	setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
     }
 
     /**

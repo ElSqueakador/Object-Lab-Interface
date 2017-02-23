@@ -24,6 +24,7 @@ public class MaterialTransactionHistoryView extends javax.swing.JFrame {
         model = (DefaultTableModel) jTable1.getModel();
         setTitle("Material Transaction History");
         setVisible(true);
+        setResizable(false);
     }
     
     public void showHistory(String fName, String lName, String studentID) {

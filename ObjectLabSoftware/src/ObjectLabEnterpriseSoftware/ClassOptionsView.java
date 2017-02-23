@@ -48,6 +48,7 @@ public class ClassOptionsView extends javax.swing.JFrame
 		updateView();
 		hideOptions();
 		setVisible(true);
+                setResizable(false);
 	}
 
 	public void hideOptions()

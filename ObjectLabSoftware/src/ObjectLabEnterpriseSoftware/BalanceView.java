@@ -53,6 +53,7 @@ public class BalanceView extends javax.swing.JFrame {
         model = (DefaultTableModel) jTable1.getModel();
         updateBalanceWindow(enteredValue);
         setVisible(true);
+        setResizable(false);
     }
 
     					

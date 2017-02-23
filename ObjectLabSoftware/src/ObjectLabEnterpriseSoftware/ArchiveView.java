@@ -38,6 +38,7 @@ public class ArchiveView extends javax.swing.JFrame {
         getContentPane().setBackground(Color.white);
         initComponents();
         setVisible(true);
+        setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     public ArchiveView(final JFrame f) {

@@ -29,6 +29,7 @@ public class LaserSubmissionView extends javax.swing.JFrame {
         setTitle("Laser Submission View");
         initComponents();
         setVisible(true);
+        setResizable(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.

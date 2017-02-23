@@ -76,6 +76,7 @@ public class newStudentView extends javax.swing.JFrame {
         updateFileStatusWindow(id, studentName);
         updateMaterialWindow(id, studentName);
         setVisible(true);
+        setResizable(false);
     }
     public void updateMaterialWindow(String id, String studentName) {
         model2.setRowCount(0);
