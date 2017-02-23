@@ -50,6 +50,7 @@ public class newStudentView extends javax.swing.JFrame {
     private MaterialTransactionHistoryView materialTransView;
     private JPanel contentPane;
     private JTable table;
+    private LaserPINView laserPin; 
     private String userID;
     private String userName;
     private String projName;
@@ -527,8 +528,14 @@ public class newStudentView extends javax.swing.JFrame {
     // Submit button
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
+	printer = (String) jComboBox2.getSelectedItem();
+	if (printer.equals("Laser Printer")){
+		laserPin = new LaserPINView();
+		laserPin.LaserPINView();
+		dispose();
+	}
         // Verifies user and file information is inputted in its entirety
-        if (errCheck() == false)
+        else if (errCheck() == false)
         {
             // Recieve our input from the UI and hand it off to back end to submit / store file information 
             String fullFilePath, fileName, classText, printer;
