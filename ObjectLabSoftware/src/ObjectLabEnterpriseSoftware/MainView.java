@@ -12,7 +12,7 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.JButton;
-
+//TEST COMMIT 
 public class MainView extends javax.swing.JFrame
 {
     private static final String NAME_OF_PAGE = "Home";
