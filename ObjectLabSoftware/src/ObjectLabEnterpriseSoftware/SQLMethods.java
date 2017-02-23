@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+//TEST
 // Notice, do not import com.mysql.jdbc.*
 // or you will have problems!
 public class SQLMethods
