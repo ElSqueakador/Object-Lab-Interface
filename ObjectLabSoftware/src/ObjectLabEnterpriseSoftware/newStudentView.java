@@ -456,8 +456,8 @@ public class newStudentView extends javax.swing.JFrame {
     // Submit button
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-	printer = (String) jComboBox2.getSelectedItem();
-	if ( printer != null && printer.equals("Laser Printer"){
+	String printer = (String) jComboBox2.getSelectedItem();
+	if ( printer != null && printer.equals("Laser Printer")){
 		laserPin = new LaserPINView();
 		laserPin.LaserPINView();
 		dispose();
@@ -466,7 +466,7 @@ public class newStudentView extends javax.swing.JFrame {
         if (errCheck() == false)
         {
             // Recieve our input from the UI and hand it off to back end to submit / store file information 
-            String fullFilePath, fileName, classText, printer;
+            String fullFilePath, fileName, classText;
             int classFK;
             
             fullFilePath = jTextField1.getText();
