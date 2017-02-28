@@ -51,6 +51,7 @@ public class LaserPINView extends javax.swing.JFrame {
         realPin = "1234";
         setVisible(true);
         this.setVisible(true);
+        this.setResizable(false);
         System.out.println("Construct end\n");
     }
     public boolean isCancelled(){
