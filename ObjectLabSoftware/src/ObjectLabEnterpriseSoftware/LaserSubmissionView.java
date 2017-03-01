@@ -10,6 +10,7 @@ import java.awt.EventQueue;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -25,8 +26,18 @@ public class LaserSubmissionView extends javax.swing.JFrame {
     private LaserSubmissionView laserSubmissionView;
     private newStudentView newStudentView;
     private JPanel contentPane;
-
-    public void LaserSubmissionView() {
+    private String name;
+    private String id;
+    private LaserTimeView timeView;
+    private newStudentView newStuView;
+    
+    public LaserSubmissionView(){
+        
+    }
+    
+    public void LaserSubmissionView(String userID, String userName) {
+        name = userName;
+        id = userID;
         System.out.println("construct\n");
         getContentPane().setBackground(Color.WHITE);
         cancel = false; 
@@ -54,9 +65,7 @@ public class LaserSubmissionView extends javax.swing.JFrame {
         cancel1 = new javax.swing.JButton();
         material = new javax.swing.JComboBox();
         thickness = new javax.swing.JTextField();
-        label3 = new java.awt.Label();
         label4 = new java.awt.Label();
-        stuName = new javax.swing.JTextField();
         monName = new javax.swing.JTextField();
 
         jLabel5.setText("jLabel5");
@@ -85,6 +94,11 @@ public class LaserSubmissionView extends javax.swing.JFrame {
                 cancel1MouseClicked(evt);
             }
         });
+        cancel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel1ActionPerformed(evt);
+            }
+        });
 
         material.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Plastic", "Metal", "Wood", "Other" }));
         material.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -97,8 +111,6 @@ public class LaserSubmissionView extends javax.swing.JFrame {
                 materialActionPerformed(evt);
             }
         });
-
-        label3.setText("Name:");
 
         label4.setText("Lab Monitor Name:");
 
@@ -114,15 +126,8 @@ public class LaserSubmissionView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(submit))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(stuName))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                        .addComponent(jLabel2)
+                        .addContainerGap(300, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -148,16 +153,12 @@ public class LaserSubmissionView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stuName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(59, 59, 59)
                         .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
+                        .addGap(60, 60, 60)
                         .addComponent(monName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -179,21 +180,31 @@ public class LaserSubmissionView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseClicked
-        cancel = true;
-        dispose();        
+        newStuView = new newStudentView();
+        newStuView.newStudentView(id, name);
+        dispose();   
     }//GEN-LAST:event_cancel1MouseClicked
 
     private void submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitMouseClicked
         System.out.println("submit\n");
-        Date dateObj = Calendar.getInstance().getTime();
-        SimpleDateFormat form = new SimpleDateFormat("hh.mm.ss MM-dd-yyyy");
-        String studentName = stuName.getText();
+
+
         String monitorName = monName.getText();
         String materialType = (String) material.getSelectedItem();
-        double thick = Double.parseDouble(thickness.getText());
-        //AbstractEvent laserEvent = new LaserCutEvent(id, studentName, monitorName, form.format(dateObj), course, thick, materialType, hours, mins, secs);
-        setVisible(false);
-        dispose();
+        double thick = 0;
+        try{
+            System.out.println("Start try lasersub");
+            thick = Double.parseDouble(thickness.getText());  
+            timeView = new LaserTimeView();
+            timeView.LaserTimeView(id, name, monitorName, materialType, thick, 0);
+            //setVisible(false);
+            dispose();
+        }
+        catch(NumberFormatException E){
+            JOptionPane.showMessageDialog(null, "Enter a valid number for thickness", "Invalid Thickness", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_submitMouseClicked
 
     private void materialComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_materialComponentHidden
@@ -203,6 +214,12 @@ public class LaserSubmissionView extends javax.swing.JFrame {
     private void materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_materialActionPerformed
+
+    private void cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel1ActionPerformed
+        newStuView = new newStudentView();
+        newStuView.newStudentView(id, name);
+        dispose();
+    }//GEN-LAST:event_cancel1ActionPerformed
 
     public boolean isCancelled()
     {
@@ -236,11 +253,9 @@ public class LaserSubmissionView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuItem jMenuItem1;
-    private java.awt.Label label3;
     private java.awt.Label label4;
     private javax.swing.JComboBox material;
     private javax.swing.JTextField monName;
-    private javax.swing.JTextField stuName;
     private javax.swing.JButton submit;
     private javax.swing.JTextField thickness;
     // End of variables declaration//GEN-END:variables

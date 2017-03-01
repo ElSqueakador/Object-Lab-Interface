@@ -10,12 +10,33 @@ package ObjectLabEnterpriseSoftware;
  * @author IEUser
  */
 public class LaserTimeView extends javax.swing.JFrame {
+    private newStudentView newStuView;
+    private LaserTimeView newTimeView;
+    private String name;
+    private String id;
+    private String monName;
+    private String matType;
+    private double thick; 
+    private int time;
 
+    public LaserTimeView(){
+        
+    }
     /**
      * Creates new form LaserTimeView
      */
-    public LaserTimeView() {
+    public void LaserTimeView(String userID, String userName, String monitorName, String materialType, double thickness, int totTime) {
+        name = userName;
+        id = userID;
+        monName = monitorName;
+        matType = materialType;
+        thick = thickness;
+        time = totTime;
+        
+        setTitle("Laser Submission");
+        setResizable(false);
         initComponents();
+        setVisible(true);
     }
 
     /**
@@ -27,21 +48,132 @@ public class LaserTimeView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        hours = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        minutes = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        seconds = new javax.swing.JTextField();
+        another = new javax.swing.JButton();
+        finish = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Laser Cutter Time");
+
+        jLabel2.setText("Enter the time: ");
+
+        hours.setText("hours");
+
+        jLabel3.setText(":");
+
+        minutes.setText("mins");
+
+        jLabel4.setText(":");
+
+        seconds.setText("secs");
+
+        another.setText("Another Submission");
+        another.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anotherActionPerformed(evt);
+            }
+        });
+
+        finish.setText("Finish");
+        finish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finishActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hours, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(minutes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(seconds, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(finish, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93)
+                        .addComponent(another)
+                        .addGap(23, 23, 23))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(minutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(seconds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(another)
+                    .addComponent(finish))
+                .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void anotherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anotherActionPerformed
+        int newTime = 0;
+        try{
+            newTime = (Integer.parseInt(hours.getText()))*360;
+        }
+        catch(NumberFormatException E){
+            
+        }
+        try{
+            newTime = newTime + (Integer.parseInt(minutes.getText()))*60;
+        }
+        catch(NumberFormatException E){
+            
+        }
+        try{
+            newTime = newTime +(Integer.parseInt(seconds.getText()));
+        }
+        catch(NumberFormatException E){
+            
+        }
+        time = time + newTime;
+        newTimeView = new LaserTimeView();
+        newTimeView.LaserTimeView(id, name, monName, matType, thick, time);
+        dispose();
+    }//GEN-LAST:event_anotherActionPerformed
+
+    private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
+        newStuView = new newStudentView();
+        newStuView.newStudentView(id, name);
+        dispose();
+    }//GEN-LAST:event_finishActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +211,14 @@ public class LaserTimeView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton another;
+    private javax.swing.JButton finish;
+    private javax.swing.JTextField hours;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField minutes;
+    private javax.swing.JTextField seconds;
     // End of variables declaration//GEN-END:variables
 }

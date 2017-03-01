@@ -35,9 +35,30 @@ import javax.swing.*;
 public class LaserPINView extends javax.swing.JFrame {
     private LaserPINView laserPINView;
     private LaserSubmissionView laserView;
+    private newStudentView newStuView;
     private String realPin;
     private JPanel contentPane;
     private JTable table;
+    private String name;
+    private String id;
+
+    LaserPINView() {
+
+    }
+    LaserPINView(String userID, String userName) {
+        name = userName;
+        id = userID;
+        System.out.println("Construct start\n");
+        getContentPane().setBackground(Color.WHITE);
+        
+        setTitle("Laser PIN View");
+        initComponents();
+        realPin = "6666";
+        setResizable(false);
+        setVisible(true);
+        this.setVisible(true);
+        System.out.println("Construct end\n");
+    }
     
     /**
      * Creates new form LaserPINView
@@ -51,7 +72,6 @@ public class LaserPINView extends javax.swing.JFrame {
         realPin = "1234";
         setVisible(true);
         this.setVisible(true);
-        this.setResizable(false);
         System.out.println("Construct end\n");
     }
     public boolean isCancelled(){
@@ -73,6 +93,7 @@ public class LaserPINView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         pin = new javax.swing.JTextField();
         submit = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -92,6 +113,13 @@ public class LaserPINView extends javax.swing.JFrame {
             }
         });
 
+        cancel.setText("Cancel");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,10 +132,12 @@ public class LaserPINView extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pin))
                 .addGap(94, 94, 94))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cancel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(submit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,24 +149,34 @@ public class LaserPINView extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(pin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(submit)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submit)
+                    .addComponent(cancel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         System.out.println("Submit action");
         if (pin.getText().equals(realPin)){
             laserView = new LaserSubmissionView();
-            laserView.LaserSubmissionView();
+            laserView.LaserSubmissionView(id, name);
             dispose();
         }
         else{
-            System.out.println("Wrong PIN");
+            JOptionPane.showMessageDialog(null, "Please enter a valid PIN.", "Invalid PIN", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_submitActionPerformed
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+     
+        newStuView = new newStudentView();
+        newStuView.newStudentView(id, name);
+        dispose();
+    }//GEN-LAST:event_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,6 +224,7 @@ public class LaserPINView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
