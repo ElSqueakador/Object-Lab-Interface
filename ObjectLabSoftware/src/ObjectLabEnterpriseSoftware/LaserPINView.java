@@ -69,7 +69,7 @@ public class LaserPINView extends javax.swing.JFrame {
         
         setTitle("Laser PIN View");
         initComponents();
-        realPin = "1234";
+        realPin = "6666";
         setVisible(true);
         this.setVisible(true);
         System.out.println("Construct end\n");
