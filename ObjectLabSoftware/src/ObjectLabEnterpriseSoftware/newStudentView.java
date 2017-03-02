@@ -529,7 +529,7 @@ public class newStudentView extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
 	printer = (String) jComboBox2.getSelectedItem();
-	if (printer.equals("Laser Printer")){
+	if (printer != null && printer.equals("Laser Printer")){
 		laserPin = new LaserPINView();
 		laserPin.LaserPINView();
 		dispose();
