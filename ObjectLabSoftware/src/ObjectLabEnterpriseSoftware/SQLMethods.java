@@ -64,11 +64,11 @@ public class SQLMethods
         
         //For online database
         
-        String host = "db4free.net";
+        String host = "104.155.186.34";
         String port = "3306";
         String user = "oliadminuser";
         String pass = "olipass";
-        String db   = "olidatabase";
+        String db   = "Olidatabase";
         String driver = "com.mysql.jdbc.Driver";
         
         
