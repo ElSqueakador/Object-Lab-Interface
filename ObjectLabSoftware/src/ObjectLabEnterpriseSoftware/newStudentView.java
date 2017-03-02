@@ -479,23 +479,9 @@ public class newStudentView extends javax.swing.JFrame {
             if (printer.equalsIgnoreCase("Laser Printer"))
             {
                 
-                laserSubmissionView = new LaserSubmissionView();
-                laserSubmissionView.LaserSubmissionView();
-                while(!laserSubmissionView.isVisible()){}
-                
-                while(laserSubmissionView.isVisible()){}
-                
-                if (laserSubmissionView.isCancelled() == false)
-                {
-                    UtilController.submitStudentFile(userID, fullFilePath, fileName, printer, classFK);
-                    JOptionPane.showMessageDialog(new java.awt.Frame(), "Successfully submitted file! Let your professor or lab assistant know you've submitted.");
-                    dispose();
-                }
-                else
-                {
-                   JOptionPane.showMessageDialog(new java.awt.Frame(), "Laser Printer Submission Cancelled!");
-                   dispose(); 
-                }
+                laserPin = new LaserPINView();
+		laserPin.LaserPINView();
+		dispose();
             }
             else
             {
