@@ -66,6 +66,7 @@ public class LaserPINView extends javax.swing.JFrame {
     public void LaserPINView() {
         System.out.println("Construct start\n");
         getContentPane().setBackground(Color.WHITE);
+	this.toFront();
         
         setTitle("Laser PIN View");
         initComponents();
