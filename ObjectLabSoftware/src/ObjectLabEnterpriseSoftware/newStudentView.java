@@ -463,7 +463,7 @@ public class newStudentView extends javax.swing.JFrame {
 		dispose();
 	}
         // Verifies user and file information is inputted in its entirety
-        if (errCheck() == false)
+        else if (errCheck() == false)
         {
             // Recieve our input from the UI and hand it off to back end to submit / store file information 
             String fullFilePath, fileName, classText;
