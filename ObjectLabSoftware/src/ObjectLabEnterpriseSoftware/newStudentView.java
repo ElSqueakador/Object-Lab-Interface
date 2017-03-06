@@ -459,7 +459,7 @@ public class newStudentView extends javax.swing.JFrame {
 	String printer = (String) jComboBox2.getSelectedItem();
 	if ( printer != null && printer.equals("Laser Printer")){
 		laserPin = new LaserPINView();
-		laserPin.LaserPINView();
+		laserPin.LaserPINView(userID, userName);
 		dispose();
 	}
         // Verifies user and file information is inputted in its entirety
