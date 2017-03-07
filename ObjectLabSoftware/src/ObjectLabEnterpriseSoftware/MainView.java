@@ -81,6 +81,7 @@ public class MainView extends javax.swing.JFrame
         oliSymbol = new javax.swing.JLabel();
         studentPassLabel = new javax.swing.JLabel();
         studentPassString = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
         userOptionsMenu = new javax.swing.JMenu();
 
@@ -133,19 +134,6 @@ public class MainView extends javax.swing.JFrame
         });
         getContentPane().add(studentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, 20));
 
-        //Login with ENTER button
-        studentPassString.addKeyListener(new KeyAdapter()
-        {
-            public void keyTyped(KeyEvent e)
-            {
-                char c = e.getKeyChar();
-                if(c == KeyEvent.VK_ENTER)
-                {
-                	attemptLogin();
-                }
-            }
-        });
-        
         studentLoginLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         studentLoginLabel.setText("Enter Your TU ID:");
         getContentPane().add(studentLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 20));
@@ -157,6 +145,14 @@ public class MainView extends javax.swing.JFrame
         studentPassLabel.setText("Password:");
         getContentPane().add(studentPassLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
         getContentPane().add(studentPassString, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, -1));
+
+        jButton1.setText("Create Account");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
         userOptionsMenu.setText("Admin ");
         userOptionsMenu.setName(""); // NOI18N
@@ -272,6 +268,12 @@ public class MainView extends javax.swing.JFrame
         dispose();
     }//GEN-LAST:event_userOptionsMenuMousePressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+      NewAccount newAccount = new NewAccount();
+      dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /*private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
         AdminSettingsView ad = new AdminSettingsView();
@@ -363,6 +365,7 @@ public class MainView extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JLabel errorIdLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JList jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

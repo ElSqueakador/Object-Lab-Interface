@@ -1236,7 +1236,7 @@ public static ArrayList<ArrayList<Object>> updateReportLaserTableData()
     	env.put(Context.SECURITY_CREDENTIALS, studentPass);
 
     	DirContext ctx;
-    	System.out.print("Attempting login with credentials: \n username: " + studentId + "\n password: " + studentPass);
+    	//System.out.print("Attempting login with credentials: \n username: " + studentId + "\n password: " + studentPass);
     	try {
     	    // Authenticate the logon user
     	    ctx = new InitialDirContext(env);
