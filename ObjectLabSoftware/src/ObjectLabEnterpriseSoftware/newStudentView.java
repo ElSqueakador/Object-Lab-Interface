@@ -457,9 +457,9 @@ public class newStudentView extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
 	String printer = (String) jComboBox2.getSelectedItem();
-	if ( printer != null && printer.equals("Laser Printer")){
-		laserPin = new LaserPINView();
-		laserPin.LaserPINView(userID, userName);
+	if ( printer != null && printer.equals("Laser Cutter")){
+		laserPin = new LaserPINView(userID, userName);
+		//laserPin.LaserPINView(userID, userName);
 		dispose();
 	}
         // Verifies user and file information is inputted in its entirety
