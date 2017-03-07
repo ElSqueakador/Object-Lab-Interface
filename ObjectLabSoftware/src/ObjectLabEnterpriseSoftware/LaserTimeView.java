@@ -181,13 +181,13 @@ public class LaserTimeView extends javax.swing.JFrame {
     }
     private void anotherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anotherActionPerformed
         try{
-            hour = hour + (Integer.parseInt(hours.getText()))*360;
+            hour = hour + Integer.parseInt(hours.getText());
         }
         catch(NumberFormatException E){
             
         }
         try{
-            min = min + (Integer.parseInt(minutes.getText()))*60;
+            min = min + Integer.parseInt(minutes.getText());
         }
         catch(NumberFormatException E){
             
