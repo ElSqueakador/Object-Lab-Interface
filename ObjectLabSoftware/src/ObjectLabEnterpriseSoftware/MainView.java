@@ -12,6 +12,7 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 //TEST COMMIT 
 public class MainView extends javax.swing.JFrame
 {
@@ -209,7 +210,7 @@ public class MainView extends javax.swing.JFrame
         String password = new String(studentPassString.getPassword());
         if (idString.length() < 2)
         {
-            errorIdLabel.setText("USER ID must be at least 2 characters.");
+            JOptionPane.showMessageDialog(null, "USER ID must be at least 2 characters.", "Invalid ID", JOptionPane.ERROR_MESSAGE);
         } else
         {
             if (UtilController.userIDExist(idString, password))
@@ -219,7 +220,7 @@ public class MainView extends javax.swing.JFrame
                 studentSys.newStudentView(idString, UtilController.getStudentFname());
             } else
             {
-                errorIdLabel.setText("Invalid TU ID or Password.");
+                JOptionPane.showMessageDialog(null, "Invalid TU ID or Password.", "Invalid ID", JOptionPane.ERROR_MESSAGE);
             }
         }
 	}
@@ -234,7 +235,7 @@ public class MainView extends javax.swing.JFrame
         String password = new String(studentPassString.getPassword());
         if (idString.length() < 2)
         {
-            errorIdLabel.setText("USER ID must be at least 2 characters.");
+            JOptionPane.showMessageDialog(null, "USER ID must be at least 2 characters.", "Invalid ID", JOptionPane.ERROR_MESSAGE);
         } else
         {
             if (UtilController.userIDExist(idString, password))
@@ -244,7 +245,7 @@ public class MainView extends javax.swing.JFrame
                 studentSys.newStudentView(idString, UtilController.getStudentFname());
             } else
             {
-                errorIdLabel.setText("Invalid TU ID or Password.");
+                JOptionPane.showMessageDialog(null, "Invalid TU ID or Password.", "Invalid ID", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_studentButtonActionPerformed
