@@ -852,7 +852,7 @@ public class SQLMethods
     public void insertIntoLaserJob(String userID, String userName, String monitorName, String materialType, double thickness, int hours, int mins, int secs){
         try{
             //System.out.println("Try block");
-            stmt = conn.prepareStatement("INSERT INTO laser_job (user_id, user_name, monitor_name, material_type, material_thickness, total_time) values (?,?,?,?,?,?,?,?)");
+            stmt = conn.prepareStatement("INSERT INTO laser_job (user_id, user_name, monitor_name, material_type, material_thickness, hours, minutes, seconds) values (?,?,?,?,?,?,?,?)");
             stmt.setString(1, userID);
             stmt.setString(2, userName);
             stmt.setString(3, monitorName);
