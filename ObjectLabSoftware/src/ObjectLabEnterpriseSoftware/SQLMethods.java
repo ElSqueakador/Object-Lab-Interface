@@ -1501,7 +1501,18 @@ public class SQLMethods
     }
 
 	// END OF DELETE METHODS
-    // _____________________________________________________________________________________________________________________
+    // _______________
+    public ResultSet getLaserReport(){
+        res = null;
+        try{
+            stmt = this.conn.prepareStatement("SELECT * FROM laser_job");
+            res = stmt.executeQuery();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return res;
+    }
     public ResultSet getReport(String printer_name)
     {
     	res = null;

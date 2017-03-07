@@ -1,4 +1,4 @@
-package ObjectLabEnterpriseSoftware;
+  package ObjectLabEnterpriseSoftware;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -21,6 +21,7 @@ public class ReportsView extends javax.swing.JFrame
     private String selectedPrinter;
     private UtilController controller;
     private String[] headers = {"Job ID", "File Name", "First Name", "Last Name", "Date", "Printer", "Class", "Section", "Stat1", "Stat2"};
+    private String[] laserHeaders = {"User ID", "User Name", "Monitor", "Material", "Thickness", "Hours", "Minutes", "Seconds"}; 
     private ArrayList<String> printers;
 	// --nav bar views ~Alex
 	private BuildView buildView;
@@ -185,7 +186,7 @@ public class ReportsView extends javax.swing.JFrame
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(exportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,7 +216,7 @@ public class ReportsView extends javax.swing.JFrame
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(exportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(ExportMasterReportButton))
-            .addContainerGap(100, Short.MAX_VALUE))
+            .addContainerGap(74, Short.MAX_VALUE))
     );
 
     getAccessibleContext().setAccessibleDescription("");
@@ -240,14 +241,22 @@ public class ReportsView extends javax.swing.JFrame
         while (model.getRowCount() > 0) {
                 model.removeRow(0);
             }
-            reportsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{},
-            headers));
+        if(selectedPrinter.equals("Laser Cutter")){
+            reportsTable.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, laserHeaders));
+            model = (DefaultTableModel) reportsTable.getModel();
+            
+            for(ArrayList<Object> retval1 : UtilController.updateReportLaserTableData()){
+                model.addRow(retval1.toArray());
+            }
+        }
+        else{
+            reportsTable.setModel(new javax.swing.table.DefaultTableModel( new Object[][]{}, headers));
             model = (DefaultTableModel) reportsTable.getModel();
             
             for (ArrayList<Object> retval1 : UtilController.updateReportTableData(selectedPrinter)){ 
                 model.addRow(retval1.toArray());
             }
+        }
         
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 

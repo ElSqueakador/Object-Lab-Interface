@@ -272,6 +272,20 @@ public class UtilController
         return retval;
 
     }
+    
+public static ArrayList<ArrayList<Object>> updateReportLaserTableData()
+    {
+        SQLMethods dbconn = new SQLMethods();
+        ResultSet queryResult = dbconn.getLaserReport();
+
+        ArrayList<ArrayList<Object>> retval = readyOutputForViewPage(queryResult);
+
+        /* Must process results found in ResultSet before the connection is closed! */
+        dbconn.closeDBConnection();
+
+        return retval;
+
+    }
 
     public static ArrayList<ArrayList<Object>> updateReportTableData(String column, String value, String printer_name)
     {
