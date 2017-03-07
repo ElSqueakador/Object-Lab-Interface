@@ -17,7 +17,9 @@ public class LaserTimeView extends javax.swing.JFrame {
     private String monName;
     private String matType;
     private double thick; 
-    private int time;
+    private int hour;
+    private int min;
+    private int sec;
 
     public LaserTimeView(){
         
@@ -25,13 +27,15 @@ public class LaserTimeView extends javax.swing.JFrame {
     /**
      * Creates new form LaserTimeView
      */
-    public void LaserTimeView(String userID, String userName, String monitorName, String materialType, double thickness, int totTime) {
+    public void LaserTimeView(String userID, String userName, String monitorName, String materialType, double thickness, int totHours, int totMins, int totSecs) {
         name = userName;
         id = userID;
         monName = monitorName;
         matType = materialType;
         thick = thickness;
-        time = totTime;
+        hour = totHours;
+        min = totMins;
+        sec = totSecs;
         
         setTitle("Laser Submission");
         setResizable(false);
@@ -66,10 +70,26 @@ public class LaserTimeView extends javax.swing.JFrame {
         jLabel2.setText("Enter the time: ");
 
         hours.setText("hours");
+        hours.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hoursMouseClicked(evt);
+            }
+        });
 
         jLabel3.setText(":");
 
         minutes.setText("mins");
+            minutes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minutesMouseClicked(evt);
+            }
+        });
+            
+            seconds.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                secondsMouseClicked(evt);
+            }
+        });
 
         jLabel4.setText(":");
 
@@ -142,8 +162,48 @@ public class LaserTimeView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void hoursMouseClicked(java.awt.event.MouseEvent evt){
+        if(hours.getText().equals("hours")){
+            hours.setText("");
+        }
+    }
+    private void minutesMouseClicked(java.awt.event.MouseEvent evt){
+        if(minutes.getText().equals("minutes")){
+            hours.setText("");
+        }
+    }
+    
+    private void secondsMouseClicked(java.awt.event.MouseEvent evt){
+        if(seconds.getText().equals("seconds")){
+            seconds.setText("");
+        }
+    }
     private void anotherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anotherActionPerformed
+        try{
+            hour = hour + (Integer.parseInt(hours.getText()))*360;
+        }
+        catch(NumberFormatException E){
+            
+        }
+        try{
+            min = min + (Integer.parseInt(minutes.getText()))*60;
+        }
+        catch(NumberFormatException E){
+            
+        }
+        try{
+            sec = sec +(Integer.parseInt(seconds.getText()));
+        }
+        catch(NumberFormatException E){
+            
+        }
+        newTimeView = new LaserTimeView();
+        newTimeView.LaserTimeView(id, name, monName, matType, thick, hour, min, sec);
+        dispose();
+    }//GEN-LAST:event_anotherActionPerformed
+
+    private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
         int newTime = 0;
         try{
             newTime = (Integer.parseInt(hours.getText()))*360;
@@ -163,15 +223,9 @@ public class LaserTimeView extends javax.swing.JFrame {
         catch(NumberFormatException E){
             
         }
-        time = time + newTime;
-        newTimeView = new LaserTimeView();
-        newTimeView.LaserTimeView(id, name, monName, matType, thick, time);
-        dispose();
-    }//GEN-LAST:event_anotherActionPerformed
-
-    private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
+ 
         SQLMethods dbconn = new SQLMethods();
-        dbconn.insertIntoLaserJob(id, name, monName, matType, thick, time);
+        dbconn.insertIntoLaserJob(id, name, monName, matType, thick, hour, min, sec);
         dbconn.closeDBConnection();
         newStuView = new newStudentView();
         newStuView.newStudentView(id, name);
