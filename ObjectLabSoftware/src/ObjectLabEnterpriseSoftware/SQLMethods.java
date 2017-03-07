@@ -849,18 +849,22 @@ public class SQLMethods
         }
     }
     
-    public void insertIntoLaserJob(String userID, String userName, String monitorName, String materialType, double thickness, int totTime){
+    public void insertIntoLaserJob(String userID, String userName, String monitorName, String materialType, double thickness, int hours, int mins, int secs){
         try{
-            stmt = conn.prepareStatement("INSERT INTO laser_job (user_id, user_name, monitor_name, material_type, material_thickness, total_time) values (?,?,?,?,?,?)");
+            //System.out.println("Try block");
+            stmt = conn.prepareStatement("INSERT INTO laser_job (user_id, user_name, monitor_name, material_type, material_thickness, total_time) values (?,?,?,?,?,?,?,?)");
             stmt.setString(1, userID);
             stmt.setString(2, userName);
             stmt.setString(3, monitorName);
             stmt.setString(4, materialType);
             stmt.setDouble(5, thickness);
-            stmt.setInt(6, totTime);
-	    stmt.executeUpdate();
+            stmt.setInt(6, hours);
+            stmt.setInt(7, mins);
+            stmt.setInt(8, secs);
+            stmt.executeUpdate();
         }
         catch(Exception e){
+           // System.out.println("catch block");
             e.printStackTrace();
         }
     }
