@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+//TEST
 // Notice, do not import com.mysql.jdbc.*
 // or you will have problems!
 public class SQLMethods
@@ -31,11 +31,8 @@ public class SQLMethods
     private PreparedStatement stmt;
     public SQLMethods()
     {
-    	// ***** code below is production:
         /* To resolve hostname to an IP adr */
     	File f = new File(MainView.getStorageDir() + ":\\Sync\\computername.txt");
-    	
-    	// ***** code below is dev/testing:
     	//File f = new File("/home/alex/Documents/School/Spring 2016/Software eng/Object-Lab-Interface/computername.txt");
         String line, ip = "";
 
@@ -58,40 +55,47 @@ public class SQLMethods
             System.out.println("Couldn't read file! IOException!");
             ex.printStackTrace();
         }
+       
+        ///////////////////////////////////
+        ///ip = "mysql1110.ixwebhosting.com";  ////////
+        ///////////////////////////////////
+        //url = "jdbc:mysql://" + ip + ":3306/";
+        //connectToDatabase("com.mysql.jdbc.Driver", url + "AAAlvxm_oli", "AAAlvxm_oliAdmin", "Password1");
         
+        //For online database
         
-        String host = "db4free.net";
+        String host = "104.155.186.34";
         String port = "3306";
         String user = "oliadminuser";
         String pass = "olipass";
-        String db   = "olidatabase";
+        String db   = "Olidatabase";
         String driver = "com.mysql.jdbc.Driver";
+        
+        
+        //Russell's local database
+        /*
+        String host = "127.0.0.1";
+        String port = "3306";
+        String user = "root";
+        String pass = "password";
+        String db   = "localoli";
+        String driver = "com.mysql.jdbc.Driver";
+        */
         
         url = "jdbc:mysql://" + host + ":" + port + "/" + db;
         connectToDatabase(driver, url, user, pass);
-
-        /** Local DB Connection
-         * Not using this anymore, but leaving it here in case
-         * the need arises later.
-        String driver = "com.mysql.jdbc.Driver";
-        String user   = "root";
-        String pass   = "toor";
-        connectToDatabase(driver, "jdbc:mysql://localhost/sys", user, pass);
-        */
     }
     
     private void connectToDatabase(String driver, String urlDatabaseName, String userName, String pw)
     {
-    	try
+        try
         {
             Class.forName(driver).newInstance();
             conn = DriverManager.getConnection(urlDatabaseName, userName, pw);
-        } 
-    	catch (ClassNotFoundException e)
+        } catch (ClassNotFoundException e)
         {
             System.out.println("Driver class not found / created. Exception!\n" + e);
-        } 
-    	catch (InstantiationException | IllegalAccessException | SQLException e)
+        } catch (InstantiationException | IllegalAccessException | SQLException e)
         {
             System.out.println(e);
         }
@@ -174,11 +178,14 @@ public class SQLMethods
         res = null;
         try
         {
-            stmt = this.conn.prepareStatement("SELECT job.job_id, job.file_name, users.first_name, users.last_name, "
-					+ "job.submission_date ,job.printer_name, class_name, class_section  " 
-					+ "FROM job, users , class " + "WHERE job.status = ? AND printer_name = ? "
-					+ "AND users.towson_id = job.student_id AND job.class_id = class.class_id;");
-            stmt.setString(1, status);
+            
+        	stmt = this.conn.prepareStatement("SELECT job.job_id, job.file_name, users.first_name, users.last_name, "
+                    + "job.submission_date ,job.printer_name, class_name, class_section, material.z_corp_plaster, material.objet_build, material.objet_support " 
+                    + "FROM job INNER JOIN users ON users.towson_id = job.student_id "
+                    + "INNER JOIN class ON job.class_id = class.class_id INNER JOIN material ON material.id = job.student_id WHERE job.status = ? AND "
+                                   + "printer_name = ?;");
+        	
+        	stmt.setString(1, status);
             stmt.setString(2, printer);
             res = stmt.executeQuery();
         } catch (Exception e)
@@ -189,6 +196,91 @@ public class SQLMethods
         return res;
     }
     
+    public ResultSet searchStudentBalanceFName(String first_name)
+    {
+        res = null;
+        try 
+        {
+            stmt = this.conn.prepareStatement("SELECT first_name, last_name, towson_id, z_corp_plaster, objet_build, objet_support " +
+                                              "FROM users INNER JOIN material ON users.towson_id = material.id " +
+                                               "WHERE users.first_name = ?;"); 
+            stmt.setString(1, first_name);
+            res = stmt.executeQuery();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    
+    public ResultSet searchStudentBalanceLName(String last_name)
+    {
+        res = null;
+        try 
+        {
+            stmt = this.conn.prepareStatement("SELECT first_name, last_name, towson_id, z_corp_plaster, objet_build, objet_support " +
+                                              "FROM users INNER JOIN material ON users.towson_id = material.id " +
+                                               "WHERE users.last_name = ?;"); 
+            stmt.setString(1, last_name);
+            res = stmt.executeQuery();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    
+    public ResultSet searchStudentBalanceId(String id)
+    {
+        res = null;
+        try 
+        {
+            stmt = this.conn.prepareStatement("SELECT first_name, last_name, towson_id, z_corp_plaster, objet_build, objet_support " +
+                                              "FROM users INNER JOIN material ON users.towson_id = material.id " +
+                                               "WHERE towson_id = ?;"); 
+            stmt.setString(1, id);
+            res = stmt.executeQuery();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return res;
+    }
+     
+    public ResultSet searchStudentBalanceAll(String value)
+    {
+        res = null;
+        try 
+        {
+            stmt = this.conn.prepareStatement("SELECT first_name, last_name, towson_id, z_corp_plaster, objet_build, objet_support " +
+                                              "FROM users INNER JOIN material ON users.towson_id = material.id " +
+                                               "WHERE towson_id = ? or users.last_name = ? or users.first_name = ?;"); 
+            stmt.setString(1, value);
+            stmt.setString(2, value);
+            stmt.setString(3, value);
+            res = stmt.executeQuery();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    
+    public ResultSet searchStudentBalance()
+    {
+        res = null;
+        try 
+        {
+            stmt = this.conn.prepareStatement("SELECT first_name, last_name, towson_id, z_corp_plaster, objet_build, objet_support " +
+                                              "FROM users INNER JOIN material ON users.towson_id = material.id;"); 
+            res = stmt.executeQuery();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    /*
     public ResultSet searchAllJobsStatusPrinter(String printer) // returns filename,first name,lastname ,submission_date, printer for based off status and printer
     {
         res = null;
@@ -208,6 +300,180 @@ public class SQLMethods
 
         return res;
     }
+    */
+    
+    public ResultSet searchStudentTransactionHistory(String id)
+    {
+    	res = null;
+        try 
+        {
+            stmt = this.conn.prepareStatement("SELECT date(date), material, amount " +
+                                              "FROM material_transaction_history " +
+                                              "WHERE net_id = ?" +
+                                              "ORDER BY date DESC;");
+            stmt.setString(1, id);
+            res = stmt.executeQuery();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    
+    public ResultSet getStudentFileStatus(String studentId)
+    {
+        res = null;
+        try 
+        {
+            stmt = this.conn.prepareStatement("SELECT file_name, date(submission_date), comment, status " +
+                                              "FROM job INNER JOIN job_stats ON job.job_id = job_stats.job_id " +
+                                              "WHERE ? = job.student_id " +
+                                              "ORDER BY submission_date DESC;"); 
+            stmt.setString(1, studentId);
+            res = stmt.executeQuery();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    
+    public ResultSet getStudentInfo(String studentId)
+    {
+        res = null;
+        try 
+        {
+            stmt = this.conn.prepareStatement("SELECT id, z_corp_plaster, objet_build, objet_support " +
+                                              "FROM material WHERE ? = material.id"); 
+            stmt.setString(1, studentId);
+            res = stmt.executeQuery();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    
+    public ResultSet getStudentName(String studentId)
+    {
+        res = null;
+        try 
+        {
+            stmt = this.conn.prepareStatement("SELECT first_name, last_name " +
+                                              "FROM users WHERE ? = towson_id"); 
+            stmt.setString(1, studentId);
+            res = stmt.executeQuery();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    
+    public double getCurrentMaterialBalance(String studentId, String whichMaterial)
+    {
+        double current = 0;
+        try
+        {
+        ResultSet queryResult; 
+        stmt = this.conn.prepareStatement("SELECT " + whichMaterial + " FROM `material` WHERE id = ?;");
+        stmt.setString(1, studentId);
+        queryResult = stmt.executeQuery();
+        while(queryResult.next())
+        {
+            current = queryResult.getDouble(whichMaterial);
+        }
+        } catch (SQLException e)
+        {
+            System.err.println(e);
+        }
+        return current;
+        
+    }
+    
+    public String getFilePrinter(String fileName, String id)
+    {               
+        String printer = "";
+        try
+        {    
+            ResultSet queryResult;
+            stmt = this.conn.prepareStatement("SELECT printer_name FROM job WHERE job.file_name = ? AND job.student_id = ?;");
+            stmt.setString(1, fileName);
+            stmt.setString(2, id);
+            queryResult = stmt.executeQuery();
+            while(queryResult.next())
+        {
+            printer = queryResult.getString("printer_name");
+        }
+        } catch (SQLException e)
+        {
+            System.err.println(e);
+        }
+        return printer;
+        
+    }
+    
+    public String getStudentId(String first_name, String last_name)
+    {
+             
+        String id = "";
+        try
+        {    
+            ResultSet queryResult;
+            stmt = this.conn.prepareStatement("SELECT towson_id FROM users WHERE users.first_name = ? AND users.last_name = ?;");
+            stmt.setString(1, first_name);
+            stmt.setString(2, last_name);
+            queryResult = stmt.executeQuery();
+            while(queryResult.next())
+        {
+            id = queryResult.getString("towson_id");
+        }
+        } catch (SQLException e)
+        {
+            System.err.println(e);
+        }
+        return id;
+        
+    }
+    
+    public void addMaterial(String studentId, double amount, String whichMaterial)
+    {
+        try
+        {
+        	SQLMethods dbconn = new SQLMethods();
+        	
+        	double current; 
+        	current = dbconn.getCurrentMaterialBalance(studentId, whichMaterial);
+        	amount = amount + current;
+        	
+        	stmt = this.conn.prepareStatement("UPDATE material SET "+ whichMaterial+" = " + amount + " WHERE id = ?;");
+        	stmt.setString(1, studentId);
+        	stmt.executeUpdate();
+        } 
+        catch (SQLException ex)
+        {
+            Logger.getLogger(SQLMethods.class.getName()).log(Level.SEVERE,null, ex);
+        } 
+    }
+  
+    public void addTransactionHistory(String studentID, String material, double amount)
+    {
+    	try
+        {
+    		SQLMethods dbconn = new SQLMethods();
+    		stmt = this.conn.prepareStatement("INSERT INTO material_transaction_history (date, net_id, material, amount) "
+    									    + "VALUES (NOW(), ?, ?, ?)");
+    		stmt.setString(1, studentID);
+    		stmt.setString(2, material);
+    		stmt.setDouble(3, amount);
+    		stmt.execute();
+        } 
+    	catch (SQLException ex)
+        {
+            Logger.getLogger(SQLMethods.class.getName()).log(Level.SEVERE,null, ex);
+        } 
+    }    
+    
     
     public ResultSet searchJobsStatus(String status) // returns filename,first name,lastname ,submission_date, printer for based off status and printer
     {
@@ -444,9 +710,10 @@ public class SQLMethods
         res = null;
         try
         {
-            stmt = this.conn.prepareStatement("SELECT file_extension FROM accepted_files Where printer_name = " +printer +";");
-            //stmt.setString(1, printer);
+            stmt = this.conn.prepareStatement("SELECT file_extension FROM accepted_files Where printer_name = ?;");
+            stmt.setString(1, printer);
             res = stmt.executeQuery();
+
         } catch (SQLException e)
         {
             System.err.println("SQL Execution Error.");
@@ -582,7 +849,25 @@ public class SQLMethods
         }
     }
     
-    
+    public void insertIntoLaserJob(String userID, String userName, String monitorName, String materialType, double thickness, int hours, int mins, int secs){
+        try{
+            //System.out.println("Try block");
+            stmt = conn.prepareStatement("INSERT INTO laser_job (user_id, user_name, monitor_name, material_type, material_thickness, total_time) values (?,?,?,?,?,?,?,?)");
+            stmt.setString(1, userID);
+            stmt.setString(2, userName);
+            stmt.setString(3, monitorName);
+            stmt.setString(4, materialType);
+            stmt.setDouble(5, thickness);
+            stmt.setInt(6, hours);
+            stmt.setInt(7, mins);
+            stmt.setInt(8, secs);
+            stmt.executeUpdate();
+        }
+        catch(Exception e){
+           // System.out.println("catch block");
+            e.printStackTrace();
+        }
+    }
     
     
     
@@ -647,6 +932,27 @@ public class SQLMethods
         return -1;
     }
 
+    public void insertIntoMaterial(String id)
+    {
+    	try
+        {
+            stmt = conn.prepareStatement
+            (
+                    "INSERT INTO material(id, z_corp_plaster, objet_build, objet_support) "
+                  + "values (?,?,?,?) "
+            );
+            
+            stmt.setString(1, id);
+            stmt.setDouble(2, 0);
+            stmt.setDouble(3, 0);
+            stmt.setDouble(4, 0);
+            stmt.execute();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
     public void insertIntoAdmin(String user_id, String userName, String pass)
     {
         try
@@ -661,7 +967,9 @@ public class SQLMethods
             e.printStackTrace();
         }
     }
-
+    //Rajewski
+    //No longer called with these params in UtilController
+    /*
     public void insertIntoBuild(String buildname, int runtime, int models, String printer)
     {
         try
@@ -681,7 +989,27 @@ public class SQLMethods
             e.printStackTrace();
         }
     }
-
+    */
+    
+    public void insertIntoBuild(String buildname, int models, String printer)
+    {
+        try
+        {
+            stmt = conn.prepareStatement("INSERT INTO printer_build "
+                    + "(build_name, date_created, total_runtime_seconds, number_of_models, printer_name) "
+                    + "VALUES (?, NOW(), 0, ?, ?);");
+            
+            stmt.setString(1, buildname);
+            stmt.setInt(2, models);
+            stmt.setString(3, printer);
+            
+            stmt.executeUpdate();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
     public void insertIntoColumnBuildData(String printer, String columnName, String data, String buildLocation)
     {
         try
@@ -880,6 +1208,40 @@ public class SQLMethods
         }
     }
 
+    public String getFileComment(String file)
+    {
+        String comment = "";
+        try
+        {
+            stmt = conn.prepareStatement("SELECT comment FROM job WHERE file_name = ?; ");
+            stmt.setString(1 , file);
+            res = stmt.executeQuery();
+            while(res.next())
+            {
+                comment = res.getString("comment");
+            }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return comment;
+    }
+    
+    public void updateFileComment(String file, String comment)
+    {
+        res = null;
+        try
+        {
+            stmt = conn.prepareStatement("UPDATE job SET comment = ? WHERE file_name = ?; ");
+            stmt.setString(1, comment);
+            stmt.setString(2, file);
+            stmt.executeUpdate();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
     public void updateColumnFieldName(String updatedName, int id)
     {
         res = null;
@@ -1142,18 +1504,34 @@ public class SQLMethods
     // _____________________________________________________________________________________________________________________
     public ResultSet getReport(String printer_name)
     {
-        res = null;
+    	res = null;
         try
         {
           /*  stmt = this.conn.prepareStatement(
                     "call report('" + printer_name + "');"
             );*/
         	// temp fix to get reports view working
-        	   stmt = this.conn.prepareStatement(
-                       "SELECT * FROM custom_printer_column_names WHERE printer_name = ?"
-               );
-               stmt.setString(1, printer_name);
-
+        	   //stmt = this.conn.prepareStatement(
+               //        "SELECT * FROM custom_printer_column_names WHERE printer_name = ?;"
+               //);
+               //stmt.setString(1, printer_name);
+        	/*
+        	stmt = this.conn.prepareStatement("SELECT job.job_id, job.file_name, users.first_name, users.last_name, "
+                    + "job.submission_date ,job.printer_name, class_name, class_section, job.volume " 
+                    + "FROM job INNER JOIN users ON users.towson_id = job.student_id "
+                    + "INNER JOIN class ON job.class_id = class.class_id WHERE job.status = ? AND "
+                                   + "printer_name = ?;");
+        	*/
+        	stmt = this.conn.prepareStatement("SELECT job.job_id, job.file_name, users.first_name, users.last_name, "
+                    + "date(job.submission_date) ,job.printer_name, class_name, class_section, job_stats.stat1, job_stats.stat2 " 
+                    + "FROM job INNER JOIN job_stats ON job.job_id = job_stats.job_id "
+                             + "INNER JOIN users ON users.towson_id = job.student_id "
+                             + "INNER JOIN class ON job.class_id = class.class_id WHERE job.status = 'completed' AND "
+                                  + "printer_name = ?;");
+        	
+        	stmt.setString(1, printer_name);
+        	//stmt.setString(1, "completed");
+        	
             res = stmt.executeQuery();
         } catch (Exception e)
         {
@@ -1596,6 +1974,28 @@ public class SQLMethods
             stmt = this.conn.prepareStatement(
                     "SELECT build_name "
                     + "FROM printer_build");	
+        System.out.println(stmt);
+		res = stmt.executeQuery();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return res;
+	}
+        
+        //Rajewski
+        //function to populate new table on build view
+        public ResultSet getBuildsForRecordsTable(String currentDevice)
+	{
+		res = null;
+		try
+		{
+            stmt = this.conn.prepareStatement(
+                    "SELECT build_name, date_created, number_of_models "
+                    + "FROM printer_build WHERE printer_name = ?;");
+            stmt.setString(1, currentDevice);
+            
+            
         System.out.println(stmt);
 		res = stmt.executeQuery();
 		} catch (Exception e)
