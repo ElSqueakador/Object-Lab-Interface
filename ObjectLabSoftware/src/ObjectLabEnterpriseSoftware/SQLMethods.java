@@ -858,6 +858,7 @@ public class SQLMethods
             stmt.setString(4, materialType);
             stmt.setDouble(5, thickness);
             stmt.setInt(6, totTime);
+	    stmt.executeUpdate();
         }
         catch(Exception e){
             e.printStackTrace();
