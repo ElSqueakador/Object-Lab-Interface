@@ -170,6 +170,9 @@ public class LaserTimeView extends javax.swing.JFrame {
     }//GEN-LAST:event_anotherActionPerformed
 
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
+        SQLMethods dbconn = new SQLMethods();
+        dbconn.insertIntoLaserJob(id, name, monName, matType, thick, time);
+        dbconn.closeDBConnection();
         newStuView = new newStudentView();
         newStuView.newStudentView(id, name);
         dispose();
