@@ -79,13 +79,13 @@ public class LaserTimeView extends javax.swing.JFrame {
         jLabel3.setText(":");
 
         minutes.setText("mins");
-            minutes.addMouseListener(new java.awt.event.MouseAdapter() {
+        minutes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 minutesMouseClicked(evt);
             }
         });
             
-            seconds.addMouseListener(new java.awt.event.MouseAdapter() {
+        seconds.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 secondsMouseClicked(evt);
             }
@@ -169,13 +169,13 @@ public class LaserTimeView extends javax.swing.JFrame {
         }
     }
     private void minutesMouseClicked(java.awt.event.MouseEvent evt){
-        if(minutes.getText().equals("minutes")){
-            hours.setText("");
+        if(minutes.getText().equals("mins")){
+            minutes.setText("");
         }
     }
     
     private void secondsMouseClicked(java.awt.event.MouseEvent evt){
-        if(seconds.getText().equals("seconds")){
+        if(seconds.getText().equals("secs")){
             seconds.setText("");
         }
     }
@@ -204,21 +204,20 @@ public class LaserTimeView extends javax.swing.JFrame {
     }//GEN-LAST:event_anotherActionPerformed
 
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
-        int newTime = 0;
         try{
-            newTime = (Integer.parseInt(hours.getText()))*360;
+            hour = hour + (Integer.parseInt(hours.getText()))*360;
         }
         catch(NumberFormatException E){
             
         }
         try{
-            newTime = newTime + (Integer.parseInt(minutes.getText()))*60;
+            min = min + (Integer.parseInt(minutes.getText()))*60;
         }
         catch(NumberFormatException E){
             
         }
         try{
-            newTime = newTime +(Integer.parseInt(seconds.getText()));
+            sec = sec +(Integer.parseInt(seconds.getText()));
         }
         catch(NumberFormatException E){
             
