@@ -179,7 +179,7 @@ public class newJobsMgr extends JFrame {
 		final JComboBox deviceCombo = new JComboBox();
 		//****
 		deviceCombo.setBounds(342, 63, 125, 20);//342 //266 //259 //251
-		deviceCombo.addItem(" ");
+		//deviceCombo.addItem(" "); added a printer called " " so we no longer need ths.
 		/// Adds tracked devices to comboBox dropdown window
 		SQLMethods dbconn = new SQLMethods();
 		ResultSet queryResult = dbconn.getTrackedDevices();
