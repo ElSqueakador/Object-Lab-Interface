@@ -8,9 +8,11 @@ package ObjectLabEnterpriseSoftware;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.util.Scanner.*;
 
 /**
  *
@@ -188,14 +190,25 @@ public class NewAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_lastnameActionPerformed
 
     private void createUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserActionPerformed   
+        String idString = studentIdString.getText();//DB team this is to store String
+        String fname = firstname.getText();
+        String lname = lastname.getText();
+        if (idString.length() < 2)
+        {
+            JOptionPane.showMessageDialog(null, "USER ID must be at least 2 characters.", "Invalid ID", JOptionPane.ERROR_MESSAGE);
+        } else if (fname.length() < 2){
+            JOptionPane.showMessageDialog(null, "First Name must be at least 2 characters.", "Invalid First Name", JOptionPane.ERROR_MESSAGE);
+        } else if (lname.length() < 2){
+            JOptionPane.showMessageDialog(null, "Last Name must be at least 2 characters.", "Invalid Last Name", JOptionPane.ERROR_MESSAGE);
+        } else{
         String email = studentIdString.getText() + "@students.towson.edu";
-        UtilController.addUser(studentIdString.getText(), firstname.getText(), lastname.getText(), email);
+        UtilController.addUser(idString, fname, lname, email);
         MainView main = new MainView();
         dispose();
         home.setPrintersVisible(false);
         home.showStudentOptions();
         home.setVisible(true);
-    }//GEN-LAST:event_createUserActionPerformed
+    }}//GEN-LAST:event_createUserActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         dispose();
