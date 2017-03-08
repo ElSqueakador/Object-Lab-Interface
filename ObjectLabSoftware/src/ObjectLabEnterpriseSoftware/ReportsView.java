@@ -227,7 +227,7 @@ public class ReportsView extends javax.swing.JFrame
     private void exportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportBtnActionPerformed
         
         //Exports the grid plus headers to an excel file
-        if(selectedPrinter.equals("Laser Printer")){
+        if(selectedPrinter.equals("Laser Cutter")){
             controller.exportReportToFile(model, laserHeaders, (String)jComboBox1.getSelectedItem(), 'b');
         }
         else{
