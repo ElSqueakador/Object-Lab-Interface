@@ -431,7 +431,7 @@ public static ArrayList<ArrayList<Object>> updateReportLaserTableData()
 
         for (int x = 0; x < printers.size(); x++)
         {
-
+            if(!(printers.get(x).equals("Laser Cutter"))){
             sheet = wb.createSheet(printers.get(x));
             columnHeaders = getReportColumnHeaders(printers.get(x));
             data = updateReportTableData(printers.get(x));
@@ -458,6 +458,7 @@ public static ArrayList<ArrayList<Object>> updateReportLaserTableData()
                         }
                     }
                 }
+            }
             }
         }
         boolean didSave = fileManager.saveReport("MasterReport", wb);
