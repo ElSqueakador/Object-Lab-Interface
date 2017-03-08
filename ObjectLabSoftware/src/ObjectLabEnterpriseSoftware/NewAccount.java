@@ -6,6 +6,8 @@
 package ObjectLabEnterpriseSoftware;
 
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -16,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class NewAccount extends javax.swing.JFrame {
     private static final String NAME_OF_PAGE = "Account Creation";
+    private static MainView home = new MainView();
     private String UserID;
     private String FirstName;
     private String LastName;
@@ -37,6 +40,18 @@ public class NewAccount extends javax.swing.JFrame {
         getContentPane().setBackground(Color.WHITE);
         setTitle("Account Creation");
         initComponents();
+               addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+            	setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+               dispose();
+               home.setPrintersVisible(false);
+               home.showStudentOptions();
+               home.setVisible(true);
+            }
+        });
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -172,17 +187,21 @@ public class NewAccount extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lastnameActionPerformed
 
-    private void createUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserActionPerformed
+    private void createUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserActionPerformed   
         String email = studentIdString.getText() + "@students.towson.edu";
         UtilController.addUser(studentIdString.getText(), firstname.getText(), lastname.getText(), email);
         MainView main = new MainView();
         dispose();
- 
+        home.setPrintersVisible(false);
+        home.showStudentOptions();
+        home.setVisible(true);
     }//GEN-LAST:event_createUserActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-       MainView main = new MainView();
-       dispose();
+        dispose();
+        home.setPrintersVisible(false);
+        home.showStudentOptions();
+        home.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 
     /**
