@@ -92,7 +92,7 @@ public class LaserPINView extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        pin = new javax.swing.JTextField();
+        pin = new javax.swing.JPasswordField();
         submit = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
 
@@ -230,7 +230,7 @@ public class LaserPINView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField pin;
+    private javax.swing.JPasswordField pin;
     private javax.swing.JButton submit;
     // End of variables declaration//GEN-END:variables
 }
