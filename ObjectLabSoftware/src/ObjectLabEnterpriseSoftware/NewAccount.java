@@ -36,7 +36,6 @@ public class NewAccount extends javax.swing.JFrame {
         initComponents();
     }
  public NewAccount() {
-        
         setVisible(true);
         setResizable(false);
         getContentPane().setBackground(Color.WHITE);
@@ -174,7 +173,8 @@ public class NewAccount extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+         pack();
+         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void studentIdStringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentIdStringActionPerformed
