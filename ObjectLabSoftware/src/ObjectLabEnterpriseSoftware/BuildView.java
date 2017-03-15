@@ -20,19 +20,21 @@ import javax.swing.table.DefaultTableModel;
 
 public class BuildView extends javax.swing.JFrame
 {
+
     //public constructor, no arguments for now
     public BuildView(){
-        
+        super();
+        setWindowIcon();
     }
     
     
+
     private static final String NAME_OF_PAGE = "Build File Creator";
     private static MainView home = new MainView();
-    private static RemoveBuildView removeWindow = new RemoveBuildView();
     private static int countNumOfModels;
     // --nav bar views ~Alex
     private BuildView buildView;
-    private newJobsMgr jobsView;
+    private newJobsMgr jobsMgr;
     private ReportsView reportsView;	
     private BalanceView balanceView;
     private newSettingsMenu adminSettingsView;
@@ -54,30 +56,7 @@ public class BuildView extends javax.swing.JFrame
     private Device deviceModel = null;
 
     FileManager inst;
-
     
-    //this function is never called
-    //Rajewski
-    /*private static void updateViewData(DefaultTableModel model, ArrayList<ArrayList<Object>> view)
-    {
-        /* Clears up the rows in the view's model. 
-        for (int rows = model.getRowCount() - 1; rows >= 0; rows--)
-        {
-            model.removeRow(rows);
-        }
-
-        /* Inserts data found in (ArrayList -> listOfRows) by row into the UI model to display 
-        for (ArrayList<Object> row : view)
-        {
-            /* We need to account for the check box by adding in a boolean value = false as the first value. 
-            if(UtilController.findAndVerifyFile((String)(row.get(1)))){
-                row.add(0, (Boolean) false);
-                model.addRow(row.toArray());
-            }
-            //System.out.println(row.get(1));
-        }
-    }
-    */
     private void clearEntries(DefaultTableModel fileTableModel)
     {
         while (fileTableModel.getRowCount() > 0)
@@ -125,55 +104,9 @@ public class BuildView extends javax.swing.JFrame
                     return false;
                 }
             }
-        }
-
-        //Rajewski
-        //Removed becuase no more device input table
-        /* Now that a printer has been selected, build file location, and files that are part of the build we can validate 
-         the input for the build data 
-               
-        for (int column = 0; column < deviceInputTable.getColumnCount(); column++)
-        {
-            // Test the column input to see type /
-            int testColumnInput = InputValidation.getDataType((String) deviceInputTable.getValueAt(0, column));
-            // Ask Device model which type the column SHOULD be /
-            int expectedColumnInput = deviceModel.getFieldType(trackableFields.get(column));
-
-            if (testColumnInput == -1)
-            {
-                ErrorText.setText("Unknown data entry for build data!");
-                ErrorText.setVisible(true);
-                return false;
-            } else if (testColumnInput != expectedColumnInput)
-            {
-                ErrorText.setText("Invalid data entry for build data! Data in field " + column + " does not match expected type.");
-                ErrorText.setVisible(true);
-                return false;
-            }
-        }
-        */
-        
+        }       
         return true;
     }
-
-    //Rajewski
-    //Does not need to be called
-    /*
-    /based entirely on nonexistent deviceInputTable
-    /private boolean preprocessDataForSubmit()
-    {
-        for (int column = 0; column < deviceInputTable.getColumnCount(); column++)
-        {
-            if (!deviceModel.addField(trackableFields.get(column), deviceInputTable.getValueAt(0, column)))
-                {
-                    ErrorText.setText("Invalid data entry for build data!");
-                    ErrorText.setVisible(true);
-                    return false;
-                }
-        }
-        return true;
-    }
-    */
     
     private boolean submit()
     {
@@ -528,31 +461,31 @@ public class BuildView extends javax.swing.JFrame
         setJMenuBar(jMenuBar2);
         
         navBtn_jobsMgr = new JButton("Jobs Manager");
-        navBtn_jobsMgr.setIcon(new ImageIcon(JobsView.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
+        navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
         navBtn_jobsMgr.setPreferredSize(new Dimension(100,24));
         
         jMenuBar2.add(Box.createRigidArea(new Dimension(170,12)));
         jMenuBar2.add(navBtn_jobsMgr);
         
         navBtn_build = new JButton("Enter Build");
-        navBtn_build.setIcon(new ImageIcon(JobsView.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
+        navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
         navBtn_build.setPreferredSize(new Dimension(100,24));
         jMenuBar2.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
-        navBtn_reports.setIcon(new ImageIcon(JobsView.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
+        navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
         navBtn_reports.setPreferredSize(new Dimension(100,24));
         jMenuBar2.add(navBtn_reports);
         
         navBtn_balance = new JButton("Balance");
-        navBtn_balance.setIcon(new ImageIcon(JobsView.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
+        navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
 	navBtn_balance.setPreferredSize(new Dimension(100,24));
 
         jMenuBar2.add(navBtn_balance);
 
         
         navBtn_settings = new JButton("Settings");
-        navBtn_settings.setIcon(new ImageIcon(JobsView.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
+        navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
         navBtn_settings.setPreferredSize(new Dimension(100,24));
         jMenuBar2.add(navBtn_settings);
         
@@ -592,8 +525,8 @@ public class BuildView extends javax.swing.JFrame
     
     private void navBtn_jobsMgrActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	jobsView = new newJobsMgr();
-        jobsView.setVisible(true);
+    	jobsMgr = new newJobsMgr();
+        jobsMgr.setVisible(true);
     	dispose();
     	
     }
@@ -703,36 +636,10 @@ public class BuildView extends javax.swing.JFrame
                 buildFileLocationErrorStatusText.setText("Select a unique build file location");
                 buildFileLocationErrorStatusText.setVisible(true);
 
-                //Rajewski
-                //deviceInputTable was removed and replaced with table of previous builds
-                
-                //invalidBuildLocationSelectedColumnModel.setColumnIdentifiers(errorTextColumnHeader);
-                //deviceInputTable.setModel(invalidBuildLocationSelectedColumnModel);
-                //deviceInputTable.setVisible(false);
             }
         }
     }//GEN-LAST:event_browseBtnActionPerformed
-
-    //Rajewski
-    //Removed because no longer used/needed for input table
-    /*
-    private void setupUserInputBuildData()
-    {
-        buildFileLocationErrorStatusText.setVisible(false);
-        deviceModel.addField("Run time", 0); /* Should later remove this and make it a seperate parameter in the function submitBuild call (so the backend knows less about how the UI stores its data) 
-        
-        deviceModel.addField("Hours", 0);
-        deviceModel.addField("Minutes", 0);
-        deviceModel.addField("Seconds", 0);
-        
-        trackableFields = deviceModel.getFieldNames();
-        deviceDataModel = new DefaultTableModel(trackableFields.toArray(), 1);
-        
-        deviceInputTable.setModel(deviceDataModel);
-        deviceInputTable.setVisible(true);
-    }
-    */ 
-    
+   
     private void deviceNameComboBoxActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deviceNameComboBoxActionPerformed
     {//GEN-HEADEREND:event_deviceNameComboBoxActionPerformed
         /* When a device is selected we put the info into the Device class and then detrmine how we update our view from here 
@@ -931,7 +838,7 @@ public class BuildView extends javax.swing.JFrame
                     studentSubmissionApprovedTableList.getValueAt(k, 6),
                     studentSubmissionApprovedTableList.getValueAt(k, 7)
                 });
-                fileTableModel.removeRow(k);
+                fileTableModel.removeRow(k); 
         }
         
         
@@ -1063,10 +970,6 @@ public class BuildView extends javax.swing.JFrame
 		submissionsToBuildList.setModel(fileTableModel);
 		studentSubmissionApprovedTableList.setModel(fileTableModel2);
     }
-    
-    private void setWindowIcon(){
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/icon.png")));
-    }
 
     private JButton navBtn_balance;
 
@@ -1105,5 +1008,10 @@ public class BuildView extends javax.swing.JFrame
     private javax.swing.JTable submissionsToBuildList;
     private javax.swing.JButton swapButton;
     // End of variables declaration//GEN-END:variables
+    
+    //sets window icon on construction using AWT to grab image from resource folder, should throw filenotfound at some point
+    private void setWindowIcon() {
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/icon.png")));
+    }
 }
 
