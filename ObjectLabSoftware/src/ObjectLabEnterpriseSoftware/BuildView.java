@@ -6,6 +6,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.Box;
@@ -19,6 +20,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class BuildView extends javax.swing.JFrame
 {
+    //public constructor, no arguments for now
+    public BuildView(){
+        
+    }
+    
+    
     private static final String NAME_OF_PAGE = "Build File Creator";
     private static MainView home = new MainView();
     private static RemoveBuildView removeWindow = new RemoveBuildView();
@@ -1055,6 +1062,10 @@ public class BuildView extends javax.swing.JFrame
 		fileTableModel2.removeRow(studentSubmissionApprovedTableList.getSelectedRow());
 		submissionsToBuildList.setModel(fileTableModel);
 		studentSubmissionApprovedTableList.setModel(fileTableModel2);
+    }
+    
+    private void setWindowIcon(){
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/icon.png")));
     }
 
     private JButton navBtn_balance;
