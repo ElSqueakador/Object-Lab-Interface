@@ -75,7 +75,19 @@ public class newJobsMgr extends JFrame {
 		initWindow();
 		setLocationRelativeTo(null);
                 setResizable(false);
+                setVisible(true);
 	}
+        public newJobsMgr(){
+            idString = "";
+		setIconImage(Toolkit.getDefaultToolkit().getImage(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
+		setTitle("Administration Panel");
+		setPreferredSize(new Dimension(635,605));
+		setAlwaysOnTop(false);
+		getContentPane().setBackground(Color.WHITE);
+		initWindow();
+		setLocationRelativeTo(null);
+                setResizable(false);
+        }
 	
 	
 	private void initWindow()

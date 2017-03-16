@@ -32,7 +32,6 @@ public class MainView extends javax.swing.JFrame
         initComponents();
         this.setResizable(false);
         setPrintersVisible(false);
-        njm = new newJobsMgr();
         studentSys = new newStudentView();
         ad = new PasswordDialogView();
        // getContentPane().remove(jButton1);
@@ -219,6 +218,7 @@ public class MainView extends javax.swing.JFrame
             {
                 if(UtilController.isAdmin(idString)){
                     newJobMan = new newJobsMgr(idString);
+                    dispose();
                 }
                 else{
                     errorIdLabel.setText("");
