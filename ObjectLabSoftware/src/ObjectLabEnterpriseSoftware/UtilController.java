@@ -366,6 +366,11 @@ public static ArrayList<ArrayList<Object>> updateReportLaserTableData()
 
     }
 
+    static boolean isAdmin(String idString) {
+        SQLMethods dbconn = new SQLMethods();
+        return dbconn.adminExists(idString);
+    }
+
     public void exportReportToFile(DefaultTableModel model, String[] header, String printer, char type)
     {
 

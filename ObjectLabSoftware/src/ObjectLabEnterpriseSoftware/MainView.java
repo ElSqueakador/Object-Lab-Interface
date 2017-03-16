@@ -21,6 +21,7 @@ public class MainView extends javax.swing.JFrame
 
     newStudentView studentSys;
     newJobsMgr njm;
+    newJobsMgr newJobMan;
     PasswordDialogView ad;
     boolean show;
     String PASS = "ForwardMotion";
@@ -34,6 +35,7 @@ public class MainView extends javax.swing.JFrame
         njm = new newJobsMgr();
         studentSys = new newStudentView();
         ad = new PasswordDialogView();
+       // getContentPane().remove(jButton1);
 
 	
 				
@@ -82,9 +84,7 @@ public class MainView extends javax.swing.JFrame
         oliSymbol = new javax.swing.JLabel();
         studentPassLabel = new javax.swing.JLabel();
         studentPassString = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
-        userOptionsMenu = new javax.swing.JMenu();
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -140,35 +140,12 @@ public class MainView extends javax.swing.JFrame
         getContentPane().add(studentLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 20));
 
         oliSymbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ObjectLabEnterpriseSoftware/images/polytiger2.png"))); // NOI18N
-        getContentPane().add(oliSymbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 191, -1, 150));
+        getContentPane().add(oliSymbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, 150));
 
         studentPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         studentPassLabel.setText("Password:");
         getContentPane().add(studentPassLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
         getContentPane().add(studentPassString, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, -1));
-
-        jButton1.setText("Create Account");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
-
-        userOptionsMenu.setText("Admin ");
-        userOptionsMenu.setName(""); // NOI18N
-        userOptionsMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                userOptionsMenuMousePressed(evt);
-            }
-        });
-        userOptionsMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userOptionsMenuActionPerformed(evt);
-            }
-        });
-        MenuBar.add(userOptionsMenu);
-
         setJMenuBar(MenuBar);
 
         pack();
@@ -177,7 +154,7 @@ public class MainView extends javax.swing.JFrame
     
 	public void resetAdminMode()
 	{
-			njm.setVisible(true);
+            njm.setVisible(true);
             hideStudentOptions();
             setVisible(false);
             dispose();
@@ -240,9 +217,15 @@ public class MainView extends javax.swing.JFrame
         {
             if (UtilController.userIDExist(idString, password))
             {
-                errorIdLabel.setText("");
-                dispose();
-                studentSys.newStudentView(idString, UtilController.getStudentFname());
+                if(UtilController.isAdmin(idString)){
+                    newJobMan = new newJobsMgr(idString);
+                }
+                else{
+                    errorIdLabel.setText("");
+                    dispose();
+                    studentSys.newStudentView(idString, UtilController.getStudentFname());
+                }
+                
             } else
             {
                 JOptionPane.showMessageDialog(null, "Invalid TU ID or Password.", "Invalid ID", JOptionPane.ERROR_MESSAGE);
@@ -259,15 +242,6 @@ public class MainView extends javax.swing.JFrame
         // TODO add your handling code here:
 
     }//GEN-LAST:event_studentIdStringActionPerformed
-
-    private void userOptionsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userOptionsMenuActionPerformed
-        //nothing 
-    }//GEN-LAST:event_userOptionsMenuActionPerformed
-
-    private void userOptionsMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userOptionsMenuMousePressed
-        ad.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_userOptionsMenuMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -366,7 +340,6 @@ public class MainView extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JLabel errorIdLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JList jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -380,6 +353,5 @@ public class MainView extends javax.swing.JFrame
     private javax.swing.JLabel studentLoginLabel;
     private javax.swing.JLabel studentPassLabel;
     private javax.swing.JPasswordField studentPassString;
-    private javax.swing.JMenu userOptionsMenu;
     // End of variables declaration//GEN-END:variables
 }

@@ -2138,4 +2138,19 @@ public class SQLMethods
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+    public boolean adminExists(String idString) {
+        try{
+            stmt = this.conn.prepareStatement("SELECT admin_name" + "FROM admin_list" + "WHERE admin_id = ?");
+            stmt.setString(0, idString);
+            res = stmt.executeQuery();
+            if(res != null){
+                return true;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

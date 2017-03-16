@@ -61,10 +61,12 @@ public class newJobsMgr extends JFrame {
 	private ReportsView reportsView;	
         private BalanceView balanceView;
 	private newSettingsMenu adminSettingsView;
+        private String idString;
 	//
         
         //private CommentView commentview;
-	public newJobsMgr() {
+	public newJobsMgr(String adminID) {
+                idString = adminID;
 		setIconImage(Toolkit.getDefaultToolkit().getImage(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setTitle("Administration Panel");
 		setPreferredSize(new Dimension(635,605));
@@ -789,7 +791,7 @@ public class newJobsMgr extends JFrame {
 
 	private void navBtn_jobsMgrActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		jobsMgr = new newJobsMgr();
+		jobsMgr = new newJobsMgr(idString);
 		jobsMgr.setVisible(true);
 		dispose();
 
