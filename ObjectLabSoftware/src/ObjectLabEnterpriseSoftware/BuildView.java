@@ -257,25 +257,25 @@ public class BuildView extends javax.swing.JFrame
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 950, 10));
 
-        Submit_Button.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        Submit_Button.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         Submit_Button.setText("Submit Build");
         Submit_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Submit_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(Submit_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 550, 100, 30));
+        getContentPane().add(Submit_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 550, 150, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel4.setText("Choose jobs part of build: ");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 200, 19));
 
-        buildLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buildLbl.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         buildLbl.setText("Build File Name:");
         getContentPane().add(buildLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 20));
 
         filepathToSelectedDeviceBuild.setEditable(false);
-        filepathToSelectedDeviceBuild.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        filepathToSelectedDeviceBuild.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         filepathToSelectedDeviceBuild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filepathToSelectedDeviceBuildActionPerformed(evt);
@@ -283,16 +283,16 @@ public class BuildView extends javax.swing.JFrame
         });
         getContentPane().add(filepathToSelectedDeviceBuild, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 200, -1));
 
-        browseBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        browseBtn.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         browseBtn.setText("Browse");
         browseBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 browseBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(browseBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 70, 20));
+        getContentPane().add(browseBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 100, 28));
 
-        ErrorText.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        ErrorText.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         ErrorText.setForeground(new java.awt.Color(255, 0, 0));
         ErrorText.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ErrorText.setText("Error Text");
@@ -330,11 +330,11 @@ public class BuildView extends javax.swing.JFrame
 
             getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 400, 210));
 
-            jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+            jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
             jLabel2.setText("Select Device:");
-            getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+            getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
-            deviceNameComboBox.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+            deviceNameComboBox.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
             deviceNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(UtilController.arrayListToStringArray(UtilController.getListOfCurrentDevices())));
             deviceNameComboBox.setSelectedItem(null);
             deviceNameComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -342,13 +342,13 @@ public class BuildView extends javax.swing.JFrame
                     deviceNameComboBoxActionPerformed(evt);
                 }
             });
-            getContentPane().add(deviceNameComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 170, -1));
+            getContentPane().add(deviceNameComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 170, -1));
 
-            jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+            jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
             jLabel3.setText("Previous Builds for Device:");
-            getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 150, 20));
+            getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 250, 20));
 
-            buildFileLocationErrorStatusText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+            buildFileLocationErrorStatusText.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
             buildFileLocationErrorStatusText.setForeground(new java.awt.Color(255, 0, 0));
             buildFileLocationErrorStatusText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             buildFileLocationErrorStatusText.setLabelFor(browseBtn);
@@ -414,6 +414,7 @@ public class BuildView extends javax.swing.JFrame
 
                     getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 430, 210));
 
+                    logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 15));
                     logoutButton.setText("Logout");
                     logoutButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,37 +447,37 @@ public class BuildView extends javax.swing.JFrame
 
     private void initNavBar()
     {
-
+        int width =199;
     	jMenuBar2.setPreferredSize(new Dimension(300, 40));
         setJMenuBar(jMenuBar2);
         
         navBtn_jobsMgr = new JButton("Jobs Manager");
         navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-        navBtn_jobsMgr.setPreferredSize(new Dimension(199,30));
+        navBtn_jobsMgr.setPreferredSize(new Dimension(width,30));
         
         jMenuBar2.add(Box.createRigidArea(new Dimension(0,0)));
         jMenuBar2.add(navBtn_jobsMgr);
         
         navBtn_build = new JButton("Enter Build");
         navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
-        navBtn_build.setPreferredSize(new Dimension(199,30));
+        navBtn_build.setPreferredSize(new Dimension(width,30));
         jMenuBar2.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
         navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-        navBtn_reports.setPreferredSize(new Dimension(199,30));
+        navBtn_reports.setPreferredSize(new Dimension(width,30));
         jMenuBar2.add(navBtn_reports);
         
         navBtn_balance = new JButton("Balance");
         navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-	navBtn_balance.setPreferredSize(new Dimension(199,30));
+	navBtn_balance.setPreferredSize(new Dimension(width,35));
 
         jMenuBar2.add(navBtn_balance);
 
         
         navBtn_settings = new JButton("Settings");
         navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-        navBtn_settings.setPreferredSize(new Dimension(199,30));
+        navBtn_settings.setPreferredSize(new Dimension(width,30));
         jMenuBar2.add(navBtn_settings);
         
         navBtn_jobsMgr.addActionListener(new java.awt.event.ActionListener() {
