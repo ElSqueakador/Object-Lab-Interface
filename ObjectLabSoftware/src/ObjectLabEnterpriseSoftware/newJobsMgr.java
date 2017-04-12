@@ -134,7 +134,7 @@ public class newJobsMgr extends JFrame {
 
 		jobStatusCombo = new JComboBox();
 		//****
-		jobStatusCombo.setBounds(275, 60, 150, 20);//163 //87 //80 //77
+		jobStatusCombo.setBounds(275, 80, 150, 20);//163 //87 //80 //77
 		// *****
 		//jobStatusCombo.addItem("All Jobs");
 		//****
@@ -147,7 +147,7 @@ public class newJobsMgr extends JFrame {
 
 		JLabel lblJobStatus = new JLabel("Job Status:");
 		//****
-		lblJobStatus.setBounds(150, 60, 78, 17);//86 //20 //10
+		lblJobStatus.setBounds(150, 80, 78, 17);//86 //20 //10
 		lblJobStatus.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		//
 		lblJobStatus.setLabelFor(jobStatusCombo);
@@ -192,7 +192,7 @@ public class newJobsMgr extends JFrame {
 
 		final JComboBox deviceCombo = new JComboBox();
 		//****
-		deviceCombo.setBounds(700, 60, 150, 20);//342 //266 //259 //251
+		deviceCombo.setBounds(700, 80, 150, 20);//342 //266 //259 //251
 		//deviceCombo.addItem(" "); added a printer called " " so we no longer need ths.
 		/// Adds tracked devices to comboBox dropdown window
 		SQLMethods dbconn = new SQLMethods();
@@ -254,13 +254,13 @@ public class newJobsMgr extends JFrame {
 
 		JLabel deviceLabel = new JLabel("Device:");
 		//****
-		deviceLabel.setBounds(600, 60, 78, 20);//283 //207
+		deviceLabel.setBounds(600, 80, 78, 20);//283 //207
 		deviceLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		deviceLabel.setLabelFor(deviceCombo);
 		getContentPane().add(deviceLabel);
 
 		JScrollPane jobListingsPane = new JScrollPane();
-		jobListingsPane.setBounds(10, 94, 598, 166);
+		jobListingsPane.setBounds(10, 120, 970, 150);
 		getContentPane().add(jobListingsPane);
 		
 
@@ -367,41 +367,41 @@ public class newJobsMgr extends JFrame {
                 
 
 		lblFillInData = new JLabel("Please enter device statistic tracking data if approving:");
-		lblFillInData.setBounds(10, 271, 375, 23);
+		lblFillInData.setBounds(10, 100, 970, 220);
 		lblFillInData.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		lblFillInData.setVisible(false);
 		getContentPane().add(lblFillInData);
 
 		jobStatPanel = new JPanel();
-		jobStatPanel.setBounds(10, 305, 598, 143);
+		jobStatPanel.setBounds(10, 290, 970, 150);
 		jobStatPanel.setVisible(false); // stat panel doesn't show up until device is selected.
 		getContentPane().add(jobStatPanel);
 		jobStatPanel.setLayout(null);
 
 		deviceNameLabel = new JLabel("filler");
-		deviceNameLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		deviceNameLabel.setBounds(227, 11, 139, 39);
+		deviceNameLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		deviceNameLabel.setBounds(50, 10, 200, 40);
 		jobStatPanel.add(deviceNameLabel);
 
 		trackingStatLabel1 = new JLabel("New label");
-		trackingStatLabel1.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		trackingStatLabel1.setBounds(0, 53, 141, 20);
+		trackingStatLabel1.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		trackingStatLabel1.setBounds(20, 60, 200, 20);
 		jobStatPanel.add(trackingStatLabel1);
 
 		trackingStatLabel2 = new JLabel("New label");
 		trackingStatLabel2.setLabelFor(trackingStatLabel2);
-		trackingStatLabel2.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		trackingStatLabel2.setBounds(0, 90, 141, 20);
+		trackingStatLabel2.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		trackingStatLabel2.setBounds(20, 90, 200, 20);
 		jobStatPanel.add(trackingStatLabel2);
 
 		trackingStatInput1 = new JTextField();
 		trackingStatLabel1.setLabelFor(trackingStatInput1);
-		trackingStatInput1.setBounds(161, 55, 175, 20);
+		trackingStatInput1.setBounds(175, 60, 200, 20);
 		jobStatPanel.add(trackingStatInput1);
 		trackingStatInput1.setColumns(10);
 
 		trackingStatInput2 = new JTextField();
-		trackingStatInput2.setBounds(160, 92, 176, 20);
+		trackingStatInput2.setBounds(175, 90, 200, 20);
 		jobStatPanel.add(trackingStatInput2);
 		trackingStatInput2.setColumns(10);
 
