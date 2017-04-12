@@ -235,7 +235,7 @@ public class BuildView extends javax.swing.JFrame
         swapButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-
+        
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -447,36 +447,36 @@ public class BuildView extends javax.swing.JFrame
     private void initNavBar()
     {
 
-    	jMenuBar2.setPreferredSize(new Dimension(275, 30));
+    	jMenuBar2.setPreferredSize(new Dimension(300, 40));
         setJMenuBar(jMenuBar2);
         
         navBtn_jobsMgr = new JButton("Jobs Manager");
         navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-        navBtn_jobsMgr.setPreferredSize(new Dimension(100,24));
+        navBtn_jobsMgr.setPreferredSize(new Dimension(199,30));
         
-        jMenuBar2.add(Box.createRigidArea(new Dimension(170,12)));
+        jMenuBar2.add(Box.createRigidArea(new Dimension(0,0)));
         jMenuBar2.add(navBtn_jobsMgr);
         
         navBtn_build = new JButton("Enter Build");
         navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
-        navBtn_build.setPreferredSize(new Dimension(100,24));
+        navBtn_build.setPreferredSize(new Dimension(199,30));
         jMenuBar2.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
         navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-        navBtn_reports.setPreferredSize(new Dimension(100,24));
+        navBtn_reports.setPreferredSize(new Dimension(199,30));
         jMenuBar2.add(navBtn_reports);
         
         navBtn_balance = new JButton("Balance");
         navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-	navBtn_balance.setPreferredSize(new Dimension(100,24));
+	navBtn_balance.setPreferredSize(new Dimension(199,30));
 
         jMenuBar2.add(navBtn_balance);
 
         
         navBtn_settings = new JButton("Settings");
         navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-        navBtn_settings.setPreferredSize(new Dimension(100,24));
+        navBtn_settings.setPreferredSize(new Dimension(199,30));
         jMenuBar2.add(navBtn_settings);
         
         navBtn_jobsMgr.addActionListener(new java.awt.event.ActionListener() {
