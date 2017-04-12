@@ -42,7 +42,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Toolkit;
 import java.util.concurrent.TimeUnit;
-
+import java.awt.Point;
 
 /*
  *  Jobs Manager V2
@@ -134,7 +134,7 @@ public class newJobsMgr extends JFrame {
 
 		jobStatusCombo = new JComboBox();
 		//****
-		jobStatusCombo.setBounds(300, 100, 100, 20);//163 //87 //80 //77
+		jobStatusCombo.setBounds(275, 60, 150, 20);//163 //87 //80 //77
 		// *****
 		//jobStatusCombo.addItem("All Jobs");
 		//****
@@ -147,7 +147,7 @@ public class newJobsMgr extends JFrame {
 
 		JLabel lblJobStatus = new JLabel("Job Status:");
 		//****
-		lblJobStatus.setBounds(150, 100, 78, 17);//86 //20 //10
+		lblJobStatus.setBounds(150, 60, 78, 17);//86 //20 //10
 		lblJobStatus.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		//
 		lblJobStatus.setLabelFor(jobStatusCombo);
@@ -192,7 +192,7 @@ public class newJobsMgr extends JFrame {
 
 		final JComboBox deviceCombo = new JComboBox();
 		//****
-		deviceCombo.setBounds(700, 100, 100, 20);//342 //266 //259 //251
+		deviceCombo.setBounds(700, 60, 150, 20);//342 //266 //259 //251
 		//deviceCombo.addItem(" "); added a printer called " " so we no longer need ths.
 		/// Adds tracked devices to comboBox dropdown window
 		SQLMethods dbconn = new SQLMethods();
@@ -254,7 +254,7 @@ public class newJobsMgr extends JFrame {
 
 		JLabel deviceLabel = new JLabel("Device:");
 		//****
-		deviceLabel.setBounds(500, 100, 78, 17);//283 //207
+		deviceLabel.setBounds(600, 60, 78, 20);//283 //207
 		deviceLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		deviceLabel.setLabelFor(deviceCombo);
 		getContentPane().add(deviceLabel);
@@ -265,7 +265,7 @@ public class newJobsMgr extends JFrame {
 		
 
 		jobsTable = new JTable();
-                
+               
 		jobsModel = new DefaultTableModel() {
 			Class[] columnTypes = new Class[] {
 					Boolean.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
@@ -313,7 +313,8 @@ public class newJobsMgr extends JFrame {
 		getContentPane().add(titleLabel);
 
 		JButton logoutButton = new JButton("Logout");
-		logoutButton.setBounds(10, 459, 95, 23);
+		logoutButton.setBounds(448, 500, 100, 30);
+                logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 16));
 		logoutButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -325,7 +326,7 @@ public class newJobsMgr extends JFrame {
 		getContentPane().add(logoutButton);
                 
 		approveButton = new JButton("Approve");
-		approveButton.setBounds(331, 459, 89, 23);
+		approveButton.setBounds(343, 459, 100, 30);
 		approveButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -339,7 +340,7 @@ public class newJobsMgr extends JFrame {
 
 
 		rejectButton = new JButton("Reject");
-		rejectButton.setBounds(426, 459, 89, 23);
+		rejectButton.setBounds(448, 459, 100, 30);
 		rejectButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -352,7 +353,7 @@ public class newJobsMgr extends JFrame {
 		rejectButton.setVisible(false);
 
 		reviewButton = new JButton("Review");
-		reviewButton.setBounds(519, 459, 89, 23);
+		reviewButton.setBounds(553, 459, 100, 30);
 		reviewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent evt) {
@@ -861,8 +862,8 @@ public class newJobsMgr extends JFrame {
 	///
 	// etc vars
 	// 
-	private  JPanel jobStatPanel;
-	private  JPanel jobListingsPane;
+	private JPanel jobStatPanel;
+	private JPanel jobListingsPane;
 	private JTextField trackingStatInput1;
 	private JTextField trackingStatInput2;
 	private JLabel trackingStatLabel1;
