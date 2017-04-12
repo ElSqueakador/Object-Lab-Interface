@@ -2140,13 +2140,17 @@ public class SQLMethods
 	}
 
     public boolean adminExists(String idString) {
+        res = null;
         try{
-            stmt = this.conn.prepareStatement("SELECT admin_name FROM admin_list WHERE admin_id = ?;");
+            stmt = this.conn.prepareStatement("SELECT admin_id FROM admin_list WHERE admin_id = ?;");
             stmt.setString(1, idString);
             res = stmt.executeQuery();
-            if(res != null){
+            while(res.next()){
+                String adminID = res.getString("admin_id");
+                if(idString.equals(adminID))
                 return true;
             }
+                
         }
         catch(Exception e){
             e.printStackTrace();
