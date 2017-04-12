@@ -96,12 +96,12 @@ public class newJobsMgr extends JFrame {
 		JMenuBar jMenuBar1 = new JMenuBar();
 		setJMenuBar(jMenuBar1);
 
-		jMenuBar1.setPreferredSize(new Dimension(300, 40));
+		jMenuBar1.setPreferredSize(new Dimension(995, 40));
 		setJMenuBar(jMenuBar1);
 
 		navBtn_jobsMgr = new JButton("Jobs Manager");
 		navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-		navBtn_jobsMgr.setPreferredSize(new Dimension(199,30));
+		navBtn_jobsMgr.setPreferredSize(new Dimension(199,40));
 
 
 		jMenuBar1.add(Box.createRigidArea(new Dimension(0, 0)));
@@ -110,31 +110,31 @@ public class newJobsMgr extends JFrame {
 		navBtn_build = new JButton("Enter Build");
 		navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
 
-		navBtn_build.setPreferredSize(new Dimension(199,30));
+		navBtn_build.setPreferredSize(new Dimension(199,40));
 
 		jMenuBar1.add(navBtn_build);
 
 		navBtn_reports = new JButton("Reports");
 		navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-		navBtn_reports.setPreferredSize(new Dimension(199,30));
+		navBtn_reports.setPreferredSize(new Dimension(199,40));
 
 		jMenuBar1.add(navBtn_reports);
                 
                 navBtn_balance = new JButton("Balance");
 		navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-		navBtn_balance.setPreferredSize(new Dimension(199,30));
+		navBtn_balance.setPreferredSize(new Dimension(199,40));
 
 		jMenuBar1.add(navBtn_balance);
 		navBtn_settings = new JButton("Settings");
 		navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-		navBtn_settings.setPreferredSize(new Dimension(199,30));
+		navBtn_settings.setPreferredSize(new Dimension(199,40));
 
 		jMenuBar1.add(navBtn_settings);
 		getContentPane().setLayout(null);
 
 		jobStatusCombo = new JComboBox();
 		//****
-		jobStatusCombo.setBounds(170, 100, 100, 20);//163 //87 //80 //77
+		jobStatusCombo.setBounds(300, 100, 100, 20);//163 //87 //80 //77
 		// *****
 		//jobStatusCombo.addItem("All Jobs");
 		//****
@@ -147,7 +147,7 @@ public class newJobsMgr extends JFrame {
 
 		JLabel lblJobStatus = new JLabel("Job Status:");
 		//****
-		lblJobStatus.setBounds(60, 100, 78, 17);//86 //20 //10
+		lblJobStatus.setBounds(150, 100, 78, 17);//86 //20 //10
 		lblJobStatus.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		//
 		lblJobStatus.setLabelFor(jobStatusCombo);
@@ -192,7 +192,7 @@ public class newJobsMgr extends JFrame {
 
 		final JComboBox deviceCombo = new JComboBox();
 		//****
-		deviceCombo.setBounds(342, 63, 125, 20);//342 //266 //259 //251
+		deviceCombo.setBounds(700, 100, 100, 20);//342 //266 //259 //251
 		//deviceCombo.addItem(" "); added a printer called " " so we no longer need ths.
 		/// Adds tracked devices to comboBox dropdown window
 		SQLMethods dbconn = new SQLMethods();
@@ -254,8 +254,8 @@ public class newJobsMgr extends JFrame {
 
 		JLabel deviceLabel = new JLabel("Device:");
 		//****
-		deviceLabel.setBounds(283, 64, 60, 14);//283 //207
-		deviceLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		deviceLabel.setBounds(500, 100, 78, 17);//283 //207
+		deviceLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		deviceLabel.setLabelFor(deviceCombo);
 		getContentPane().add(deviceLabel);
 
@@ -265,6 +265,7 @@ public class newJobsMgr extends JFrame {
 		
 
 		jobsTable = new JTable();
+                
 		jobsModel = new DefaultTableModel() {
 			Class[] columnTypes = new Class[] {
 					Boolean.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
@@ -278,19 +279,18 @@ public class newJobsMgr extends JFrame {
                                     return true;
                                 return false;
                         }
-                        
-                        
+                       
                        
 		};
-
-		
-	
+                
 		//jobsModel.setColumnCount(6);
 		//jobsModel.setColumnIdentifiers(new String[] {
 		//		"Selected?", "File Name", "First Name", "Last Name", "Date", "Class", "Section"
 		//});
 
 		jobsTable.setModel(jobsModel);
+                
+                
 		jobListingsPane.setViewportView(jobsTable);
                 
                 jobsTable.addMouseListener(new MouseAdapter() {
@@ -308,7 +308,7 @@ public class newJobsMgr extends JFrame {
 
                 
 		JLabel titleLabel = new JLabel("Jobs Manager");
-		titleLabel.setBounds(226, 11, 159, 41);
+		titleLabel.setBounds(420, 11, 159, 41);
 		titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 24));
 		getContentPane().add(titleLabel);
 
