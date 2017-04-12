@@ -448,36 +448,37 @@ public class BuildView extends javax.swing.JFrame
     private void initNavBar()
     {
         int width =199;
+        int height=40;
     	jMenuBar2.setPreferredSize(new Dimension(300, 40));
         setJMenuBar(jMenuBar2);
         
         navBtn_jobsMgr = new JButton("Jobs Manager");
         navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-        navBtn_jobsMgr.setPreferredSize(new Dimension(width,30));
+        navBtn_jobsMgr.setPreferredSize(new Dimension(width,height));
         
         jMenuBar2.add(Box.createRigidArea(new Dimension(0,0)));
         jMenuBar2.add(navBtn_jobsMgr);
         
         navBtn_build = new JButton("Enter Build");
         navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
-        navBtn_build.setPreferredSize(new Dimension(width,30));
+        navBtn_build.setPreferredSize(new Dimension(width,height));
         jMenuBar2.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
         navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-        navBtn_reports.setPreferredSize(new Dimension(width,30));
+        navBtn_reports.setPreferredSize(new Dimension(width,height));
         jMenuBar2.add(navBtn_reports);
         
         navBtn_balance = new JButton("Balance");
         navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-	navBtn_balance.setPreferredSize(new Dimension(width,35));
+	navBtn_balance.setPreferredSize(new Dimension(width,height));
 
         jMenuBar2.add(navBtn_balance);
 
         
         navBtn_settings = new JButton("Settings");
         navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-        navBtn_settings.setPreferredSize(new Dimension(width,30));
+        navBtn_settings.setPreferredSize(new Dimension(width,height));
         jMenuBar2.add(navBtn_settings);
         
         navBtn_jobsMgr.addActionListener(new java.awt.event.ActionListener() {
@@ -601,7 +602,7 @@ public class BuildView extends javax.swing.JFrame
         //RAJEWSKI
         //WHAT DOES THIS DO?
         defaultBuildDirectory = new File(FileManager.getDeviceToPrint(device));
-        chooser.setPreferredSize(new Dimension(800, 500));
+        chooser.setPreferredSize(new Dimension(995, 660));
         chooser.setCurrentDirectory(defaultBuildDirectory);
         int returnVal = chooser.showDialog(null, "Select");
 
