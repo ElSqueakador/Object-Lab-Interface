@@ -69,7 +69,7 @@ public class newJobsMgr extends JFrame {
                 idString = adminID;
 		setIconImage(Toolkit.getDefaultToolkit().getImage(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setTitle("Administration Panel");
-		setPreferredSize(new Dimension(700,655));
+		setPreferredSize(new Dimension(995,660));
 		setAlwaysOnTop(false);
 		getContentPane().setBackground(Color.WHITE);
 		initWindow();
@@ -81,7 +81,7 @@ public class newJobsMgr extends JFrame {
             idString = "";
 		setIconImage(Toolkit.getDefaultToolkit().getImage(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setTitle("Administration Panel");
-		setPreferredSize(new Dimension(700,655));
+		setPreferredSize(new Dimension(995,660));
 		setAlwaysOnTop(false);
 		getContentPane().setBackground(Color.WHITE);
 		initWindow();
@@ -101,7 +101,7 @@ public class newJobsMgr extends JFrame {
 
 		navBtn_jobsMgr = new JButton("Jobs Manager");
 		navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-		navBtn_jobsMgr.setPreferredSize(new Dimension(140,30));
+		navBtn_jobsMgr.setPreferredSize(new Dimension(199,30));
 
 
 		jMenuBar1.add(Box.createRigidArea(new Dimension(0, 0)));
@@ -110,31 +110,31 @@ public class newJobsMgr extends JFrame {
 		navBtn_build = new JButton("Enter Build");
 		navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
 
-		navBtn_build.setPreferredSize(new Dimension(140,30));
+		navBtn_build.setPreferredSize(new Dimension(199,30));
 
 		jMenuBar1.add(navBtn_build);
 
 		navBtn_reports = new JButton("Reports");
 		navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-		navBtn_reports.setPreferredSize(new Dimension(140,30));
+		navBtn_reports.setPreferredSize(new Dimension(199,30));
 
 		jMenuBar1.add(navBtn_reports);
                 
                 navBtn_balance = new JButton("Balance");
 		navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-		navBtn_balance.setPreferredSize(new Dimension(140,30));
+		navBtn_balance.setPreferredSize(new Dimension(199,30));
 
 		jMenuBar1.add(navBtn_balance);
 		navBtn_settings = new JButton("Settings");
 		navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-		navBtn_settings.setPreferredSize(new Dimension(140,30));
+		navBtn_settings.setPreferredSize(new Dimension(199,30));
 
 		jMenuBar1.add(navBtn_settings);
 		getContentPane().setLayout(null);
 
 		jobStatusCombo = new JComboBox();
 		//****
-		jobStatusCombo.setBounds(163, 63, 89, 20);//163 //87 //80 //77
+		jobStatusCombo.setBounds(170, 100, 100, 20);//163 //87 //80 //77
 		// *****
 		//jobStatusCombo.addItem("All Jobs");
 		//****
@@ -147,8 +147,8 @@ public class newJobsMgr extends JFrame {
 
 		JLabel lblJobStatus = new JLabel("Job Status:");
 		//****
-		lblJobStatus.setBounds(86, 63, 78, 17);//86 //20 //10
-		lblJobStatus.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblJobStatus.setBounds(60, 100, 78, 17);//86 //20 //10
+		lblJobStatus.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		//
 		lblJobStatus.setLabelFor(jobStatusCombo);
 		getContentPane().add(lblJobStatus);
