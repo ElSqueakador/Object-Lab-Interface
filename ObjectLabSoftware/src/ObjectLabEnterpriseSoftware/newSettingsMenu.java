@@ -40,7 +40,7 @@ public class newSettingsMenu extends JFrame {
 		
 	public newSettingsMenu() {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setPreferredSize(new Dimension(560, 300));
+		setPreferredSize(new Dimension(995, 660));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(newSettingsMenu.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setResizable(false);
 		setFont(new Font("Segoe UI", Font.PLAIN, 14));
@@ -50,44 +50,42 @@ public class newSettingsMenu extends JFrame {
 		
 		JLabel titleLabel = new JLabel("Settings");
 		titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 24));
-		titleLabel.setBounds(235, 11, 92, 55);
+		titleLabel.setBounds(455, 11, 92, 55);
 		getContentPane().add(titleLabel);
 		
 			JMenuBar jMenuBar1 = new JMenuBar();
 			setJMenuBar(jMenuBar1);
 
-			jMenuBar1.setPreferredSize(new Dimension(200, 30));
+			jMenuBar1.setPreferredSize(new Dimension(995, 40));
 			setJMenuBar(jMenuBar1);
 
 			navBtn_jobsMgr = new JButton("Jobs Manager");
-			navBtn_jobsMgr.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-			navBtn_jobsMgr.setPreferredSize(new Dimension(100,24));
+			navBtn_jobsMgr.setPreferredSize(new Dimension(199,40));
 			jMenuBar1.add(navBtn_jobsMgr);
 
 			navBtn_build = new JButton("Enter Build");
-			navBtn_build.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
 
-			navBtn_build.setPreferredSize(new Dimension(100,24));
+			navBtn_build.setPreferredSize(new Dimension(199,40));
 
 			jMenuBar1.add(navBtn_build);
 
 			navBtn_reports = new JButton("Reports");
 			navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-			navBtn_reports.setPreferredSize(new Dimension(100,24));
+			navBtn_reports.setPreferredSize(new Dimension(199,40));
 
 			jMenuBar1.add(navBtn_reports);
 
                         navBtn_balance = new JButton("Balance");
 		        navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-                        navBtn_balance.setPreferredSize(new Dimension(100,24));
+                        navBtn_balance.setPreferredSize(new Dimension(199,40));
 
                         jMenuBar1.add(navBtn_balance);
                         
 			navBtn_settings = new JButton("Settings");
 			navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-			navBtn_settings.setPreferredSize(new Dimension(100,24));
+			navBtn_settings.setPreferredSize(new Dimension(199,40));
 
 			jMenuBar1.add(navBtn_settings);
 			getContentPane().setLayout(null);
@@ -132,8 +130,8 @@ public class newSettingsMenu extends JFrame {
 				dispose();
 			}
 		});
-		btnManageClasses.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
-		btnManageClasses.setBounds(220, 77, 121, 23);
+		btnManageClasses.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
+		btnManageClasses.setBounds(397, 100, 200, 30);
 		getContentPane().add(btnManageClasses);
 		
 		JButton btnManageDevices = new JButton("Manage Devices");
@@ -145,8 +143,8 @@ public class newSettingsMenu extends JFrame {
 				dispose();
 			}
 		});
-		btnManageDevices.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
-		btnManageDevices.setBounds(220, 111, 121, 23);
+		btnManageDevices.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
+		btnManageDevices.setBounds(397, 150, 200, 30);
 		getContentPane().add(btnManageDevices);
 		
 		JButton btnUserGuide = new JButton("User Guide");
@@ -156,14 +154,14 @@ public class newSettingsMenu extends JFrame {
 				controller.openAdminHelpPage();
 			}
 		});
-		btnUserGuide.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
-		btnUserGuide.setBounds(220, 145, 121, 23);
+		btnUserGuide.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
+		btnUserGuide.setBounds(397, 200, 200, 30);
 		getContentPane().add(btnUserGuide);
 		
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
-		btnLogout.setBounds(10, 200, 95, 23);
+		btnLogout.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
+		btnLogout.setBounds(447, 350, 100, 30);
 		getContentPane().add(btnLogout);
 		btnLogout.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
