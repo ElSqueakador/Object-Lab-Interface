@@ -100,20 +100,19 @@ public class ReportsView extends javax.swing.JFrame
         exportBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle(UtilController.getPageName(NAME_OF_PAGE));
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(750, 520));
-        setPreferredSize(new java.awt.Dimension(750, 520));
-        setSize(new java.awt.Dimension(750, 520));
+        setPreferredSize(new java.awt.Dimension(995, 660));
+        setSize(new java.awt.Dimension(995, 660));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel1.setText("Object Lab Search");
 
-        ExportMasterReportButton.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        ExportMasterReportButton.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         ExportMasterReportButton.setText("All Devices Report");
         ExportMasterReportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,10 +120,11 @@ public class ReportsView extends javax.swing.JFrame
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Reports");
+        //getContentPane().add
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(printers.toArray()));
         jComboBox1.setName("PrinterSelection"); // NOI18N
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
@@ -134,7 +134,7 @@ public class ReportsView extends javax.swing.JFrame
         });
 
         reportsTable.setAutoCreateRowSorter(true);
-        reportsTable.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        reportsTable.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         reportsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object[][]{},
             headers
@@ -142,7 +142,7 @@ public class ReportsView extends javax.swing.JFrame
     );
     jScrollPane1.setViewportView(reportsTable);
 
-    exportBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+    exportBtn.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     exportBtn.setText("Current Device Report");
     exportBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
     exportBtn.setMaximumSize(new java.awt.Dimension(141, 23));
@@ -154,10 +154,10 @@ public class ReportsView extends javax.swing.JFrame
         }
     });
 
-    jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+    jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     jLabel4.setText("Device Name:");
 
-    jMenu2.setText("Help");
+  
 
     jMenuItem1.setText("User Guide");
     jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -165,9 +165,7 @@ public class ReportsView extends javax.swing.JFrame
             jMenuItem1ActionPerformed(evt);
         }
     });
-    jMenu2.add(jMenuItem1);
-
-    jMenuBar1.add(jMenu2);
+    
 
     setJMenuBar(jMenuBar1);
 
@@ -266,37 +264,38 @@ public class ReportsView extends javax.swing.JFrame
 
     private void initNavBar()
     {
-
-    	jMenuBar1.setPreferredSize(new Dimension(275, 30));
+        int buttonwidth=199;
+        int buttonheight=30;
+    	jMenuBar1.setPreferredSize(new Dimension(300, 40));
         setJMenuBar(jMenuBar1);
         
         navBtn_jobsMgr = new JButton("Jobs Manager");
         navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-        navBtn_jobsMgr.setPreferredSize(new Dimension(100,24));
+        navBtn_jobsMgr.setPreferredSize(new Dimension(buttonwidth,buttonheight));
         
-        jMenuBar1.add(Box.createRigidArea(new Dimension(50,0)));
+        jMenuBar1.add(Box.createRigidArea(new Dimension(0,0)));
         jMenuBar1.add(navBtn_jobsMgr);
         
         navBtn_build = new JButton("Enter Build");
         navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
         
-        navBtn_build.setPreferredSize(new Dimension(100,24));
+        navBtn_build.setPreferredSize(new Dimension(buttonwidth,buttonheight));
         jMenuBar1.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
         navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-        navBtn_reports.setPreferredSize(new Dimension(100,24));
+        navBtn_reports.setPreferredSize(new Dimension(buttonwidth,buttonheight));
         jMenuBar1.add(navBtn_reports);
         
         navBtn_balance = new JButton("Balance");
 	navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-	navBtn_balance.setPreferredSize(new Dimension(100,24));
+	navBtn_balance.setPreferredSize(new Dimension(buttonwidth,buttonheight));
 
 	jMenuBar1.add(navBtn_balance);
         
         navBtn_settings = new JButton("Settings");
         navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-        navBtn_settings.setPreferredSize(new Dimension(100,24));
+        navBtn_settings.setPreferredSize(new Dimension(buttonwidth,buttonheight));
         jMenuBar1.add(navBtn_settings);
 
         
@@ -408,7 +407,7 @@ public class ReportsView extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu2;
+    
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
