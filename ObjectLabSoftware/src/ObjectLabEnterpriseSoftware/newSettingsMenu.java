@@ -33,6 +33,7 @@ public class newSettingsMenu extends JFrame {
 		private JButton navBtn_reports;
                 private JButton navBtn_balance;
 		private JButton navBtn_settings;
+                private JButton navBtn_logout;
 
 		// Return to main view after logout
 		private static MainView home = new MainView();
@@ -61,33 +62,34 @@ public class newSettingsMenu extends JFrame {
 
 			navBtn_jobsMgr = new JButton("Jobs Manager");
 			navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-			navBtn_jobsMgr.setPreferredSize(new Dimension(199,40));
+			navBtn_jobsMgr.setPreferredSize(new Dimension(166, 40));
 			jMenuBar1.add(navBtn_jobsMgr);
 
 			navBtn_build = new JButton("Enter Build");
 			navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
-
-			navBtn_build.setPreferredSize(new Dimension(199,40));
-
+			navBtn_build.setPreferredSize(new Dimension(165, 40));
 			jMenuBar1.add(navBtn_build);
 
 			navBtn_reports = new JButton("Reports");
 			navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-			navBtn_reports.setPreferredSize(new Dimension(199,40));
-
+			navBtn_reports.setPreferredSize(new Dimension(166, 40));
 			jMenuBar1.add(navBtn_reports);
 
                         navBtn_balance = new JButton("Balance");
 		        navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-                        navBtn_balance.setPreferredSize(new Dimension(199,40));
-
+                        navBtn_balance.setPreferredSize(new Dimension(165, 40));
                         jMenuBar1.add(navBtn_balance);
                         
 			navBtn_settings = new JButton("Settings");
 			navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-			navBtn_settings.setPreferredSize(new Dimension(199,40));
-
+			navBtn_settings.setPreferredSize(new Dimension(166, 40));
 			jMenuBar1.add(navBtn_settings);
+                        
+                        navBtn_logout = new JButton("Logout");
+			navBtn_logout.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/back_arrow_button.png")));
+			navBtn_logout.setPreferredSize(new Dimension(165, 40));
+			jMenuBar1.add(navBtn_logout);
+                        
 			getContentPane().setLayout(null);
 		
 			navBtn_jobsMgr.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +119,12 @@ public class newSettingsMenu extends JFrame {
 			navBtn_settings.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
 					navBtn_settingsActionPerformed(evt);
+				}
+			}); 
+                        
+                        navBtn_logout.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent evt) {
+					navBtn_logoutActionPerformed(evt);
 				}
 			}); 
 
@@ -159,7 +167,7 @@ public class newSettingsMenu extends JFrame {
 		getContentPane().add(btnUserGuide);
 		
 		
-		JButton btnLogout = new JButton("Logout");
+		/*JButton btnLogout = new JButton("Logout");
 		btnLogout.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
 		btnLogout.setBounds(447, 350, 100, 30);
 		getContentPane().add(btnLogout);
@@ -168,6 +176,7 @@ public class newSettingsMenu extends JFrame {
 				logoutButtonActionPerformed(evt);
 			}
         	});
+                */
         	
 		pack();
 		setLocationRelativeTo(null);
@@ -225,12 +234,18 @@ public class newSettingsMenu extends JFrame {
 
 	}
 	
+        private void navBtn_logoutActionPerformed(java.awt.event.ActionEvent evt)
+	{
+		MainView mv = new MainView();
+		mv.setVisible(true);
+		dispose();
+	}
 	
-	private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_logoutButtonActionPerformed
+	/*private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_logoutButtonActionPerformed
         //GEN-HEADEREND:event_logoutButtonActionPerformed
     	dispose();
         home.setVisible(true);
 	 }//GEN-LAST:event_logoutButtonActionPerformed
-	 
+	 */
 	
 }

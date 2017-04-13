@@ -231,7 +231,7 @@ public class BuildView extends javax.swing.JFrame
         buildsForCurrentDeviceTable = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
         submissionsToBuildList = new javax.swing.JTable();
-        logoutButton = new javax.swing.JButton();
+        //Button = new javax.swing.JButton();
         swapButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
@@ -413,7 +413,7 @@ public class BuildView extends javax.swing.JFrame
                     submissionsToBuildList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
                     getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 430, 210));
-
+                    /*
                     logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 15));
                     logoutButton.setText("Logout");
                     logoutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -422,7 +422,7 @@ public class BuildView extends javax.swing.JFrame
                         }
                     });
                     getContentPane().add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 100, 30));
-
+                    */
                     swapButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ObjectLabEnterpriseSoftware/images/swap3.png"))); // NOI18N
                     swapButton.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -447,39 +447,42 @@ public class BuildView extends javax.swing.JFrame
 
     private void initNavBar()
     {
-        int width =199;
-        int height=40;
-    	jMenuBar2.setPreferredSize(new Dimension(300, 40));
+    	jMenuBar2.setPreferredSize(new Dimension(995, 40));
         setJMenuBar(jMenuBar2);
         
         navBtn_jobsMgr = new JButton("Jobs Manager");
         navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-        navBtn_jobsMgr.setPreferredSize(new Dimension(width,height));
+        navBtn_jobsMgr.setPreferredSize(new Dimension(166, 40));
         
         jMenuBar2.add(Box.createRigidArea(new Dimension(0,0)));
         jMenuBar2.add(navBtn_jobsMgr);
         
         navBtn_build = new JButton("Enter Build");
         navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
-        navBtn_build.setPreferredSize(new Dimension(width,height));
+        navBtn_build.setPreferredSize(new Dimension(165, 40));
         jMenuBar2.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
         navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-        navBtn_reports.setPreferredSize(new Dimension(width,height));
+        navBtn_reports.setPreferredSize(new Dimension(166, 40));
         jMenuBar2.add(navBtn_reports);
         
         navBtn_balance = new JButton("Balance");
         navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-	navBtn_balance.setPreferredSize(new Dimension(width,height));
+	navBtn_balance.setPreferredSize(new Dimension(165, 40));
 
         jMenuBar2.add(navBtn_balance);
 
         
         navBtn_settings = new JButton("Settings");
         navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-        navBtn_settings.setPreferredSize(new Dimension(width,height));
+        navBtn_settings.setPreferredSize(new Dimension(166, 40));
         jMenuBar2.add(navBtn_settings);
+        
+        navBtn_logout = new JButton("Logout");
+        navBtn_logout.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/back_arrow_button.png")));
+        navBtn_logout.setPreferredSize(new Dimension(165, 40));
+        jMenuBar2.add(navBtn_logout);
         
         navBtn_jobsMgr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -509,6 +512,12 @@ public class BuildView extends javax.swing.JFrame
         navBtn_settings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	navBtn_settingsActionPerformed(evt);
+            }
+        }); 
+        
+        navBtn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	navBtn_logoutActionPerformed(evt);
             }
         }); 
 
@@ -554,6 +563,11 @@ public class BuildView extends javax.swing.JFrame
     	dispose();
     	
     }
+    private void navBtn_logoutActionPerformed(java.awt.event.ActionEvent evt) {
+        MainView mv = new MainView();
+        mv.setVisible(true);
+        dispose();
+    }
     
     
     
@@ -575,12 +589,12 @@ public class BuildView extends javax.swing.JFrame
         }
     }//GEN-LAST:event_Submit_ButtonActionPerformed
 
-    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+    /*private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
 //GEN-HEADEREND:event_logoutButtonActionPerformed
     		dispose();
             home.setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
-    
+    */
     private void filepathToSelectedDeviceBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filepathToSelectedDeviceBuildActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_filepathToSelectedDeviceBuildActionPerformed
@@ -969,6 +983,7 @@ public class BuildView extends javax.swing.JFrame
     private JButton navBtn_build;
     private JButton navBtn_reports;
     private JButton navBtn_settings;
+    private JButton navBtn_logout;
     //Rajewski
     //refactored submissionsToBuildList to submissionsToBuildList
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -995,7 +1010,7 @@ public class BuildView extends javax.swing.JFrame
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JButton logoutButton;
+    //private javax.swing.JButton logoutButton;
     private javax.swing.JTable studentSubmissionApprovedTableList;
     private javax.swing.JTable submissionsToBuildList;
     private javax.swing.JButton swapButton;

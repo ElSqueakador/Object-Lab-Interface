@@ -264,14 +264,12 @@ public class ReportsView extends javax.swing.JFrame
 
     private void initNavBar()
     {
-        int buttonwidth=199;
-        int buttonheight=30;
-    	jMenuBar1.setPreferredSize(new Dimension(300, 40));
+    	jMenuBar1.setPreferredSize(new Dimension(995, 40));
         setJMenuBar(jMenuBar1);
         
         navBtn_jobsMgr = new JButton("Jobs Manager");
         navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-        navBtn_jobsMgr.setPreferredSize(new Dimension(buttonwidth,buttonheight));
+        navBtn_jobsMgr.setPreferredSize(new Dimension(166, 40));
         
         jMenuBar1.add(Box.createRigidArea(new Dimension(0,0)));
         jMenuBar1.add(navBtn_jobsMgr);
@@ -279,25 +277,29 @@ public class ReportsView extends javax.swing.JFrame
         navBtn_build = new JButton("Enter Build");
         navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
         
-        navBtn_build.setPreferredSize(new Dimension(buttonwidth,buttonheight));
+        navBtn_build.setPreferredSize(new Dimension(165, 40));
         jMenuBar1.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
         navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-        navBtn_reports.setPreferredSize(new Dimension(buttonwidth,buttonheight));
+        navBtn_reports.setPreferredSize(new Dimension(166, 40));
         jMenuBar1.add(navBtn_reports);
         
         navBtn_balance = new JButton("Balance");
 	navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-	navBtn_balance.setPreferredSize(new Dimension(buttonwidth,buttonheight));
+	navBtn_balance.setPreferredSize(new Dimension(165, 40));
 
 	jMenuBar1.add(navBtn_balance);
         
         navBtn_settings = new JButton("Settings");
         navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-        navBtn_settings.setPreferredSize(new Dimension(buttonwidth,buttonheight));
+        navBtn_settings.setPreferredSize(new Dimension(166, 40));
         jMenuBar1.add(navBtn_settings);
 
+        navBtn_logout = new JButton("Logout");
+        navBtn_logout.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/back_arrow_button.png")));
+        navBtn_logout.setPreferredSize(new Dimension(165, 40));
+        jMenuBar1.add(navBtn_logout);
         
         navBtn_jobsMgr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -329,6 +331,11 @@ public class ReportsView extends javax.swing.JFrame
             }
         }); 
 
+        navBtn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	navBtn_logoutActionPerformed(evt);
+            }
+        }); 
     }
     
     
@@ -371,13 +378,18 @@ public class ReportsView extends javax.swing.JFrame
     	dispose();
     	
     }
+    private void navBtn_logoutActionPerformed(java.awt.event.ActionEvent evt) {
+        MainView mv = new MainView();
+	mv.setVisible(true);
+        dispose();
+    }
     
-    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+    /*private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
     	//GEN-HEADEREND:event_logoutButtonActionPerformed
     	    		dispose();
     	            home.setVisible(true);
     	    }//GEN-LAST:event_logoutButtonActionPerformed
-    	    
+    	  */  
     
     
     /////// Nav Bar ~Alex /////
@@ -398,6 +410,7 @@ public class ReportsView extends javax.swing.JFrame
 	private JButton navBtn_reports;
         private JButton navBtn_balance;
 	private JButton navBtn_settings;
+        private JButton navBtn_logout;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

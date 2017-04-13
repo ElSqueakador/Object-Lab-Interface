@@ -42,6 +42,7 @@ public class BalanceView extends javax.swing.JFrame {
     private static MainView home = new MainView();
     public BalanceView() {
         this.controller = new UtilController();
+        setPreferredSize(new Dimension(995,660));
         getContentPane().setBackground(Color.WHITE);
         initComponents();
         initNavBar();
@@ -119,12 +120,13 @@ protected void updateBalanceWindow(String enteredValue) {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Balance ");
 
-        jButton1.setText("Logout");
+        /*jButton1.setText("Logout");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
+        */
 
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -385,37 +387,41 @@ protected void updateBalanceWindow(String enteredValue) {
     private void initNavBar()
     {
 
-    	jMenuBar1.setPreferredSize(new Dimension(275, 30));
+    	jMenuBar1.setPreferredSize(new Dimension(995, 40));
         setJMenuBar(jMenuBar1);
         
         navBtn_jobsMgr = new JButton("Jobs Manager");
         navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-        navBtn_jobsMgr.setPreferredSize(new Dimension(100,24));
+        navBtn_jobsMgr.setPreferredSize(new Dimension(166, 40));
         
-        jMenuBar1.add(Box.createRigidArea(new Dimension(42,12)));
+        jMenuBar1.add(Box.createRigidArea(new Dimension(0, 0)));
         jMenuBar1.add(navBtn_jobsMgr);
         
         navBtn_build = new JButton("Enter Build");
         navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
-        navBtn_build.setPreferredSize(new Dimension(100,24));
+        navBtn_build.setPreferredSize(new Dimension(165, 40));
         jMenuBar1.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
         navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-        navBtn_reports.setPreferredSize(new Dimension(100,24));
+        navBtn_reports.setPreferredSize(new Dimension(166, 40));
         jMenuBar1.add(navBtn_reports);
         
         navBtn_balance = new JButton("Balance");
         navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-	navBtn_balance.setPreferredSize(new Dimension(100,24));
-
+	navBtn_balance.setPreferredSize(new Dimension(165, 40));
         jMenuBar1.add(navBtn_balance);
 
         
         navBtn_settings = new JButton("Settings");
         navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-        navBtn_settings.setPreferredSize(new Dimension(100,24));
+        navBtn_settings.setPreferredSize(new Dimension(166, 40));
         jMenuBar1.add(navBtn_settings);
+        
+        navBtn_logout = new JButton("Logout");
+        navBtn_logout.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/back_arrow_button.png")));
+        navBtn_logout.setPreferredSize(new Dimension(165, 40));
+        jMenuBar1.add(navBtn_logout);
         
         navBtn_jobsMgr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -448,6 +454,11 @@ protected void updateBalanceWindow(String enteredValue) {
             }
         }); 
 
+        navBtn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	navBtn_logoutActionPerformed(evt);
+            }
+        }); 
     }
     
     
@@ -490,10 +501,17 @@ protected void updateBalanceWindow(String enteredValue) {
     	dispose();
     	
     }
+    
+    private void navBtn_logoutActionPerformed(java.awt.event.ActionEvent evt) {
+    	MainView mv = new MainView();
+        mv.setVisible(true);
+        dispose();
+    }
 
     private JButton navBtn_jobsMgr;
     private JButton navBtn_build;
     private JButton navBtn_reports;
     private JButton navBtn_settings;
     private JButton navBtn_balance;
+    private JButton navBtn_logout;
 }
