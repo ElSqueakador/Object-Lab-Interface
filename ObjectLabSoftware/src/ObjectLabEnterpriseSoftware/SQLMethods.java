@@ -1,5 +1,11 @@
 package ObjectLabEnterpriseSoftware;
+
 /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor. 
+ */
+/**
  * FYI I used select * so far in most cases since I don't know what you want it
  * limited to. Some refinement will be needed.
  *
@@ -291,6 +297,7 @@ public class SQLMethods
         {
             e.printStackTrace();
         }
+
         return res;
     }
     */
@@ -2133,13 +2140,17 @@ public class SQLMethods
 	}
 
     public boolean adminExists(String idString) {
+        res = null;
         try{
-            stmt = this.conn.prepareStatement("SELECT admin_name FROM admin_list WHERE admin_id = ?;");
+            stmt = this.conn.prepareStatement("SELECT admin_id FROM admin_list WHERE admin_id = ?;");
             stmt.setString(1, idString);
             res = stmt.executeQuery();
-            if(res != null){
+            while(res.next()){
+                String adminID = res.getString("admin_id");
+                if(idString.equals(adminID))
                 return true;
             }
+                
         }
         catch(Exception e){
             e.printStackTrace();
