@@ -42,7 +42,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Toolkit;
 import java.util.concurrent.TimeUnit;
-
+import java.awt.Point;
 
 /*
  *  Jobs Manager V2
@@ -59,6 +59,8 @@ public class newJobsMgr extends JFrame {
 	private BuildView buildView;
 	private newJobsMgr jobsMgr;
 	private ReportsView reportsView;	
+        private AddAdminView addAdminView;
+        private LaserView laserView;
         private BalanceView balanceView;
 	private newSettingsMenu adminSettingsView;
         private String idString;
@@ -69,18 +71,19 @@ public class newJobsMgr extends JFrame {
                 idString = adminID;
 		setIconImage(Toolkit.getDefaultToolkit().getImage(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setTitle("Administration Panel");
-		setPreferredSize(new Dimension(635,605));
+		setPreferredSize(new Dimension(995,660));
 		setAlwaysOnTop(false);
 		getContentPane().setBackground(Color.WHITE);
 		initWindow();
 		setLocationRelativeTo(null);
                 setResizable(false);
+                setVisible(true);
 	}
         public newJobsMgr(){
             idString = "";
 		setIconImage(Toolkit.getDefaultToolkit().getImage(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setTitle("Administration Panel");
-		setPreferredSize(new Dimension(635,605));
+		setPreferredSize(new Dimension(995,660));
 		setAlwaysOnTop(false);
 		getContentPane().setBackground(Color.WHITE);
 		initWindow();
@@ -91,49 +94,57 @@ public class newJobsMgr extends JFrame {
 	
 	private void initWindow()
 	{
-		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		JMenuBar jMenuBar1 = new JMenuBar();
 		setJMenuBar(jMenuBar1);
 
-		jMenuBar1.setPreferredSize(new Dimension(200, 30));
+		jMenuBar1.setPreferredSize(new Dimension(995, 40));
 		setJMenuBar(jMenuBar1);
 
 		navBtn_jobsMgr = new JButton("Jobs Manager");
 		navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-		navBtn_jobsMgr.setPreferredSize(new Dimension(100,24));
+		navBtn_jobsMgr.setPreferredSize(new Dimension(166,40));
 
 
-		jMenuBar1.add(Box.createRigidArea(new Dimension(45, 12)));
+		jMenuBar1.add(Box.createRigidArea(new Dimension(0, 0)));
 		jMenuBar1.add(navBtn_jobsMgr);
 
 		navBtn_build = new JButton("Enter Build");
 		navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
 
-		navBtn_build.setPreferredSize(new Dimension(100,24));
+		navBtn_build.setPreferredSize(new Dimension(166,40));
 
 		jMenuBar1.add(navBtn_build);
 
 		navBtn_reports = new JButton("Reports");
 		navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-		navBtn_reports.setPreferredSize(new Dimension(100,24));
+		navBtn_reports.setPreferredSize(new Dimension(166,40));
 
 		jMenuBar1.add(navBtn_reports);
                 
+ 		navBtn_laser = new JButton("Laser Cutter");
+		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
+		navBtn_laser.setPreferredSize(new Dimension(166,40));
+
+		jMenuBar1.add(navBtn_laser);                
+                                
+                
                 navBtn_balance = new JButton("Balance");
 		navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-		navBtn_balance.setPreferredSize(new Dimension(100,24));
+		navBtn_balance.setPreferredSize(new Dimension(166,40));
 
 		jMenuBar1.add(navBtn_balance);
 		navBtn_settings = new JButton("Settings");
 		navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-		navBtn_settings.setPreferredSize(new Dimension(100,24));
+		navBtn_settings.setPreferredSize(new Dimension(166,40));
 
 		jMenuBar1.add(navBtn_settings);
-		getContentPane().setLayout(null);
 
+                getContentPane().setLayout(null);
+                
 		jobStatusCombo = new JComboBox();
 		//****
-		jobStatusCombo.setBounds(163, 63, 89, 20);//163 //87 //80 //77
+		jobStatusCombo.setBounds(275, 80, 150, 20);//163 //87 //80 //77
 		// *****
 		//jobStatusCombo.addItem("All Jobs");
 		//****
@@ -146,8 +157,8 @@ public class newJobsMgr extends JFrame {
 
 		JLabel lblJobStatus = new JLabel("Job Status:");
 		//****
-		lblJobStatus.setBounds(86, 63, 78, 17);//86 //20 //10
-		lblJobStatus.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblJobStatus.setBounds(150, 80, 78, 17);//86 //20 //10
+		lblJobStatus.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		//
 		lblJobStatus.setLabelFor(jobStatusCombo);
 		getContentPane().add(lblJobStatus);
@@ -191,7 +202,7 @@ public class newJobsMgr extends JFrame {
 
 		final JComboBox deviceCombo = new JComboBox();
 		//****
-		deviceCombo.setBounds(342, 63, 125, 20);//342 //266 //259 //251
+		deviceCombo.setBounds(700, 80, 150, 20);//342 //266 //259 //251
 		//deviceCombo.addItem(" "); added a printer called " " so we no longer need ths.
 		/// Adds tracked devices to comboBox dropdown window
 		SQLMethods dbconn = new SQLMethods();
@@ -253,17 +264,18 @@ public class newJobsMgr extends JFrame {
 
 		JLabel deviceLabel = new JLabel("Device:");
 		//****
-		deviceLabel.setBounds(283, 64, 60, 14);//283 //207
-		deviceLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		deviceLabel.setBounds(600, 80, 78, 20);//283 //207
+		deviceLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		deviceLabel.setLabelFor(deviceCombo);
 		getContentPane().add(deviceLabel);
 
 		JScrollPane jobListingsPane = new JScrollPane();
-		jobListingsPane.setBounds(10, 94, 598, 166);
+		jobListingsPane.setBounds(10, 120, 970, 150);
 		getContentPane().add(jobListingsPane);
 		
 
 		jobsTable = new JTable();
+               
 		jobsModel = new DefaultTableModel() {
 			Class[] columnTypes = new Class[] {
 					Boolean.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
@@ -277,19 +289,18 @@ public class newJobsMgr extends JFrame {
                                     return true;
                                 return false;
                         }
-                        
-                        
+                       
                        
 		};
-
-		
-	
+                
 		//jobsModel.setColumnCount(6);
 		//jobsModel.setColumnIdentifiers(new String[] {
 		//		"Selected?", "File Name", "First Name", "Last Name", "Date", "Class", "Section"
 		//});
 
 		jobsTable.setModel(jobsModel);
+                
+                
 		jobListingsPane.setViewportView(jobsTable);
                 
                 jobsTable.addMouseListener(new MouseAdapter() {
@@ -307,12 +318,13 @@ public class newJobsMgr extends JFrame {
 
                 
 		JLabel titleLabel = new JLabel("Jobs Manager");
-		titleLabel.setBounds(226, 11, 159, 41);
+		titleLabel.setBounds(420, 11, 159, 41);
 		titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 24));
 		getContentPane().add(titleLabel);
 
-		JButton logoutButton = new JButton("Logout");
-		logoutButton.setBounds(10, 459, 95, 23);
+		/*JButton logoutButton = new JButton("Logout");
+		logoutButton.setBounds(448, 500, 100, 30);
+                logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 16));
 		logoutButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -322,9 +334,9 @@ public class newJobsMgr extends JFrame {
 		logoutButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		logoutButton.setBackground(Color.LIGHT_GRAY);
 		getContentPane().add(logoutButton);
-                
+                */
 		approveButton = new JButton("Approve");
-		approveButton.setBounds(331, 459, 89, 23);
+		approveButton.setBounds(343, 459, 100, 30);
 		approveButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -338,7 +350,7 @@ public class newJobsMgr extends JFrame {
 
 
 		rejectButton = new JButton("Reject");
-		rejectButton.setBounds(426, 459, 89, 23);
+		rejectButton.setBounds(448, 459, 100, 30);
 		rejectButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -351,7 +363,7 @@ public class newJobsMgr extends JFrame {
 		rejectButton.setVisible(false);
 
 		reviewButton = new JButton("Review");
-		reviewButton.setBounds(519, 459, 89, 23);
+		reviewButton.setBounds(553, 459, 100, 30);
 		reviewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent evt) {
@@ -365,41 +377,41 @@ public class newJobsMgr extends JFrame {
                 
 
 		lblFillInData = new JLabel("Please enter device statistic tracking data if approving:");
-		lblFillInData.setBounds(10, 271, 375, 23);
+		lblFillInData.setBounds(10, 100, 970, 220);
 		lblFillInData.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		lblFillInData.setVisible(false);
 		getContentPane().add(lblFillInData);
 
 		jobStatPanel = new JPanel();
-		jobStatPanel.setBounds(10, 305, 598, 143);
+		jobStatPanel.setBounds(10, 290, 970, 150);
 		jobStatPanel.setVisible(false); // stat panel doesn't show up until device is selected.
 		getContentPane().add(jobStatPanel);
 		jobStatPanel.setLayout(null);
 
 		deviceNameLabel = new JLabel("filler");
-		deviceNameLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		deviceNameLabel.setBounds(227, 11, 139, 39);
+		deviceNameLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		deviceNameLabel.setBounds(50, 10, 200, 40);
 		jobStatPanel.add(deviceNameLabel);
 
 		trackingStatLabel1 = new JLabel("New label");
-		trackingStatLabel1.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		trackingStatLabel1.setBounds(0, 53, 141, 20);
+		trackingStatLabel1.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		trackingStatLabel1.setBounds(20, 60, 200, 20);
 		jobStatPanel.add(trackingStatLabel1);
 
 		trackingStatLabel2 = new JLabel("New label");
 		trackingStatLabel2.setLabelFor(trackingStatLabel2);
-		trackingStatLabel2.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		trackingStatLabel2.setBounds(0, 90, 141, 20);
+		trackingStatLabel2.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		trackingStatLabel2.setBounds(20, 90, 200, 20);
 		jobStatPanel.add(trackingStatLabel2);
 
 		trackingStatInput1 = new JTextField();
 		trackingStatLabel1.setLabelFor(trackingStatInput1);
-		trackingStatInput1.setBounds(161, 55, 175, 20);
+		trackingStatInput1.setBounds(175, 60, 200, 20);
 		jobStatPanel.add(trackingStatInput1);
 		trackingStatInput1.setColumns(10);
 
 		trackingStatInput2 = new JTextField();
-		trackingStatInput2.setBounds(160, 92, 176, 20);
+		trackingStatInput2.setBounds(175, 90, 200, 20);
 		jobStatPanel.add(trackingStatInput2);
 		trackingStatInput2.setColumns(10);
 
@@ -422,6 +434,13 @@ public class newJobsMgr extends JFrame {
 			}
 		});
                 
+                navBtn_laser.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				navBtn_laserActionPerformed(evt);
+			}
+		});
+                
+                
                 navBtn_balance.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				navBtn_balanceActionPerformed(evt);
@@ -433,6 +452,7 @@ public class newJobsMgr extends JFrame {
 				navBtn_settingsActionPerformed(evt);
 			}
 		}); 
+                
 
 		pack();
 	}
@@ -810,7 +830,7 @@ public class newJobsMgr extends JFrame {
 
 	private void navBtn_buildActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		buildView = new BuildView();
+		buildView = new BuildView(idString);
 		buildView.startMakeBuildProcess();
 		dispose();
 
@@ -818,15 +838,29 @@ public class newJobsMgr extends JFrame {
 
 	private void navBtn_reportsActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		reportsView = new ReportsView();
+		reportsView = new ReportsView(idString);
 		reportsView.ReportsPage();
 		dispose();
 
 	}
         
+        private void navBtn_laserActionPerformed(java.awt.event.ActionEvent evt)
+	{
+                laserView = new LaserView(idString);
+                laserView.setVisible(true);
+                dispose();
+	}
+        
+        private void navBtn_adminActionPerformed(java.awt.event.ActionEvent evt)
+	{
+                addAdminView = new AddAdminView();
+                addAdminView.setVisible(true);
+                dispose();
+	}
+        
         private void navBtn_balanceActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		balanceView= new BalanceView();
+		balanceView= new BalanceView(idString);
 		balanceView.setVisible(true);
 		dispose();
 
@@ -834,13 +868,13 @@ public class newJobsMgr extends JFrame {
 
 	private void navBtn_settingsActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		adminSettingsView = new newSettingsMenu();
+		adminSettingsView = new newSettingsMenu(idString);
 		adminSettingsView.setVisible(true);
 		dispose();
 
 	}
 
-	private void logout()
+	private void navBtn_logoutActionPerformed(java.awt.event.ActionEvent evt)
 	{
 		MainView mv = new MainView();
 		mv.setVisible(true);
@@ -854,14 +888,17 @@ public class newJobsMgr extends JFrame {
 	private JButton navBtn_jobsMgr;
 	private JButton navBtn_build;
 	private JButton navBtn_reports;
+        private JButton navBtn_laser;
+        private JButton navBtn_admin;
         private JButton navBtn_balance;
 	private JButton navBtn_settings;
+        private JButton navBtn_logout;
 
 	///
 	// etc vars
 	// 
-	private  JPanel jobStatPanel;
-	private  JPanel jobListingsPane;
+	private JPanel jobStatPanel;
+	private JPanel jobListingsPane;
 	private JTextField trackingStatInput1;
 	private JTextField trackingStatInput2;
 	private JLabel trackingStatLabel1;

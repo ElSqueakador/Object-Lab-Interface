@@ -852,7 +852,7 @@ public class SQLMethods
     public void insertIntoLaserJob(String userID, String userName, String monitorName, String materialType, double thickness, int hours, int mins, int secs){
         try{
             //System.out.println("Try block");
-            stmt = conn.prepareStatement("INSERT INTO laser_job (user_id, user_name, monitor_name, material_type, material_thickness, total_time) values (?,?,?,?,?,?,?,?)");
+            stmt = conn.prepareStatement("INSERT INTO laser_job (user_id, user_name, monitor_name, material_type, material_thickness, hours, minutes, seconds) values (?,?,?,?,?,?,?,?)");
             stmt.setString(1, userID);
             stmt.setString(2, userName);
             stmt.setString(3, monitorName);
@@ -1501,7 +1501,18 @@ public class SQLMethods
     }
 
 	// END OF DELETE METHODS
-    // _____________________________________________________________________________________________________________________
+    // _______________
+    public ResultSet getLaserReport(){
+        res = null;
+        try{
+            stmt = this.conn.prepareStatement("SELECT * FROM laser_job");
+            res = stmt.executeQuery();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return res;
+    }
     public ResultSet getReport(String printer_name)
     {
     	res = null;
@@ -2127,4 +2138,35 @@ public class SQLMethods
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+    public boolean adminExists(String idString) {
+        res = null;
+        try{
+            stmt = this.conn.prepareStatement("SELECT admin_id FROM admin_list WHERE admin_id = ?;");
+            stmt.setString(1, idString);
+            res = stmt.executeQuery();
+            while(res.next()){
+                String adminID = res.getString("admin_id");
+                if(idString.equals(adminID))
+                return true;
+            }
+                
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean addAdmin(String idString) {
+        try{
+           stmt = this.conn.prepareStatement("INSERT INTO admin_list (admin_id) VALUES (?) ");
+           stmt.setString(1, idString);
+           stmt.executeUpdate();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
