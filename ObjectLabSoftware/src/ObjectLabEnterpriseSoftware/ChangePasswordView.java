@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class ChangePasswordView extends javax.swing.JFrame {
 
 	
-    AdminSettingsView settings = new AdminSettingsView();
+    AdminSettingsView settings = new AdminSettingsView("");
     public void passwordChangeStart() {
         initComponents();
         passwordError.setVisible(false);

@@ -33,6 +33,7 @@ import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 
 public class ClassMgr extends JFrame {
+    private String id;
 	public static final String [] arrayOfTowsonDepartments = {"AFST","AHLT","AMST","ANTH",
 			"ARAB","ARED","ART","ARTH","ASST","ASTR","BCLA","BIOL","BUSX","CDCE","CHEM","CHNS",
 			"CIS","CLST","COMM","COSC","CRMJ","DANC","DFST","DVMT","DVRD","DVWR","EBTM","ECED",
@@ -47,7 +48,8 @@ public class ClassMgr extends JFrame {
 	
 	
 
-	public ClassMgr() {
+	public ClassMgr(String userID) {
+            id = userID;
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ClassMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setPreferredSize(new Dimension(550, 370));
 		setResizable(false);
@@ -260,7 +262,7 @@ public class ClassMgr extends JFrame {
 		backButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				newSettingsMenu ns = new newSettingsMenu();
+				newSettingsMenu ns = new newSettingsMenu(id);
 				ns.setVisible(true);
 				dispose();
 			}

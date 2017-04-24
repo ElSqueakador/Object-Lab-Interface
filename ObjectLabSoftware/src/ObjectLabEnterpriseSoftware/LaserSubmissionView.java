@@ -190,8 +190,7 @@ public class LaserSubmissionView extends javax.swing.JFrame {
         try{
             System.out.println("Start try lasersub");
             thick = Double.parseDouble(thickness.getText());  
-            timeView = new LaserTimeView();
-            timeView.LaserTimeView(id, name, monitorName, materialType, thick, 0,0,0);
+            timeView = new LaserTimeView(id, materialType, thick, 0,0,0);
             //setVisible(false);
             dispose();
         }

@@ -22,10 +22,8 @@ public class LaserTimeView extends javax.swing.JFrame {
     /**
      * Creates new form LaserTimeView
      */
-    public void LaserTimeView(String userID, String userName, String monitorName, String materialType, double thickness, int totHours, int totMins, int totSecs) {
-        name = userName;
+    public LaserTimeView(String userID, String materialType, double thickness, int totHours, int totMins, int totSecs) {
         id = userID;
-        monName = monitorName;
         matType = materialType;
         thick = thickness;
         hour = totHours;
@@ -46,7 +44,7 @@ public class LaserTimeView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         hours = new javax.swing.JTextField();
@@ -193,8 +191,7 @@ public class LaserTimeView extends javax.swing.JFrame {
         catch(NumberFormatException E){
             
         }
-        newTimeView = new LaserTimeView();
-        newTimeView.LaserTimeView(id, name, monName, matType, thick, hour, min, sec);
+        newTimeView = new LaserTimeView(id, matType, thick, hour, min, sec);
         dispose();
     }//GEN-LAST:event_anotherActionPerformed
 
@@ -221,8 +218,6 @@ public class LaserTimeView extends javax.swing.JFrame {
         SQLMethods dbconn = new SQLMethods();
         dbconn.insertIntoLaserJob(id, name, monName, matType, thick, hour, min, sec);
         dbconn.closeDBConnection();
-        newStuView = new newStudentView();
-        newStuView.newStudentView(id, name);
         dispose();
     }//GEN-LAST:event_finishActionPerformed
 

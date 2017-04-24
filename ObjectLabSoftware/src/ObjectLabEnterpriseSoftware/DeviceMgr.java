@@ -56,6 +56,7 @@ public class DeviceMgr extends JFrame {
 	ListModel removeTable;
     private int count = 0;
     private boolean trackingSelected = true;
+    private String id;
 
 
 	private DefaultListModel allClassListModel;
@@ -64,7 +65,8 @@ public class DeviceMgr extends JFrame {
 	private DefaultListModel currentDeviceListModel = new DefaultListModel();
     newSettingsMenu settings;
 	private static FileManager inst = null;
-	public DeviceMgr() {
+	public DeviceMgr(String userID) {
+                id = userID;
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(DeviceMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setPreferredSize(new Dimension(550, 370));
@@ -81,7 +83,7 @@ public class DeviceMgr extends JFrame {
 	                    @Override
 	                    public void windowClosing(WindowEvent we)
 	                    {
-	                    	settings = new newSettingsMenu();
+	                    	settings = new newSettingsMenu(id);
 	                    	settings.setVisible(true);
 	                    	dispose();
 	                    }
@@ -254,7 +256,7 @@ public class DeviceMgr extends JFrame {
 		backButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				newSettingsMenu ns = new newSettingsMenu();
+				newSettingsMenu ns = new newSettingsMenu(id);
 				ns.setVisible(true);
 				dispose();
 			}

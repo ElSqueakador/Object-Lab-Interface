@@ -16,7 +16,7 @@ import java.util.Scanner.*;
 public class NewAdmin extends javax.swing.JFrame {
 
    private static final String NAME_OF_PAGE = "Account Creation";
-   private static AdminSettingsView home = new AdminSettingsView();
+   private static AdminSettingsView home = new AdminSettingsView("");
    private String UserID;
    
    public void NewAdmin(String UserID){

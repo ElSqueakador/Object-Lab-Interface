@@ -23,7 +23,9 @@ public class BalanceView extends javax.swing.JFrame {
     
     private BuildView buildView;
     private newJobsMgr jobsMgr;
-    private ReportsView reportsView;	
+    private ReportsView reportsView;
+    private AddAdminView addAdminView;
+    private LaserView laserView;
     private BalanceView balanceView;
     private newSettingsMenu adminSettingsView;
     private MaterialTransactionHistoryView materialTransView;
@@ -32,7 +34,7 @@ public class BalanceView extends javax.swing.JFrame {
     private double amount = 0;
     //private String firstName = "";
     //private String lastName = "";
-    //private String id = "";
+    private String id;
     private String enteredValue = "";
     /**
      * Creates new form BalanceView
@@ -50,8 +52,21 @@ public class BalanceView extends javax.swing.JFrame {
         updateBalanceWindow(enteredValue);
         setVisible(true);
         setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-
+    public BalanceView(String userID) {
+        this.controller = new UtilController();
+        setPreferredSize(new Dimension(995,660));
+        getContentPane().setBackground(Color.WHITE);
+        initComponents();
+        initNavBar();
+        model = (DefaultTableModel) jTable1.getModel();
+        updateBalanceWindow(enteredValue);
+        setVisible(true);
+        setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        id = userID;
+    }
     					
 protected void updateBalanceWindow(String enteredValue) {
                     
@@ -399,7 +414,7 @@ protected void updateBalanceWindow(String enteredValue) {
         
         navBtn_build = new JButton("Enter Build");
         navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
-        navBtn_build.setPreferredSize(new Dimension(165, 40));
+        navBtn_build.setPreferredSize(new Dimension(166, 40));
         jMenuBar1.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
@@ -407,9 +422,16 @@ protected void updateBalanceWindow(String enteredValue) {
         navBtn_reports.setPreferredSize(new Dimension(166, 40));
         jMenuBar1.add(navBtn_reports);
         
+ 		navBtn_laser = new JButton("Laser Cutter");
+		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
+		navBtn_laser.setPreferredSize(new Dimension(166,40));
+
+		jMenuBar1.add(navBtn_laser);                
+        
+        
         navBtn_balance = new JButton("Balance");
         navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-	navBtn_balance.setPreferredSize(new Dimension(165, 40));
+	navBtn_balance.setPreferredSize(new Dimension(166, 40));
         jMenuBar1.add(navBtn_balance);
 
         
@@ -418,10 +440,6 @@ protected void updateBalanceWindow(String enteredValue) {
         navBtn_settings.setPreferredSize(new Dimension(166, 40));
         jMenuBar1.add(navBtn_settings);
         
-        navBtn_logout = new JButton("Logout");
-        navBtn_logout.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/back_arrow_button.png")));
-        navBtn_logout.setPreferredSize(new Dimension(165, 40));
-        jMenuBar1.add(navBtn_logout);
         
         navBtn_jobsMgr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -441,6 +459,13 @@ protected void updateBalanceWindow(String enteredValue) {
             }
         });
         
+                navBtn_laser.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				navBtn_laserActionPerformed(evt);
+			}
+		});
+                        
+        
         navBtn_balance.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				navBtn_balanceActionPerformed(evt);
@@ -454,17 +479,13 @@ protected void updateBalanceWindow(String enteredValue) {
             }
         }); 
 
-        navBtn_logout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	navBtn_logoutActionPerformed(evt);
-            }
-        }); 
+
     }
     
     
     private void navBtn_jobsMgrActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	jobsMgr = new newJobsMgr();
+    	jobsMgr = new newJobsMgr(id);
         jobsMgr.setVisible(true);
     	dispose();
     	
@@ -472,7 +493,7 @@ protected void updateBalanceWindow(String enteredValue) {
     
     private void navBtn_buildActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	buildView = new BuildView();
+    	buildView = new BuildView(id);
         buildView.startMakeBuildProcess();
     	dispose();
     	
@@ -480,15 +501,30 @@ protected void updateBalanceWindow(String enteredValue) {
     
     private void navBtn_reportsActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	reportsView = new ReportsView();
+    	reportsView = new ReportsView(id);
         reportsView.ReportsPage();
     	dispose();
     	
     }
     
+        private void navBtn_laserActionPerformed(java.awt.event.ActionEvent evt)
+	{
+                laserView = new LaserView(id);
+                laserView.setVisible(true);
+                dispose();                
+
+	}
+        
+        private void navBtn_adminActionPerformed(java.awt.event.ActionEvent evt)
+	{
+                addAdminView = new AddAdminView();
+                addAdminView.setVisible(true);
+                dispose();
+	}    
+    
     private void navBtn_balanceActionPerformed(java.awt.event.ActionEvent evt)
 	{
-            balanceView = new BalanceView();
+            balanceView = new BalanceView(id);
             balanceView.setVisible(true);
 		dispose();
 
@@ -496,7 +532,7 @@ protected void updateBalanceWindow(String enteredValue) {
     
     private void navBtn_settingsActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	adminSettingsView = new newSettingsMenu();
+    	adminSettingsView = new newSettingsMenu(id);
     	adminSettingsView.setVisible(true);
     	dispose();
     	
@@ -511,6 +547,8 @@ protected void updateBalanceWindow(String enteredValue) {
     private JButton navBtn_jobsMgr;
     private JButton navBtn_build;
     private JButton navBtn_reports;
+    private JButton navBtn_laser;
+    private JButton navBtn_admin;    
     private JButton navBtn_settings;
     private JButton navBtn_balance;
     private JButton navBtn_logout;

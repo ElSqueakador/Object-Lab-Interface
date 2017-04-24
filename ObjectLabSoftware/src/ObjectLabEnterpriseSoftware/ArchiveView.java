@@ -44,7 +44,7 @@ public class ArchiveView extends javax.swing.JFrame {
         setVisible(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         report.setEnabled(false);
-        settings = new AdminSettingsView();
+        settings = new AdminSettingsView("");
         this.addWindowListener( new WindowAdapter()
         {
             @Override

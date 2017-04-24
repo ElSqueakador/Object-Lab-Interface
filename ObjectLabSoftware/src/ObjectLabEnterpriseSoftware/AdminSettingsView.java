@@ -10,15 +10,19 @@ import javax.swing.JButton;
 
 public class AdminSettingsView extends javax.swing.JFrame 
 {
-    public AdminSettingsView() {
+    public AdminSettingsView(String userID) {
+        id = userID;
     }
     private static final String NAME_OF_PAGE = "\tSettings";
     private static final MainView home = new MainView();
     // --nav bar views ~Alex
     private BuildView buildView;
     private newJobsMgr jobsMgr;
+    private AddAdminView addAdminView;
+    private LaserView laserView;
     private ReportsView reportsView;	
     private AdminSettingsView adminSettingsView;
+    private String id;
     //
     public void AdminSettingsViewStart() {
         initComponents();
@@ -164,7 +168,7 @@ public class AdminSettingsView extends javax.swing.JFrame
         
         navBtn_jobsMgr = new JButton("Jobs Manager");
         navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-        navBtn_jobsMgr.setPreferredSize(new Dimension(100,24));
+        navBtn_jobsMgr.setPreferredSize(new Dimension(141,24));
         //spacing
         jMenuBar1.add(Box.createRigidArea(new Dimension(35,0)));
         //
@@ -173,17 +177,25 @@ public class AdminSettingsView extends javax.swing.JFrame
         navBtn_build = new JButton("Enter Build");
         navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
         
-        navBtn_build.setPreferredSize(new Dimension(100,24));
+        navBtn_build.setPreferredSize(new Dimension(141,24));
         jMenuBar1.add(navBtn_build);
         
         navBtn_reports = new JButton("Reports");
         navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-        navBtn_reports.setPreferredSize(new Dimension(100,24));
+        navBtn_reports.setPreferredSize(new Dimension(141,24));
         jMenuBar1.add(navBtn_reports);
         
+         	navBtn_laser = new JButton("Laser Cutter");
+		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
+		navBtn_laser.setPreferredSize(new Dimension(141,40));
+
+		jMenuBar1.add(navBtn_laser);                
+                
+
+                
         navBtn_settings = new JButton("Settings");
         navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-        navBtn_settings.setPreferredSize(new Dimension(100,24));
+        navBtn_settings.setPreferredSize(new Dimension(141,24));
         jMenuBar1.add(navBtn_settings);
 
         
@@ -205,6 +217,18 @@ public class AdminSettingsView extends javax.swing.JFrame
             }
         });
         
+                navBtn_laser.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				navBtn_laserActionPerformed(evt);
+			}
+		});
+                
+                navBtn_admin.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				navBtn_adminActionPerformed(evt);
+			}
+		});        
+        
         navBtn_settings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	navBtn_settingsActionPerformed(evt);
@@ -216,7 +240,7 @@ public class AdminSettingsView extends javax.swing.JFrame
     
     private void navBtn_jobsMgrActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	jobsMgr = new newJobsMgr();
+    	jobsMgr = new newJobsMgr(id);
         jobsMgr.setVisible(true);
     	dispose();
     	
@@ -224,7 +248,7 @@ public class AdminSettingsView extends javax.swing.JFrame
     
     private void navBtn_buildActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	buildView = new BuildView();
+    	buildView = new BuildView(id);
         buildView.startMakeBuildProcess();
     	dispose();
     	
@@ -232,15 +256,30 @@ public class AdminSettingsView extends javax.swing.JFrame
     
     private void navBtn_reportsActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	reportsView = new ReportsView();
+    	reportsView = new ReportsView(id);
         reportsView.ReportsPage();
     	dispose();
     	
     }
     
+        private void navBtn_laserActionPerformed(java.awt.event.ActionEvent evt)
+	{
+                laserView = new LaserView(id);
+                laserView.setVisible(true);
+                dispose();                
+
+	}
+        
+        private void navBtn_adminActionPerformed(java.awt.event.ActionEvent evt)
+	{
+                addAdminView = new AddAdminView();
+                addAdminView.setVisible(true);
+                dispose();
+	}    
+    
     private void navBtn_settingsActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	adminSettingsView = new AdminSettingsView();
+    	adminSettingsView = new AdminSettingsView(id);
     	adminSettingsView.AdminSettingsViewStart();
     	dispose();
     	
@@ -306,6 +345,8 @@ public class AdminSettingsView extends javax.swing.JFrame
     private JButton navBtn_jobsMgr;
     private JButton navBtn_build;
     private JButton navBtn_reports;
+    private JButton navBtn_laser;
+    private JButton navBtn_admin;    
     private JButton navBtn_settings;
     // End of variables declaration//GEN-END:variables
 }

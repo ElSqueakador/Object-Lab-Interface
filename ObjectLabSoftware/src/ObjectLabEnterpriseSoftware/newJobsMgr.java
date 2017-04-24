@@ -59,6 +59,8 @@ public class newJobsMgr extends JFrame {
 	private BuildView buildView;
 	private newJobsMgr jobsMgr;
 	private ReportsView reportsView;	
+        private AddAdminView addAdminView;
+        private LaserView laserView;
         private BalanceView balanceView;
 	private newSettingsMenu adminSettingsView;
         private String idString;
@@ -92,7 +94,7 @@ public class newJobsMgr extends JFrame {
 	
 	private void initWindow()
 	{
-		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		JMenuBar jMenuBar1 = new JMenuBar();
 		setJMenuBar(jMenuBar1);
 
@@ -110,7 +112,7 @@ public class newJobsMgr extends JFrame {
 		navBtn_build = new JButton("Enter Build");
 		navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
 
-		navBtn_build.setPreferredSize(new Dimension(165,40));
+		navBtn_build.setPreferredSize(new Dimension(166,40));
 
 		jMenuBar1.add(navBtn_build);
 
@@ -120,9 +122,16 @@ public class newJobsMgr extends JFrame {
 
 		jMenuBar1.add(navBtn_reports);
                 
+ 		navBtn_laser = new JButton("Laser Cutter");
+		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
+		navBtn_laser.setPreferredSize(new Dimension(166,40));
+
+		jMenuBar1.add(navBtn_laser);                
+                                
+                
                 navBtn_balance = new JButton("Balance");
 		navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-		navBtn_balance.setPreferredSize(new Dimension(165,40));
+		navBtn_balance.setPreferredSize(new Dimension(166,40));
 
 		jMenuBar1.add(navBtn_balance);
 		navBtn_settings = new JButton("Settings");
@@ -130,11 +139,7 @@ public class newJobsMgr extends JFrame {
 		navBtn_settings.setPreferredSize(new Dimension(166,40));
 
 		jMenuBar1.add(navBtn_settings);
-                navBtn_logout = new JButton("Logout");
-                navBtn_logout.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/back_arrow_button.png")));
-                navBtn_logout.setPreferredSize(new Dimension(165, 40));
-                
-                jMenuBar1.add(navBtn_logout);
+
                 getContentPane().setLayout(null);
                 
 		jobStatusCombo = new JComboBox();
@@ -429,6 +434,13 @@ public class newJobsMgr extends JFrame {
 			}
 		});
                 
+                navBtn_laser.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				navBtn_laserActionPerformed(evt);
+			}
+		});
+                
+                
                 navBtn_balance.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				navBtn_balanceActionPerformed(evt);
@@ -441,11 +453,6 @@ public class newJobsMgr extends JFrame {
 			}
 		}); 
                 
-                navBtn_logout.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                navBtn_logoutActionPerformed(evt);
-                        }
-                });
 
 		pack();
 	}
@@ -823,7 +830,7 @@ public class newJobsMgr extends JFrame {
 
 	private void navBtn_buildActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		buildView = new BuildView();
+		buildView = new BuildView(idString);
 		buildView.startMakeBuildProcess();
 		dispose();
 
@@ -831,15 +838,29 @@ public class newJobsMgr extends JFrame {
 
 	private void navBtn_reportsActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		reportsView = new ReportsView();
+		reportsView = new ReportsView(idString);
 		reportsView.ReportsPage();
 		dispose();
 
 	}
         
+        private void navBtn_laserActionPerformed(java.awt.event.ActionEvent evt)
+	{
+                laserView = new LaserView(idString);
+                laserView.setVisible(true);
+                dispose();
+	}
+        
+        private void navBtn_adminActionPerformed(java.awt.event.ActionEvent evt)
+	{
+                addAdminView = new AddAdminView();
+                addAdminView.setVisible(true);
+                dispose();
+	}
+        
         private void navBtn_balanceActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		balanceView= new BalanceView();
+		balanceView= new BalanceView(idString);
 		balanceView.setVisible(true);
 		dispose();
 
@@ -847,7 +868,7 @@ public class newJobsMgr extends JFrame {
 
 	private void navBtn_settingsActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		adminSettingsView = new newSettingsMenu();
+		adminSettingsView = new newSettingsMenu(idString);
 		adminSettingsView.setVisible(true);
 		dispose();
 
@@ -867,6 +888,8 @@ public class newJobsMgr extends JFrame {
 	private JButton navBtn_jobsMgr;
 	private JButton navBtn_build;
 	private JButton navBtn_reports;
+        private JButton navBtn_laser;
+        private JButton navBtn_admin;
         private JButton navBtn_balance;
 	private JButton navBtn_settings;
         private JButton navBtn_logout;

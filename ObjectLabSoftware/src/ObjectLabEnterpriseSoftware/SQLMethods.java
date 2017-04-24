@@ -2157,4 +2157,16 @@ public class SQLMethods
         }
         return false;
     }
+    
+    public boolean addAdmin(String idString) {
+        try{
+           stmt = this.conn.prepareStatement("INSERT INTO admin_list (admin_id) VALUES (?) ");
+           stmt.setString(1, idString);
+           stmt.executeUpdate();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

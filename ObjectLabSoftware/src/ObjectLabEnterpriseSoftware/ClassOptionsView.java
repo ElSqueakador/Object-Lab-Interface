@@ -75,7 +75,7 @@ public class ClassOptionsView extends javax.swing.JFrame {
 		inst = new FileManager();
 		/* Creates are PendingJobs UI window componet and grabs its data model for our uses */
 		initComponents();
-        settings = new AdminSettingsView();
+        settings = new AdminSettingsView("");
 		addWindowListener(
                     new WindowAdapter()
                     {
