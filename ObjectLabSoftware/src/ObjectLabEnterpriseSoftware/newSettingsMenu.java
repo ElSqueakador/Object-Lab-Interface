@@ -148,12 +148,6 @@ public class newSettingsMenu extends JFrame {
 		btnManageClasses.setBounds(397, 100, 200, 30);
 		getContentPane().add(btnManageClasses);
 		
-                JButton addAdmin = new JButton("Add Admin");
-
-                addAdmin.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
-                addAdmin.setBounds(397, 250, 200, 30);
-                getContentPane().add(addAdmin);
-                
 		JButton btnManageDevices = new JButton("Manage Devices");
 		btnManageDevices.addMouseListener(new MouseAdapter() {
 			@Override
