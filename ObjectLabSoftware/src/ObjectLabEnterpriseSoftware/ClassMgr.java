@@ -62,9 +62,7 @@ public class ClassMgr extends JFrame {
 	
 	private void initWindow()
 	{
-		
-
-		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		JLabel titleLabel = new JLabel("Class Manager");
 		titleLabel.setBounds(189, 11, 178, 40);
 		titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
@@ -73,7 +71,7 @@ public class ClassMgr extends JFrame {
 		getContentPane().add(titleLabel);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
-		tabbedPane.setBounds(10, 59, 516, 264);
+		tabbedPane.setBounds(10, 55, 516, 287);
 		tabbedPane.setBackground(Color.LIGHT_GRAY);
 		getContentPane().add(tabbedPane);
 		tabbedPane.setVisible(true);
@@ -83,28 +81,28 @@ public class ClassMgr extends JFrame {
 		
 		JLabel jLabel3 = new JLabel();
 		jLabel3.setText("Inactive Classes");
-		jLabel3.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		jLabel3.setBounds(20, 25, 110, 19);
+		jLabel3.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		jLabel3.setBounds(15, 25, 110, 19);
 		manageClassPanel.add(jLabel3);
 		
-		 jScrollPane3 = new JScrollPane();
-		jScrollPane3.setBounds(20, 44, 139, 189);
+		jScrollPane3 = new JScrollPane(); //inactive class pane
+		jScrollPane3.setBounds(15, 44, 139, 189);
 		manageClassPanel.add(jScrollPane3);
 		
 		allClassList = new JList();
 		jScrollPane3.setViewportView(allClassList);
 		
-		 addArrow = new JButton();
+		addArrow = new JButton();
 		addArrow.setText("--->");
 		addArrow.setPreferredSize(new Dimension(60, 23));
 		addArrow.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		addArrow.setBounds(169, 99, 90, 23);
+		addArrow.setBounds(164, 99, 90, 23);
 		manageClassPanel.add(addArrow);
 		
-		 removeArrow = new JButton();
+		removeArrow = new JButton();
 		removeArrow.setText("<---");
 		removeArrow.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		removeArrow.setBounds(169, 129, 90, 23);
+		removeArrow.setBounds(164, 129, 90, 23);
 		removeArrow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				removeArrowActionPerformed(evt);
@@ -112,8 +110,8 @@ public class ClassMgr extends JFrame {
 		});
 		manageClassPanel.add(removeArrow);
 		
-		 jScrollPane4 = new JScrollPane();
-		jScrollPane4.setBounds(269, 44, 139, 190);
+		jScrollPane4 = new JScrollPane(); // active classes
+		jScrollPane4.setBounds(264, 44, 139, 190);
 		manageClassPanel.add(jScrollPane4);
 		
 		 currentClassList = new JList();
@@ -121,14 +119,14 @@ public class ClassMgr extends JFrame {
 		
 		JLabel lblActiveClasses = new JLabel();
 		lblActiveClasses.setText("Active Classes");
-		lblActiveClasses.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblActiveClasses.setBounds(269, 28, 129, 19);
+		lblActiveClasses.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblActiveClasses.setBounds(264, 25, 129, 19);
 		manageClassPanel.add(lblActiveClasses);
 		
 		saveBtn = new JButton();
 		saveBtn.setText("Apply Changes");
-		saveBtn.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		saveBtn.setBounds(157, 236, 109, 23);
+		saveBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		saveBtn.setBounds(145, 240, 130, 25);
 		manageClassPanel.add(saveBtn);
 		
 		JPanel addClassPanel = new JPanel();
@@ -137,7 +135,7 @@ public class ClassMgr extends JFrame {
 		addClassPanel.setLayout(null);
 		
 		JLabel classNumLabel = new JLabel("Class Number:");
-		classNumLabel.setBounds(0, 97, 95, 20);
+		classNumLabel.setBounds(0, 120, 100, 20);
 		classNumLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		addClassPanel.add(classNumLabel);
 		
@@ -146,8 +144,8 @@ public class ClassMgr extends JFrame {
 		addClassPanel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		
-		JScrollPane classScrollPane = new JScrollPane();
-		classScrollPane.setBounds(112, 14, 86, 75);
+		JScrollPane classScrollPane = new JScrollPane(); // Add class - Class List
+		classScrollPane.setBounds(150, 14, 100, 75);
 		addClassPanel.add(classScrollPane);
 		
 		classList = new JList(arrayOfTowsonDepartments);
@@ -155,45 +153,46 @@ public class ClassMgr extends JFrame {
 		classList.setBackground(Color.LIGHT_GRAY);
 		
 		classNumberInput = new JTextField();
-		classNumberInput.setBounds(112, 99, 118, 20);
+		classNumberInput.setBounds(150, 120, 120, 20);
 		classNumLabel.setLabelFor(classNumberInput);
 		addClassPanel.add(classNumberInput);
 		classNumberInput.setColumns(10);
 		
 		JLabel sectionNumberLabel = new JLabel("Section Number:");
-		sectionNumberLabel.setBounds(0, 124, 105, 20);
+		sectionNumberLabel.setBounds(0, 150, 120, 20);
 		sectionNumberLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		addClassPanel.add(sectionNumberLabel);
 		
 		SectionNumberInput = new JTextField();
-		SectionNumberInput.setBounds(112, 126, 118, 20);
+		SectionNumberInput.setBounds(150, 150, 120, 20);
 		SectionNumberInput.setColumns(10);
 		addClassPanel.add(SectionNumberInput);
 		
 		JLabel professorInputLabel = new JLabel("Professor:");
-		professorInputLabel.setBounds(0, 155, 105, 20);
+		professorInputLabel.setBounds(0, 180, 100, 20);
 		professorInputLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		addClassPanel.add(professorInputLabel);
 		
 		professorInput = new JTextField();
-		professorInput.setBounds(112, 157, 118, 20);
+		professorInput.setBounds(150, 180, 120, 20);
 		professorInputLabel.setLabelFor(professorInput);
 		addClassPanel.add(professorInput);
 		professorInput.setColumns(10);
 		
 		JLabel lbllastName = new JLabel("(last name)");
-		lbllastName.setBounds(0, 173, 72, 20);
+		lbllastName.setBounds(0, 195, 100, 20);
 		lbllastName.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		addClassPanel.add(lbllastName);
 		
 		addClassButton = new JButton("Add Class");
+                addClassButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		addClassButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				addClass(arg0);
 			}
 		});
-		addClassButton.setBounds(233, 187, 89, 23);
+		addClassButton.setBounds(160, 240, 100, 25);
 		addClassPanel.add(addClassButton);
 		
 		JPanel removeClassPanel = new JPanel();
@@ -201,22 +200,23 @@ public class ClassMgr extends JFrame {
 		removeClassPanel.setLayout(null);
 		
 		removePrinterButton = new JButton("Remove");
+                removePrinterButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		removePrinterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				  removeClassButtonActionPerformed(arg0);
 			}
 		});
-		removePrinterButton.setBounds(159, 236, 89, 23);
+		removePrinterButton.setBounds(160, 240, 100, 25);
 		removeClassPanel.add(removePrinterButton);
 		
 		lblAvailableClasses = new JLabel();
 		lblAvailableClasses.setText("Available Classes");
-		lblAvailableClasses.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblAvailableClasses.setBounds(10, 25, 110, 19);
+		lblAvailableClasses.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblAvailableClasses.setBounds(15, 25, 150, 19);
 		removeClassPanel.add(lblAvailableClasses);
 		
 		spAvaiableClassesRC = new JScrollPane();
-		spAvaiableClassesRC.setBounds(10, 44, 139, 189);
+		spAvaiableClassesRC.setBounds (15, 44, 139, 189);
 		removeClassPanel.add(spAvaiableClassesRC);
 		
 		currentClassListRC = new JList();
@@ -228,16 +228,16 @@ public class ClassMgr extends JFrame {
 				addArrowRCActionPerformed(evt);
 			}
 		});
-		addArrowRC.setText("->");
+		addArrowRC.setText("--->");
 		addArrowRC.setPreferredSize(new Dimension(60, 23));
 		addArrowRC.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		addArrowRC.setBounds(159, 99, 90, 23);
+		addArrowRC.setBounds(164, 99, 90, 23);
 		removeClassPanel.add(addArrowRC);
 		
 		removeArrowRC = new JButton();
-		removeArrowRC.setText("<-");
+		removeArrowRC.setText("<---");
 		removeArrowRC.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		removeArrowRC.setBounds(159, 143, 90, 23);
+		removeArrowRC.setBounds(164, 129, 90, 23);
 		removeArrowRC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				removeArrowRCActionPerformed(evt);
@@ -246,24 +246,25 @@ public class ClassMgr extends JFrame {
 		removeClassPanel.add(removeArrowRC);
 		
 		JScrollPane spToBeRemovedRC = new JScrollPane();
-		spToBeRemovedRC.setBounds(259, 44, 139, 190);
+		spToBeRemovedRC.setBounds (264, 44, 139, 190);
 		removeClassPanel.add(spToBeRemovedRC);
 		
 		removeClassList = new JList();
 		spToBeRemovedRC.setViewportView(removeClassList);
 		
 		JLabel lblClassesToRemove = new JLabel();
-		lblClassesToRemove.setText("Classes to remove");
-		lblClassesToRemove.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblClassesToRemove.setBounds(259, 28, 129, 19);
+		lblClassesToRemove.setText("Classes to Remove");
+		lblClassesToRemove.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblClassesToRemove.setBounds(264, 25, 135, 19);
 		removeClassPanel.add(lblClassesToRemove);
 		
 		backButton = new JLabel("");
 		backButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				newSettingsMenu ns = new newSettingsMenu(id);
-				ns.setVisible(true);
+				//newSettingsMenu ns = new newSettingsMenu(id);
+				//ns.setVisible(true);
+                                //No longer want new window called
 				dispose();
 			}
 		});

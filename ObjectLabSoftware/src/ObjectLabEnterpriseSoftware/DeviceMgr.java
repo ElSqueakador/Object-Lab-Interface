@@ -71,7 +71,7 @@ public class DeviceMgr extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(DeviceMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setPreferredSize(new Dimension(550, 370));
 		setResizable(false);
-		setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		setTitle("Device Manager");
 		getContentPane().setBackground(Color.WHITE);
 		initWindow();
@@ -83,8 +83,8 @@ public class DeviceMgr extends JFrame {
 	                    @Override
 	                    public void windowClosing(WindowEvent we)
 	                    {
-	                    	settings = new newSettingsMenu(id);
-	                    	settings.setVisible(true);
+	                    	//settings = new newSettingsMenu(id);
+	                    	//settings.setVisible(true);
 	                    	dispose();
 	                    }
 	                 }
@@ -102,9 +102,9 @@ public class DeviceMgr extends JFrame {
 	{
 		
 
-		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		JLabel titleLabel = new JLabel("Device Manager");
-		titleLabel.setBounds(177, 8, 200, 40);
+		titleLabel.setBounds(177, 11, 300, 40);
 		titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		titleLabel.setVisible(true);
 		getContentPane().setLayout(null);
@@ -122,24 +122,24 @@ public class DeviceMgr extends JFrame {
 		addDevicePanel.setLayout(null);
 		
 		deviceNameLabel = new JLabel("Device Name:");
-		deviceNameLabel.setBounds(0, 11, 95, 20);
-		deviceNameLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		deviceNameLabel.setBounds(0, 5, 170, 30);
+		deviceNameLabel.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		addDevicePanel.add(deviceNameLabel);
 		
 
 		deviceNameInput = new JTextField();
-		deviceNameInput.setBounds(92, 13, 118, 20);
+		deviceNameInput.setBounds(190, 12, 100, 20);
 		deviceNameLabel.setLabelFor(deviceNameInput);
 		addDevicePanel.add(deviceNameInput);
 		deviceNameInput.setColumns(10);
 		
 		fileExtLabel = new JLabel("Accepted File Extension:");
-		fileExtLabel.setBounds(0, 42, 153, 20);
-		fileExtLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		fileExtLabel.setBounds(0, 35, 170, 30);
+		fileExtLabel.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		addDevicePanel.add(fileExtLabel);
 		
 		fileExtInput = new JTextField();
-		fileExtInput.setBounds(155, 44, 118, 20);
+		fileExtInput.setBounds(190, 42, 100, 20);
 		fileExtInput.setColumns(10);
 		addDevicePanel.add(fileExtInput);
 		
@@ -152,41 +152,42 @@ public class DeviceMgr extends JFrame {
 		addDevicePanel.add(txtDirections);
 		
 		fieldL1Label = new JLabel("Field name 2:");
-		fieldL1Label.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		fieldL1Label.setBounds(10, 186, 70, 14);
+		fieldL1Label.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		fieldL1Label.setBounds(10, 185, 150, 20);
 		fieldL1Label.setVisible(false);
 		addDevicePanel.add(fieldL1Label);
 		
 		fieldL0 = new JTextField();
-		fieldL0.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		fieldL0.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		fieldL0.setColumns(10);
 		fieldL1Label.setLabelFor(fieldL0);
-		fieldL0.setBounds(80, 167, 86, 14);
+		fieldL0.setBounds(100, 160, 100, 20);
 		addDevicePanel.add(fieldL0);
 		
 		numberValCheck0 = new JCheckBox("Numerical value");
-		numberValCheck0.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		numberValCheck0.setBounds(174, 163, 101, 23);
+		numberValCheck0.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		numberValCheck0.setBounds(230, 160, 150, 20);
 		addDevicePanel.add(numberValCheck0);
 		
 		addFieldButton = new JButton("Add Field");
-		addFieldButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		addFieldButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		addFieldButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				addFieldButtonActionPerformed(arg0);
 			}
 		});
-		addFieldButton.setBounds(0, 262, 89, 20);
+		addFieldButton.setBounds(0, 260, 100, 20);
 		addDevicePanel.add(addFieldButton);
 		
 		saveButton = new JButton("Add Device");
+                saveButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		saveButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				addDevice();
 			}
 		});
-		saveButton.setBounds(332, 259, 89, 23);
+		saveButton.setBounds(295, 260, 120, 20);
 		addDevicePanel.add(saveButton);
 		
 		JPanel removeClassPanel = new JPanel();
@@ -194,22 +195,23 @@ public class DeviceMgr extends JFrame {
 		removeClassPanel.setLayout(null);
 		
 		removePrinterButton = new JButton("Remove");
+                removePrinterButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		removePrinterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				  removeClassButtonActionPerformed(arg0);
 			}
 		});
-		removePrinterButton.setBounds(159, 236, 89, 23);
+		removePrinterButton.setBounds(160, 240, 100, 25);
 		removeClassPanel.add(removePrinterButton);
 		
 		lblAvailableClasses = new JLabel();
 		lblAvailableClasses.setText("Available Devices");
-		lblAvailableClasses.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblAvailableClasses.setBounds(10, 25, 110, 19);
+		lblAvailableClasses.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblAvailableClasses.setBounds(15, 20, 150, 20);
 		removeClassPanel.add(lblAvailableClasses);
 		
 		spAvaiableClassesRC = new JScrollPane();
-		spAvaiableClassesRC.setBounds(10, 44, 139, 189);
+		spAvaiableClassesRC.setBounds(15, 44, 139, 189);
 		removeClassPanel.add(spAvaiableClassesRC);
 		
 		currentClassListRC = new JList();
@@ -224,14 +226,14 @@ public class DeviceMgr extends JFrame {
 		});
 		addArrowRC.setText("--->");
 		addArrowRC.setPreferredSize(new Dimension(60, 23));
-		addArrowRC.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		addArrowRC.setBounds(159, 99, 90, 23);
+		addArrowRC.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		addArrowRC.setBounds(164, 99, 90, 23);
 		removeClassPanel.add(addArrowRC);
 		
 		removeArrowRC = new JButton();
 		removeArrowRC.setText("<---");
-		removeArrowRC.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		removeArrowRC.setBounds(159, 143, 90, 23);
+		removeArrowRC.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		removeArrowRC.setBounds(164, 129, 90, 23);
 		removeArrowRC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				removeArrowRCActionPerformed(evt);
@@ -240,7 +242,7 @@ public class DeviceMgr extends JFrame {
 		removeClassPanel.add(removeArrowRC);
 		
 		JScrollPane spToBeRemovedRC = new JScrollPane();
-		spToBeRemovedRC.setBounds(259, 44, 139, 190);
+		spToBeRemovedRC.setBounds(264, 44, 139, 190);
 		removeClassPanel.add(spToBeRemovedRC);
 		
 		removeClassList = new JList();
@@ -248,16 +250,17 @@ public class DeviceMgr extends JFrame {
 		
 		JLabel lblClassesToRemove = new JLabel();
 		lblClassesToRemove.setText("Devices to remove");
-		lblClassesToRemove.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblClassesToRemove.setBounds(259, 28, 129, 19);
+		lblClassesToRemove.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblClassesToRemove.setBounds(264, 20, 150, 20);
 		removeClassPanel.add(lblClassesToRemove);
 		
 		backButton = new JLabel("");
 		backButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				newSettingsMenu ns = new newSettingsMenu(id);
-				ns.setVisible(true);
+				//newSettingsMenu ns = new newSettingsMenu(id);
+				//ns.setVisible(true);
+                                //No longer want new window called
 				dispose();
 			}
 		});
@@ -266,79 +269,60 @@ public class DeviceMgr extends JFrame {
 		getContentPane().add(backButton);
         
         fieldL0Label = new JLabel("Field name 1:");
-        fieldL0Label.setFont(new Font("Tahoma", Font.PLAIN, 10));
-        fieldL0Label.setBounds(10, 167, 70, 14);
+        fieldL0Label.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        fieldL0Label.setBounds(10, 160, 150, 20);
         addDevicePanel.add(fieldL0Label);
         
         field1 = new JTextField();
-        field1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+        field1.setFont(new Font("Tahoma", Font.PLAIN, 14));
         field1.setColumns(10);
-        field1.setBounds(80, 186, 86, 14);
+        field1.setBounds(100, 185, 100, 20);
         field1.setVisible(false);
         addDevicePanel.add(field1);
         
         numberValCheck1 = new JCheckBox("Numerical value");
-        numberValCheck1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        numberValCheck1.setBounds(174, 182, 101, 23);
+        numberValCheck1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        numberValCheck1.setBounds(230, 185, 150, 20);
         numberValCheck1.setVisible(false);
         addDevicePanel.add(numberValCheck1);
         
         fieldL2Label = new JLabel("Field name 3:");
-        fieldL2Label.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        fieldL2Label.setBounds(10, 200, 70, 23);
+        fieldL2Label.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        fieldL2Label.setBounds(10, 210, 150, 20);
         fieldL2Label.setVisible(false);
         addDevicePanel.add(fieldL2Label);
         
         field2 = new JTextField();
-        field2.setFont(new Font("Tahoma", Font.PLAIN, 9));
+        field2.setFont(new Font("Tahoma", Font.PLAIN, 14));
         field2.setColumns(10);
-        field2.setBounds(80, 204, 86, 14);
+        field2.setBounds(100, 210, 100, 20);
         field2.setVisible(false);
         addDevicePanel.add(field2);
         
         numberValCheck2 = new JCheckBox("Numerical value");
-        numberValCheck2.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        numberValCheck2.setBounds(174, 200, 101, 23);
+        numberValCheck2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        numberValCheck2.setBounds(230, 210, 150, 20);
         numberValCheck2.setVisible(false);
         addDevicePanel.add(numberValCheck2);
         
         fieldL3Label = new JLabel("Field name 4:");
-        fieldL3Label.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        fieldL3Label.setBounds(10, 222, 70, 14);
+        fieldL3Label.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        fieldL3Label.setBounds(10, 235, 150, 20);
         fieldL3Label.setVisible(false);
         addDevicePanel.add(fieldL3Label);
         
         field3 = new JTextField();
-        field3.setFont(new Font("Tahoma", Font.PLAIN, 9));
+        field3.setFont(new Font("Tahoma", Font.PLAIN, 14));
         field3.setColumns(10);
-        field3.setBounds(80, 222, 86, 14);
+        field3.setBounds(100, 235, 100, 20);
         field3.setVisible(false);
         addDevicePanel.add(field3);
         
         numberValCheck3 = new JCheckBox("Numerical value");
-        numberValCheck3.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        numberValCheck3.setBounds(174, 218, 101, 23);
+        numberValCheck3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        numberValCheck3.setBounds(230, 235, 150, 20);
         numberValCheck3.setVisible(false);
         addDevicePanel.add(numberValCheck3);
-        
-        fieldL4Label = new JLabel("Field name 5:");
-        fieldL4Label.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        fieldL4Label.setBounds(10, 243, 70, 14);
-        fieldL4Label.setVisible(false);
-        addDevicePanel.add(fieldL4Label);
-        
-        field4 = new JTextField();
-        field4.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        field4.setColumns(10);
-        field4.setBounds(80, 243, 86, 14);
-        field4.setVisible(false);
-        addDevicePanel.add(field4);
-        
-        numberValCheck4 = new JCheckBox("Numerical value");
-        numberValCheck4.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        numberValCheck4.setBounds(174, 239, 101, 23);
-        numberValCheck4.setVisible(false);
-        addDevicePanel.add(numberValCheck4);
         
         removeFieldButton = new JButton("Remove Field");
         removeFieldButton.addMouseListener(new MouseAdapter() {
@@ -348,8 +332,8 @@ public class DeviceMgr extends JFrame {
         	}
         	
         });
-        removeFieldButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        removeFieldButton.setBounds(100, 262, 110, 20);
+        removeFieldButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        removeFieldButton.setBounds(120, 260, 150, 20);
         addDevicePanel.add(removeFieldButton);
         pack();
         
@@ -591,20 +575,14 @@ public class DeviceMgr extends JFrame {
         		numberValCheck3.setVisible(true);
         		count++;
         		break;
-        	case 3:
-        		fieldL4Label.setVisible(true);
-        		field4.setVisible(true);
-        		numberValCheck4.setVisible(true);
-        		count++;
-        		break;
         	default:
-        		JOptionPane op = new JOptionPane("The maximum number of fields has been reached. Sorry, please use 5 fields or less.", JOptionPane.INFORMATION_MESSAGE);
+        		JOptionPane op = new JOptionPane("The maximum number of fields has been reached. Sorry, please use 4 fields or less.", JOptionPane.INFORMATION_MESSAGE);
                 JDialog dialog = op.createDialog("Device Manager: Maximum Fields!");
                 dialog.setAlwaysOnTop(true);
                 dialog.setModal(true);
                 dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                 dialog.setVisible(true);
-                count = 4;
+                count = 3;
                 break;
         		
         }
@@ -630,12 +608,6 @@ public class DeviceMgr extends JFrame {
          		fieldL3Label.setVisible(false);
          		field3.setVisible(false);
          		numberValCheck3.setVisible(false);
-         		count--;
-         		break;
-         	case 4:
-         		fieldL4Label.setVisible(false);
-         		field4.setVisible(false);
-         		numberValCheck4.setVisible(false);
          		count--;
          		break;
          	default:

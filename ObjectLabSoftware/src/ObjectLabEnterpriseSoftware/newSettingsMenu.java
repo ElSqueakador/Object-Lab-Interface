@@ -56,7 +56,7 @@ public class newSettingsMenu extends JFrame {
 		
 		JLabel titleLabel = new JLabel("Settings");
 		titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 24));
-		titleLabel.setBounds(455, 11, 92, 55);
+		titleLabel.setBounds(455, 11, 159, 41);
 		getContentPane().add(titleLabel);
 		
 			JMenuBar jMenuBar1 = new JMenuBar();
@@ -74,17 +74,16 @@ public class newSettingsMenu extends JFrame {
 			navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
 			navBtn_build.setPreferredSize(new Dimension(165, 40));
 			jMenuBar1.add(navBtn_build);
-                        
-                navBtn_laser = new JButton("Laser Cutter");
-		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-		navBtn_laser.setPreferredSize(new Dimension(166,40));
-
-		jMenuBar1.add(navBtn_laser);  
 
 			navBtn_reports = new JButton("Reports");
 			navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
 			navBtn_reports.setPreferredSize(new Dimension(166, 40));
 			jMenuBar1.add(navBtn_reports);
+                        
+                        navBtn_laser = new JButton("Laser Cutter");
+                        navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
+                        navBtn_laser.setPreferredSize(new Dimension(166,40));
+                        jMenuBar1.add(navBtn_laser);  
 
                         navBtn_balance = new JButton("Balance");
 		        navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
@@ -141,17 +140,17 @@ public class newSettingsMenu extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				ClassMgr cm = new ClassMgr(id);
 				cm.setVisible(true);
-				dispose();
+				//dispose();
 			}
 		});
-		btnManageClasses.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
-		btnManageClasses.setBounds(397, 100, 200, 30);
+		btnManageClasses.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
+		btnManageClasses.setBounds(397, 140, 200, 40);
 		getContentPane().add(btnManageClasses);
 		
-                JButton addAdmin = new JButton("Add Admin");
+                JButton addAdmin = new JButton("Manage Admins");
 
-                addAdmin.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
-                addAdmin.setBounds(397, 250, 200, 30);
+                addAdmin.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
+                addAdmin.setBounds(397, 280, 200, 40);
                 addAdmin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -167,11 +166,11 @@ public class newSettingsMenu extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				DeviceMgr dv = new DeviceMgr(id);
 				dv.setVisible(true);
-				dispose();
+				//dispose();
 			}
 		});
-		btnManageDevices.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
-		btnManageDevices.setBounds(397, 150, 200, 30);
+		btnManageDevices.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
+		btnManageDevices.setBounds(397, 210, 200, 40);
 		getContentPane().add(btnManageDevices);
 		
 		JButton btnUserGuide = new JButton("User Guide");
@@ -181,21 +180,21 @@ public class newSettingsMenu extends JFrame {
 				controller.openAdminHelpPage();
 			}
 		});
-		btnUserGuide.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
-		btnUserGuide.setBounds(397, 200, 200, 30);
+		btnUserGuide.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
+		btnUserGuide.setBounds(397, 70, 200, 40);
 		getContentPane().add(btnUserGuide);
 		
 		
-		/*JButton btnLogout = new JButton("Logout");
-		btnLogout.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
-		btnLogout.setBounds(447, 350, 100, 30);
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
+		btnLogout.setBounds(397, 350, 200, 40);
 		getContentPane().add(btnLogout);
 		btnLogout.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				logoutButtonActionPerformed(evt);
 			}
         	});
-                */
+                
         	
 		pack();
 		setLocationRelativeTo(null);
@@ -260,18 +259,18 @@ public class newSettingsMenu extends JFrame {
 
 	}
 	
-        private void navBtn_logoutActionPerformed(java.awt.event.ActionEvent evt)
+        /*private void navBtn_logoutActionPerformed(java.awt.event.ActionEvent evt)
 	{
 		MainView mv = new MainView();
 		mv.setVisible(true);
 		dispose();
-	}
+	}*/
 	
-	/*private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_logoutButtonActionPerformed
+	private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_logoutButtonActionPerformed
         //GEN-HEADEREND:event_logoutButtonActionPerformed
     	dispose();
         home.setVisible(true);
 	 }//GEN-LAST:event_logoutButtonActionPerformed
-	 */
+	
 	
 }
