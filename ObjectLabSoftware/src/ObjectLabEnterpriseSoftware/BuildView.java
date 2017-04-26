@@ -27,9 +27,10 @@ public class BuildView extends javax.swing.JFrame
     private newJobsMgr jobsMgr;
     private ReportsView reportsView;
     private AddAdminView addAdminView;
-    private LaserView laserView;
+    //private LaserView laserView;
     private BalanceView balanceView;
     private newSettingsMenu adminSettingsView;
+    private newStudentView studentView;
     private String id;
 
     //
@@ -476,20 +477,18 @@ public class BuildView extends javax.swing.JFrame
         navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
         navBtn_reports.setPreferredSize(new Dimension(166, 40));
         jMenuBar2.add(navBtn_reports);
-        
- 		navBtn_laser = new JButton("Laser Cutter");
-		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/scissors-icon-31-2.png")));
-		navBtn_laser.setPreferredSize(new Dimension(166,40));
-
-		jMenuBar2.add(navBtn_laser);                
-                
-                
+      
         navBtn_balance = new JButton("Balance");
         navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
 	navBtn_balance.setPreferredSize(new Dimension(166, 40));
 
         jMenuBar2.add(navBtn_balance);
 
+        navBtn_studentView = new JButton("Student View");
+        navBtn_studentView.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon_person.png")));
+        navBtn_studentView.setPreferredSize(new Dimension(166,40));
+
+        jMenuBar2.add(navBtn_studentView);  
         
         navBtn_settings = new JButton("Settings");
         navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
@@ -514,11 +513,11 @@ public class BuildView extends javax.swing.JFrame
             }
         });
         
-                navBtn_laser.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				navBtn_laserActionPerformed(evt);
-			}
-		});
+        navBtn_studentView.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        navBtn_studentActionPerformed(evt);
+                }
+        });
                         
         
         navBtn_balance.addActionListener(new java.awt.event.ActionListener() {
@@ -540,7 +539,7 @@ public class BuildView extends javax.swing.JFrame
     
     private void navBtn_jobsMgrActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	jobsMgr = new newJobsMgr();
+    	jobsMgr = new newJobsMgr(id);
         jobsMgr.setVisible(true);
     	dispose();
     	
@@ -562,10 +561,11 @@ public class BuildView extends javax.swing.JFrame
     	
     }
     
-        private void navBtn_laserActionPerformed(java.awt.event.ActionEvent evt)
+        private void navBtn_studentActionPerformed(java.awt.event.ActionEvent evt)
 	{
-                laserView = new LaserView(id);
-                laserView.setVisible(true);
+                studentView = new newStudentView();
+                studentView.newStudentView(id, UtilController.getStudentFname());
+                studentView.setVisible(true);
                 dispose();
 
 	}
@@ -579,7 +579,7 @@ public class BuildView extends javax.swing.JFrame
     
     private void navBtn_balanceActionPerformed(java.awt.event.ActionEvent evt)
     {
-	balanceView= new BalanceView();
+	balanceView= new BalanceView(id);
 	balanceView.setVisible(true);
 	dispose();
 
@@ -1011,7 +1011,8 @@ public class BuildView extends javax.swing.JFrame
     private JButton navBtn_jobsMgr;
     private JButton navBtn_build;
     private JButton navBtn_reports;
-    private JButton navBtn_laser;
+    //private JButton navBtn_laser;
+    private JButton navBtn_studentView;
     private JButton navBtn_admin;
     private JButton navBtn_settings;
     private JButton navBtn_logout;

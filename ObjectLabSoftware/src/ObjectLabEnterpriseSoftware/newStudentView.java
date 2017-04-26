@@ -43,7 +43,7 @@ public class newStudentView extends javax.swing.JFrame {
     private static final String NAME_OF_PAGE = "Student View";
     private static DefaultTableModel model;
     private static DefaultTableModel model2;
-    private static final MainView home = new MainView();
+    private static MainView home;
     private MaterialTransactionHistoryView materialTransView;
     private LaserSubmissionView laserSubmissionView;
     private newStudentView newStudentView;
@@ -357,6 +357,7 @@ public class newStudentView extends javax.swing.JFrame {
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
               dispose();
+              home = new MainView();
               home.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MousePressed
 
