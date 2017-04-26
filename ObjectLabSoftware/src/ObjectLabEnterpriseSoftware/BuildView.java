@@ -476,7 +476,7 @@ public class BuildView extends javax.swing.JFrame
         jMenuBar2.add(navBtn_reports);
         
  		navBtn_laser = new JButton("Laser Cutter");
-		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
+		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/scissors-icon-31-2.png")));
 		navBtn_laser.setPreferredSize(new Dimension(166,40));
 
 		jMenuBar2.add(navBtn_laser);                

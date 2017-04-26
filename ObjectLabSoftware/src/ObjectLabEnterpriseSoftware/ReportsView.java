@@ -2,6 +2,7 @@ package ObjectLabEnterpriseSoftware;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -9,11 +10,12 @@ import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
 public class ReportsView extends javax.swing.JFrame 
 {
-    private static final String NAME_OF_PAGE = "Reports";
+    //private static final String NAME_OF_PAGE = "Reports";
     private static final MainView home = new MainView();
 	
     private static DefaultTableModel model;
@@ -37,6 +39,7 @@ public class ReportsView extends javax.swing.JFrame
     public ReportsView(String userID) 
     {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //setTitle(UtilController.getPageName(NAME_OF_PAGE));
         id = userID;
         this.controller = new UtilController();
         printers = UtilController.getListOfCurrentDevices();
@@ -73,6 +76,7 @@ public class ReportsView extends javax.swing.JFrame
     public void ReportsPage() 
     {
     	getContentPane().setBackground(Color.WHITE);
+        //setTitle(UtilController.getPageName(NAME_OF_PAGE));
         initComponents();
         initNavBar();
         model = (DefaultTableModel) reportsTable.getModel();
@@ -108,7 +112,12 @@ public class ReportsView extends javax.swing.JFrame
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle(UtilController.getPageName(NAME_OF_PAGE));
+        
+        JLabel titleLabel = new JLabel("Reports");
+        titleLabel.setBounds(430, 11, 159, 41);
+        titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+        getContentPane().add(titleLabel);
+        
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(750, 520));
         setPreferredSize(new java.awt.Dimension(995, 660));
@@ -125,8 +134,8 @@ public class ReportsView extends javax.swing.JFrame
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Reports");
+        //jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        //jLabel3.setText("Reports");
         //getContentPane().add
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
@@ -291,7 +300,7 @@ public class ReportsView extends javax.swing.JFrame
         jMenuBar1.add(navBtn_reports);
         
  		navBtn_laser = new JButton("Laser Cutter");
-		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
+		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/scissors-icon-31-2.png")));
 		navBtn_laser.setPreferredSize(new Dimension(166,40));
 
 		jMenuBar1.add(navBtn_laser);                

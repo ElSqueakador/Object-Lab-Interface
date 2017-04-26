@@ -169,7 +169,7 @@ public class ClassMgr extends JFrame {
 		addClassPanel.add(SectionNumberInput);
 		
 		JLabel professorInputLabel = new JLabel("Professor:");
-		professorInputLabel.setBounds(0, 180, 100, 20);
+		professorInputLabel.setBounds(0, 178, 100, 20);
 		professorInputLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		addClassPanel.add(professorInputLabel);
 		

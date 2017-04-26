@@ -249,7 +249,7 @@ public class DeviceMgr extends JFrame {
 		spToBeRemovedRC.setViewportView(removeClassList);
 		
 		JLabel lblClassesToRemove = new JLabel();
-		lblClassesToRemove.setText("Devices to remove");
+		lblClassesToRemove.setText("Devices to Remove");
 		lblClassesToRemove.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		lblClassesToRemove.setBounds(264, 20, 150, 20);
 		removeClassPanel.add(lblClassesToRemove);
