@@ -230,7 +230,7 @@ public class newSettingsMenu extends JFrame {
         
                 private void navBtn_laserActionPerformed(java.awt.event.ActionEvent evt)
 	{
-                laserView = new LaserView();
+                laserView = new LaserView(id);
                 laserView.setVisible(true);
                 dispose();
 	}

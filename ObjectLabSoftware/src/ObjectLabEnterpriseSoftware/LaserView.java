@@ -64,7 +64,7 @@ public class LaserView extends javax.swing.JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setTitle("Administration Panel");
 		setPreferredSize(new Dimension(995,660));
-		//setAlwaysOnTop(true);
+		setAlwaysOnTop(false);
 		getContentPane().setBackground(Color.WHITE);
 		initWindow();
 		setLocationRelativeTo(null);
@@ -144,73 +144,73 @@ public class LaserView extends javax.swing.JFrame {
                 
                 
             	JMenuBar jMenuBar1 = new JMenuBar();
-			setJMenuBar(jMenuBar1);
+                setJMenuBar(jMenuBar1);
 
-			jMenuBar1.setPreferredSize(new Dimension(995, 40));
-			setJMenuBar(jMenuBar1);
+                jMenuBar1.setPreferredSize(new Dimension(995, 40));
+                setJMenuBar(jMenuBar1);
 
-			navBtn_jobsMgr = new JButton("Jobs Manager");
-			navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
-			navBtn_jobsMgr.setPreferredSize(new Dimension(166, 40));
-			jMenuBar1.add(navBtn_jobsMgr);
+                navBtn_jobsMgr = new JButton("Jobs Manager");
+                navBtn_jobsMgr.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/view_file_icon.png")));
+                navBtn_jobsMgr.setPreferredSize(new Dimension(166, 40));
+                jMenuBar1.add(navBtn_jobsMgr);
 
-			navBtn_build = new JButton("Enter Build");
-			navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
-			navBtn_build.setPreferredSize(new Dimension(165, 40));
-			jMenuBar1.add(navBtn_build);
+                navBtn_build = new JButton("Enter Build");
+                navBtn_build.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/hammer_icon.png")));
+                navBtn_build.setPreferredSize(new Dimension(165, 40));
+                jMenuBar1.add(navBtn_build);
 
-			navBtn_reports = new JButton("Reports");
-			navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
-			navBtn_reports.setPreferredSize(new Dimension(166, 40));
-			jMenuBar1.add(navBtn_reports);
-                        
-                        navBtn_laser = new JButton("Laser Cutter");
-                        navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/scissors-icon-31-2.png")));
-                        navBtn_laser.setPreferredSize(new Dimension(166,40));
-                        jMenuBar1.add(navBtn_laser);  
+                navBtn_reports = new JButton("Reports");
+                navBtn_reports.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/reports_icon.png")));
+                navBtn_reports.setPreferredSize(new Dimension(166, 40));
+                jMenuBar1.add(navBtn_reports);
 
-                        navBtn_balance = new JButton("Balance");
-		        navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
-                        navBtn_balance.setPreferredSize(new Dimension(165, 40));
-                        jMenuBar1.add(navBtn_balance);
-                        
-			navBtn_settings = new JButton("Settings");
-			navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
-			navBtn_settings.setPreferredSize(new Dimension(166, 40));
-			jMenuBar1.add(navBtn_settings);
-                        
-                        
-			getContentPane().setLayout(null);
-		
-			navBtn_jobsMgr.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					navBtn_jobsMgrActionPerformed(evt);
-				}
-			});
+                navBtn_laser = new JButton("Laser Cutter");
+                navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/scissors-icon-31-2.png")));
+                navBtn_laser.setPreferredSize(new Dimension(166,40));
+                jMenuBar1.add(navBtn_laser);  
 
-			navBtn_build.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					navBtn_buildActionPerformed(evt);
-				}
-			});
+                navBtn_balance = new JButton("Balance");
+                navBtn_balance.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/stats_icon.png")));
+                navBtn_balance.setPreferredSize(new Dimension(165, 40));
+                jMenuBar1.add(navBtn_balance);
 
-			navBtn_reports.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					navBtn_reportsActionPerformed(evt);
-				}
-			});
-                        
-                        navBtn_balance.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				navBtn_balanceActionPerformed(evt);
-                                }
-                        });
+                navBtn_settings = new JButton("Settings");
+                navBtn_settings.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/cog_icon.png")));
+                navBtn_settings.setPreferredSize(new Dimension(166, 40));
+                jMenuBar1.add(navBtn_settings);
 
-			navBtn_settings.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					navBtn_settingsActionPerformed(evt);
-				}
-			}); 
+
+                getContentPane().setLayout(null);
+
+                navBtn_jobsMgr.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                navBtn_jobsMgrActionPerformed(evt);
+                        }
+                });
+
+                navBtn_build.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                navBtn_buildActionPerformed(evt);
+                        }
+                });
+
+                navBtn_reports.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                navBtn_reportsActionPerformed(evt);
+                        }
+                });
+
+                navBtn_balance.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        navBtn_balanceActionPerformed(evt);
+                        }
+                });
+
+                navBtn_settings.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                navBtn_settingsActionPerformed(evt);
+                        }
+                }); 
                         
                 navBtn_laser.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,7 +248,7 @@ public class LaserView extends javax.swing.JFrame {
         
         private void navBtn_laserActionPerformed(java.awt.event.ActionEvent evt)
 	{
-                laserView = new LaserView();
+                laserView = new LaserView(idString);
                 laserView.setVisible(true);
                 dispose();
 	}

@@ -39,6 +39,7 @@ public class ReportsView extends javax.swing.JFrame
     public ReportsView(String userID) 
     {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setTitle("Administration Panel");
         //setTitle(UtilController.getPageName(NAME_OF_PAGE));
         id = userID;
         this.controller = new UtilController();
@@ -76,6 +77,7 @@ public class ReportsView extends javax.swing.JFrame
     public void ReportsPage() 
     {
     	getContentPane().setBackground(Color.WHITE);
+        setTitle("Administration Panel");
         //setTitle(UtilController.getPageName(NAME_OF_PAGE));
         initComponents();
         initNavBar();
@@ -299,11 +301,11 @@ public class ReportsView extends javax.swing.JFrame
         navBtn_reports.setPreferredSize(new Dimension(166, 40));
         jMenuBar1.add(navBtn_reports);
         
- 		navBtn_laser = new JButton("Laser Cutter");
-		navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/scissors-icon-31-2.png")));
-		navBtn_laser.setPreferredSize(new Dimension(166,40));
+ 	navBtn_laser = new JButton("Laser Cutter");
+        navBtn_laser.setIcon(new ImageIcon(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/scissors-icon-31-2.png")));
+        navBtn_laser.setPreferredSize(new Dimension(166,40));
 
-		jMenuBar1.add(navBtn_laser);                
+        jMenuBar1.add(navBtn_laser);               
                 
         
         
@@ -337,11 +339,11 @@ public class ReportsView extends javax.swing.JFrame
             }
         });
         
-                navBtn_laser.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				navBtn_laserActionPerformed(evt);
-			}
-		});
+        navBtn_laser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navBtn_laserActionPerformed(evt);
+            }
+        });
                 
 
         navBtn_balance.addActionListener(new java.awt.event.ActionListener() {
@@ -385,9 +387,9 @@ public class ReportsView extends javax.swing.JFrame
     
         private void navBtn_laserActionPerformed(java.awt.event.ActionEvent evt)
 	{
-                laserView = new LaserView();
+                laserView = new LaserView(id);
                 laserView.setVisible(true);
-                dispose();                
+                dispose();               
 
 	}
         

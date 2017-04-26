@@ -78,9 +78,10 @@ public class newJobsMgr extends JFrame {
 		setLocationRelativeTo(null);
                 setResizable(false);
                 setVisible(true);
+                setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
         public newJobsMgr(){
-            idString = "";
+            idString = " ";
 		setIconImage(Toolkit.getDefaultToolkit().getImage(newJobsMgr.class.getResource("/ObjectLabEnterpriseSoftware/images/icon.ico")));
 		setTitle("Administration Panel");
 		setPreferredSize(new Dimension(995,660));
@@ -89,6 +90,7 @@ public class newJobsMgr extends JFrame {
 		initWindow();
 		setLocationRelativeTo(null);
                 setResizable(false);
+                setDefaultCloseOperation(EXIT_ON_CLOSE);
         }
 	
 	

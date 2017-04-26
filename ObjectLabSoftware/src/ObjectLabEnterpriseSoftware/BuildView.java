@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class BuildView extends javax.swing.JFrame
 {
-    private static final String NAME_OF_PAGE = "Build File Creator";
+    //private static final String NAME_OF_PAGE = "Build File Creator";
     private static MainView home = new MainView();
     private static int countNumOfModels;
     // --nav bar views ~Alex
@@ -36,6 +36,7 @@ public class BuildView extends javax.swing.JFrame
     private static final DefaultTableModel invalidBuildLocationSelectedColumnModel = new DefaultTableModel();
     public BuildView(String userID){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setTitle("Administration Panel");
         id = userID;
     }
     private static String[] errorTextColumnHeader =
@@ -260,7 +261,8 @@ public class BuildView extends javax.swing.JFrame
         jScrollPane5.setViewportView(jTextPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle(UtilController.getPageName(NAME_OF_PAGE));
+        setTitle("Administration Panel");
+        //setTitle(UtilController.getPageName(NAME_OF_PAGE));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 950, 10));
@@ -562,7 +564,7 @@ public class BuildView extends javax.swing.JFrame
     
         private void navBtn_laserActionPerformed(java.awt.event.ActionEvent evt)
 	{
-                laserView = new LaserView();
+                laserView = new LaserView(id);
                 laserView.setVisible(true);
                 dispose();
 
