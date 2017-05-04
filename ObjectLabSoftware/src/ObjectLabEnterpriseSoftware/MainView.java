@@ -83,7 +83,7 @@ public class MainView extends javax.swing.JFrame
         studentPassLabel = new javax.swing.JLabel();
         studentPassString = new javax.swing.JPasswordField();
         MenuBar = new javax.swing.JMenuBar();
-	getRootPane().setDefaultButton(submitButton);
+	getRootPane().setDefaultButton(studentButton);
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
