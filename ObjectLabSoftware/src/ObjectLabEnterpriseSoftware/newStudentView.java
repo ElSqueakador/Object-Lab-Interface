@@ -171,8 +171,13 @@ public class newStudentView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+	
+	if(userID == "admin"){
+		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+	}
+	else {
+        	setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+	}
         setTitle("Student View");
         setName("Student View"); // NOI18N
         setPreferredSize(new java.awt.Dimension(830, 455));
