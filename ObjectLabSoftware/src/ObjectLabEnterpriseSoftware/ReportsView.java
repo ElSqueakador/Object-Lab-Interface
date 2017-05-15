@@ -117,12 +117,12 @@ public class ReportsView extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         
         JLabel titleLabel = new JLabel("Reports");
-        titleLabel.setBounds(430, 11, 159, 41);
+        titleLabel.setBounds(430, 10, 159, 41);
         titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 24));
         getContentPane().add(titleLabel);
         
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(750, 520));
+        setMinimumSize(new java.awt.Dimension(995, 660));
         setPreferredSize(new java.awt.Dimension(995, 660));
         setSize(new java.awt.Dimension(995, 660));
 
@@ -162,9 +162,9 @@ public class ReportsView extends javax.swing.JFrame
     exportBtn.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     exportBtn.setText("Current Device Report");
     exportBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-    exportBtn.setMaximumSize(new java.awt.Dimension(141, 23));
-    exportBtn.setMinimumSize(new java.awt.Dimension(141, 23));
-    exportBtn.setPreferredSize(new java.awt.Dimension(141, 23));
+    exportBtn.setMaximumSize(new java.awt.Dimension(180, 30));
+    exportBtn.setMinimumSize(new java.awt.Dimension(180, 30));
+    exportBtn.setPreferredSize(new java.awt.Dimension(180, 30));
     exportBtn.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             exportBtnActionPerformed(evt);
@@ -193,45 +193,40 @@ public class ReportsView extends javax.swing.JFrame
         .addGroup(layout.createSequentialGroup()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(310, 310, 310)
-                    .addComponent(jLabel3))
+                    .addGap(310, 310, 310))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(34, Short.MAX_VALUE)
+                    .addContainerGap(10, 10)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(exportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(exportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ExportMasterReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE))
-                        .addComponent(jLabel1)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addContainerGap(34, Short.MAX_VALUE))
+                                .addComponent(ExportMasterReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE))
+                        .addComponent(jLabel1))))
+            .addContainerGap(10, 10))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(20, 20, 20)
-            .addComponent(jLabel3)
-            .addGap(6, 6, 6)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(75, 75, 75)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jLabel1)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(9, 9, 9)
+            .addGap(20, 20, 20)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(30, 30, 30)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(exportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(ExportMasterReportButton))
-            .addContainerGap(74, Short.MAX_VALUE))
+            .addContainerGap(10, 10))
     );
 
     getAccessibleContext().setAccessibleDescription("");

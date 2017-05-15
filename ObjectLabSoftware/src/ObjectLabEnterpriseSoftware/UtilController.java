@@ -417,7 +417,7 @@ public static ArrayList<ArrayList<Object>> updateReportLaserTableData()
             JOptionPane.showMessageDialog(new JFrame(), "Succesfully Exported File");
         } else
         {
-            JOptionPane.showMessageDialog(new JFrame(), "Unable To Exported File");
+            JOptionPane.showMessageDialog(new JFrame(), "Unable To Export File");
         }
 
     }
@@ -473,7 +473,7 @@ public static ArrayList<ArrayList<Object>> updateReportLaserTableData()
             JOptionPane.showMessageDialog(new JFrame(), "Succesfully Exported File");
         } else
         {
-            JOptionPane.showMessageDialog(new JFrame(), "Unable To Exported File");
+            JOptionPane.showMessageDialog(new JFrame(), "Unable To Export File");
         }
     }
 
